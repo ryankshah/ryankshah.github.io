@@ -21,7 +21,7 @@ Work experience
   * Duties included: Lab demonstrator, course material planning and development for GA MSc in Cybersecurity, lab assessment development and delivery, assessment marking and feedback
 
 * Jan 2019 - Jan 2020: Data Science Work Placement
-  * NPL Scotland & Keysight (in partnership with University of Strathclyde
+  * NPL Scotland & Keysight (in partnership with University of Strathclyde)
   * Duties included: Meetings with project partners and stakeholders, requirements engineering, development of blockchain-based solution for traceability
 
 * Sep 2017 - Dec 2017: Lab Assistant
