@@ -1,0 +1,198 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Ryan and Claire's Wedding">
+    <meta name="author" content="Ryan Shah">
+    <title>Claire &amp; Ryan's Wedding - June 3rd 2024</title>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- Favicons -->
+    <!--    <link rel="apple-touch-icon" href="/docs/5.3/assets/img/favicons/apple-touch-icon.png" sizes="180x180">-->
+    <!--    <link rel="icon" href="/docs/5.3/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">-->
+    <!--    <link rel="icon" href="/docs/5.3/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">-->
+    <!--    <link rel="manifest" href="/docs/5.3/assets/img/favicons/manifest.json">-->
+    <!--    <link rel="mask-icon" href="/docs/5.3/assets/img/favicons/safari-pinned-tab.svg" color="#712cf9">-->
+    <!--    <link rel="icon" href="/docs/5.3/assets/img/favicons/favicon.ico">-->
+    <!--    <meta name="theme-color" content="#712cf9">-->
+</head>
+
+<body>
+<main>
+    <!-- nav -->
+    <nav class="navbar navbar-light navbar-expand-md bg-faded justify-content-center navbar-expand-lg bg-white" style="border-bottom: 1px solid #f2f2f2;">
+        <div class="container">
+            <a href="index.html" class="navbar-brand d-flex w-50 me-auto">Claire &amp; Ryan</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsingNavbar3">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse collapse w-100" id="collapsingNavbar3" style="font-size: 18px;">
+                <ul class="navbar-nav w-100 justify-content-end">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">Our Story</a>
+                    </li>
+<!--                    <li class="nav-item">-->
+<!--                        <a class="nav-link" href="party.html">The Wedding Party</a>-->
+<!--                    </li>-->
+                    <li class="nav-item">
+                        <a class="nav-link" href="schedule.html">Schedule</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="savethedate.html">Save The Date</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="rsvp.html">RSVP</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="accommodation.html">Accommodation</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#faq">FAQ</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- content -->
+    <div class="container" style="background-color: #fefefe; border: 1px solid #f2f2f2; border-top: none; padding: 0; border-bottom: none;">
+        <div class="row align-items-center g-lg-5 p-5 p-md-5 text-center">
+            <div><h1 class="display-6" style="display: inline-block; border-bottom: 2px solid #e1c4ff; margin-bottom: 0;">RSVP</h1></div>
+            <div class="col-12 col-sm-12 col-xs-12 align-items-center text-center" style="margin-left: auto; margin-right: auto;">
+                <div class="card">
+                    <form id="rsvpform" method="post">
+                    <div class="card-body">
+                        <div class="mb-3 input-group">
+                            <span class="input-group-text">First and last name</span>
+                            <input type="text" aria-label="First name" name="firstName" class="form-control" placeholder="John" required>
+                            <input type="text" aria-label="Last name" name="lastName" class="form-control" placeholder="Smith" required>
+                        </div>
+                        <div class="input-group flex-nowrap">
+                            <span class="input-group-text" id="addon-wrapping">@</span>
+                            <input type="email" class="form-control" placeholder="Email Address" name="email" aria-label="Email" aria-describedby="addon-wrapping" required>
+    <!--                        <div id="emailHelp" class="form-text text-muted">We'll never share your email or any other details with anyone else.</div>-->
+                        </div>
+                        <br />
+                        <div class="mb-3" align="left">
+                            <label for="attendingCheckbox" class="form-label">Will you be attending?</label>
+                            <br />
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="attendingCheck" id="attendingCheckbox" value="yes" required>
+                                <label class="form-check-label" for="stayCheckbox">Yes</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="attendingCheck" id="notAttendingCheckbox" value="no" required>
+                                <label class="form-check-label" for="notAttendingCheckbox">No</label>
+                            </div>
+                        </div>
+                        <div id="furtherOptions" style="display: none;">
+                            <hr style="margin: 30px auto; width: 60%; border-color: #a0a0a0;" />
+                            <div class="mb-3" align="left">
+                                <label for="vegetarianCheckbox" class="form-label">Do you have any dietary requirements?</label>
+                                <br />
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" name="dietary[]" id="vegetarianCheckbox" value="vegetarian">
+                                    <label class="form-check-label" for="vegetarianCheckbox">Vegetarian</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" name="dietary[]" id="veganCheckbox" value="vegan">
+                                    <label class="form-check-label" for="veganCheckbox">Vegan</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" name="dietary[]" id="dairyFreeCheckbox" value="dairyfree">
+                                    <label class="form-check-label" for="dairyFreeCheckbox">Dairy-Free</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" name="dietary[]" id="glutenFreeCheckbox" value="glutenfree">
+                                    <label class="form-check-label" for="glutenFreeCheckbox">Gluten-Free</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" name="dietary[]" id="nutFreeCheckbox" value="nutfree">
+                                    <label class="form-check-label" for="nutFreeCheckbox">Nut-Free</label>
+                                </div>
+                            </div>
+                            <br />
+                            <div class="mb-3" align="left">
+                                <label for="stayCheckbox" class="form-label">Do you wish to stay at the venue?</label>
+                                <br />
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="stayVenueCheck" id="stayCheckbox" value="yes">
+                                    <label class="form-check-label" for="stayCheckbox">Yes</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="stayVenueCheck" id="noStayCheckbox" value="no" checked>
+                                    <label class="form-check-label" for="noStayCheckbox">No</label>
+                                </div>
+
+                            </div>
+                            <div class="alert alert-warning" role="alert" id="stayVenueAlert" style="display: none; background-color: #e1c4ff; border-color: #d2afff; color: white;">
+                                Great! We'll be in touch to discuss this with you.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer text-muted">
+                        <button class="btn btn-success" type="submit" style="background-color: #9CAF88; border-color: #9CAF88;">Submit</button>
+                    </div>
+                    </form>
+                </div>
+                <br />
+                <div class="alert alert-secondary" role="alert">
+                    <strong>Keep in mind...</strong> If you are coming with others (e.g. family members), please complete
+                    the RSVP form for every member in your party.
+                </div>
+                <br />
+            </div>
+        </div>
+    </div>
+</main>
+
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.bundle.min.js"></script>
+<!--<script src="js/site.js"></script>-->
+<script>
+    $('input:radio[name="attendingCheck"]').change(function() {
+        if ($(this).val()=='yes') {
+            $('#furtherOptions').show();
+        }
+        else if ($(this).val()=='no') {
+            $('#furtherOptions').hide();
+        }
+    });
+    $('input:radio[name="stayVenueCheck"]').change(function() {
+        if ($(this).val()=='yes') {
+            $('#stayVenueAlert').show();
+        }
+        else if ($(this).val()=='no') {
+            $('#stayVenueAlert').hide();
+        }
+    });
+
+    $(function () {
+        $('#rsvpform').on('submit', function (e) {
+            e.preventDefault();
+
+            $.ajax({
+                type: 'post',
+                url: 'inc/rsvp.php',
+                data: $(this).serialize(),
+                success: function(data) {
+                    alert(data);
+                },
+                error: function(data) {
+                    alert(data);
+                }
+            });
+        });
+    });
+</script>
+
+
+</body>
+</html>

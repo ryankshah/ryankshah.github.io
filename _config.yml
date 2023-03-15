@@ -81,14 +81,14 @@ analytics:
 # Site Author
 author:
   name             : "Dr. Ryan Shah"
-  avatar           : "profile.jpg"
-  bio              : "Dr. Ryan Shah, PhD in Cybersecurity. Currently a Postdoctoral Research Associate for the SECRIOUS Project at Heriot-Watt University"
+  avatar           : "profile.png"
+  bio              : "Dr. Ryan Shah, PhD in Cybersecurity - Specialising in Robotics Security. Currently a Postdoctoral Research Associate for the SECRIOUS Project at Heriot-Watt University"
   location         : "Heriot-Watt University, Edinburgh"
   employer         :
   pubmed           :
   googlescholar    : "https://scholar.google.com/citations?user=ctJ21fwAAAAJ&hl=en"
-  email            : "r.shah@hw.ac.uk"
-  researchgate     :  # example: "https://www.researchgate.net/profile/yourprofile"
+  email            : #"r.shah@hw.ac.uk"
+  researchgate     : "https://www.researchgate.net/profile/Ryan-Shah"
   uri              :
   bitbucket        :
   codepen          :
@@ -96,20 +96,20 @@ author:
   flickr           :
   facebook         :
   foursquare       :
-  github           : "ryankshah"
+  github           : "https://github.com/ryankshah"
   google_plus      :
   keybase          :
   instagram        :
   impactstory      : #"https://profiles.impactstory.org/u/xxxx-xxxx-xxxx-xxxx"
   lastfm           :
-  linkedin         : "ryankshah"
+  linkedin         : "https://www.linkedin.com/in/ryankshah/"
   orcid            : "http://orcid.org/0000-0003-1348-8423"
   pinterest        :
   soundcloud       :
   stackoverflow    : # http://stackoverflow.com/users/123456/username
   steam            :
   tumblr           :
-  twitter          : "ryankshah"
+  twitter          : "https://twitter.com/ryankshah"
   vine             :
   weibo            :
   xing             :
