@@ -5,13 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e6f94839-0da2-4b8e-afc4-3c5c51b52da5" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/_teaching/2020-cs805.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_teaching/2020-cs807.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_teaching/2020-cs808.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_teaching/2020-cs813.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_pages/cv.md" beforeDir="false" afterPath="$PROJECT_DIR$/_pages/cv.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_talks/2023-02-07-talk-1.md" beforeDir="false" afterPath="$PROJECT_DIR$/_talks/2023-02-07-talk-1.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_talks/2023-02-09-talk-2.md" beforeDir="false" afterPath="$PROJECT_DIR$/_talks/2023-02-09-talk-2.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_talks/2023-03-10-talk-3.md" beforeDir="false" afterPath="$PROJECT_DIR$/_talks/2023-03-10-talk-3.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/talkmap.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/talkmap.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_publications/2023-01-01-Communicating-Complex-Decisions-in-Robot-Assisted-Therapy.md" beforeDir="false" afterPath="$PROJECT_DIR$/_publications/2023-01-01-Communicating-Complex-Decisions-in-Robot-Assisted-Therapy.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_publications/2023-01-01-Investigating-Concerns-of-Security-and-Privacy-Among-Rohingya-Refugees-in-Malaysia.md" beforeDir="false" afterPath="$PROJECT_DIR$/_publications/2023-01-01-Investigating-Concerns-of-Security-and-Privacy-Among-Rohingya-Refugees-in-Malaysia.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_teaching/2014-spring-teaching-1.md" beforeDir="false" afterPath="$PROJECT_DIR$/_teaching/2019-cs996.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_teaching/2015-spring-teaching-2.md" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,21 +44,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/ryank/Documents/ryankshah.github.io/wedding&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Problems&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.editor&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "C:/Users/ryank/Documents/ryankshah.github.io/_teaching",
+    "project.structure.last.edited": "Problems",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "configurable.group.editor"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\ryank\Documents\ryankshah.github.io\_teaching" />
       <recent name="C:\Users\ryank\Documents\ryankshah.github.io\wedding" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
