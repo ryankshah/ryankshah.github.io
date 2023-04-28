@@ -7,7 +7,7 @@
 
 # Site Settings
 locale                   : "en-US"
-title                    : "Ryan K. Shah, Ph.D., AFHEA, BSc (Hons)"
+title                    : "Ryan K. Shah"
 title_separator          : "-"
 name                     : &name "Ryan Shah"
 description              : &description "Academic website for Ryan Shah"
@@ -82,9 +82,9 @@ analytics:
 author:
   name             : "Ryan K. Shah"
   avatar           : "profile.png"
-  bio              : "Currently working as a Postdoctoral Research Associate in Cybersecurity at Heriot-Watt University. Ph.D. in Cybersecurity titled 'Security of Robotic Workflows' from University of Strathclyde. The primary aspect of the work looks into the compromise of operational privacy of organisations through the exploitation of behavioural information of robotic systems collected through side channel attack vectors. The secondary aspect looks into the security of calibration and metrological traceability, the ecosystem which underpins accuracy and precision, and ultimately safety of connected systems. Received First Class honours for a BSc in Computer Science at Heriot-Watt University."
+  bio              : "Ryan K. Shah, Ph.D., AFHEA, BSc (Hons).<br />Currently working as a Postdoctoral Research Associate in Cybersecurity at Heriot-Watt University. Ph.D. in Cybersecurity titled 'Security of Robotic Workflows' from University of Strathclyde. Received First Class honours for a BSc in Computer Science at Heriot-Watt University."
   location         : "Edinburgh, UK"
-  employer         : "Heriot-Watt University"
+  employer         :
   pubmed           :
   googlescholar    : "https://scholar.google.com/citations?user=ctJ21fwAAAAJ"
   email            :
