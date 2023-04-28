@@ -1,11 +1,6 @@
-_site
+*.gem
 .bundle
-.sass-cache
 .jekyll-cache
-.jekyll-metadata
-.DS_store
-.ruby-version
-.tweet-cache
+.sass-cache
+_site
 Gemfile.lock
-vendor
-
