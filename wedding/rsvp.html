@@ -153,6 +153,24 @@
     </div>
 </main>
 
+<!-- Modal -->
+<div class="modal fade" id="thanksModal" tabindex="-1" aria-labelledby="thanksModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="thanksModalLabel">Thank you!</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Thank you for RSVP'ing! We look forward to seeing you at the wedding and will get in touch soon!<br /><em>Claire &amp; Ryan x</em></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script src="js/jquery.min.js"></script>
 <script src="js/bootstrap.bundle.min.js"></script>
 <!--<script src="js/site.js"></script>-->
@@ -183,10 +201,14 @@
                 url: 'inc/rsvp.php',
                 data: $(this).serialize(),
                 success: function(data) {
-                    alert(data);
+                    $(this).trigger('reset');
+                    var myModal = new bootstrap.Modal(document.getElementById('thanksModal'))
+                    myModal.show()
                 },
                 error: function(data) {
-                    alert(data);
+                    $(this).trigger('reset');
+                    var myModal = new bootstrap.Modal(document.getElementById('thanksModal'))
+                    myModal.show()
                 }
             });
         });
