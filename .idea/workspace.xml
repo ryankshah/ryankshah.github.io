@@ -5,15 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e6f94839-0da2-4b8e-afc4-3c5c51b52da5" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/_teaching/2020-cs805.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/_teaching/2020-cs807.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/_teaching/2020-cs808.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/_teaching/2020-cs813.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_publications/2023-01-01-Communicating-Complex-Decisions-in-Robot-Assisted-Therapy.md" beforeDir="false" afterPath="$PROJECT_DIR$/_publications/2023-01-01-Communicating-Complex-Decisions-in-Robot-Assisted-Therapy.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_publications/2023-01-01-Investigating-Concerns-of-Security-and-Privacy-Among-Rohingya-Refugees-in-Malaysia.md" beforeDir="false" afterPath="$PROJECT_DIR$/_publications/2023-01-01-Investigating-Concerns-of-Security-and-Privacy-Among-Rohingya-Refugees-in-Malaysia.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_teaching/2014-spring-teaching-1.md" beforeDir="false" afterPath="$PROJECT_DIR$/_teaching/2019-cs996.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_teaching/2015-spring-teaching-2.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/_config.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_data/navigation.yml" beforeDir="false" afterPath="$PROJECT_DIR$/_data/navigation.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_pages/cv.md" beforeDir="false" afterPath="$PROJECT_DIR$/_pages/cv.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_teaching/2019-cs996.md" beforeDir="false" afterPath="$PROJECT_DIR$/_teaching/2019-cs996.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_teaching/2020-cs805.md" beforeDir="false" afterPath="$PROJECT_DIR$/_teaching/2020-cs805.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_teaching/2020-cs807.md" beforeDir="false" afterPath="$PROJECT_DIR$/_teaching/2020-cs807.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_teaching/2020-cs808.md" beforeDir="false" afterPath="$PROJECT_DIR$/_teaching/2020-cs808.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_teaching/2020-cs813.md" beforeDir="false" afterPath="$PROJECT_DIR$/_teaching/2020-cs813.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

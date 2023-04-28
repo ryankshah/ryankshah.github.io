@@ -68,7 +68,7 @@ Talks
   
 Teaching
 ======
-  <ul[.gitignore](..%2F.gitignore)>{% for post in site.teaching %}
+  <ul>{% for post in site.teaching %}
     {% include archive-single-cv.html %}
   {% endfor %}</ul>
   
