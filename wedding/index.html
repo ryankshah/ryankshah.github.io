@@ -1,0 +1,270 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Ryan and Claire's Wedding">
+    <meta name="author" content="Ryan Shah">
+    <title>Claire &amp; Ryan's Wedding - June 3rd 2024</title>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- Favicons -->
+<!--    <link rel="apple-touch-icon" href="/docs/5.3/assets/img/favicons/apple-touch-icon.png" sizes="180x180">-->
+<!--    <link rel="icon" href="/docs/5.3/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">-->
+<!--    <link rel="icon" href="/docs/5.3/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">-->
+<!--    <link rel="manifest" href="/docs/5.3/assets/img/favicons/manifest.json">-->
+<!--    <link rel="mask-icon" href="/docs/5.3/assets/img/favicons/safari-pinned-tab.svg" color="#712cf9">-->
+<!--    <link rel="icon" href="/docs/5.3/assets/img/favicons/favicon.ico">-->
+<!--    <meta name="theme-color" content="#712cf9">-->
+</head>
+
+<body>
+<main>
+    <!-- nav -->
+    <nav class="navbar navbar-light navbar-expand-md bg-faded justify-content-center navbar-expand-lg bg-white" style="border-bottom: 1px solid #f2f2f2;">
+        <div class="container">
+            <a href="index.html" class="navbar-brand d-flex w-50 me-auto">Claire &amp; Ryan</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsingNavbar3">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse collapse w-100" id="collapsingNavbar3" style="font-size: 18px;">
+                <ul class="navbar-nav w-100 justify-content-end">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">Our Story</a>
+                    </li>
+<!--                    <li class="nav-item">-->
+<!--                        <a class="nav-link" href="party.html">The Wedding Party</a>-->
+<!--                    </li>-->
+                    <li class="nav-item">
+                        <a class="nav-link" href="schedule.html">Schedule</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="savethedate.html">Save The Date</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="rsvp.html">RSVP</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="accommodation.html">Accommodation</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#faq">FAQ</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- content -->
+    <div class="container" style="background-color: #fefefe; border: 1px solid #f2f2f2; border-top: none; padding: 0; border-bottom: none;">
+        <div id="carouselExample" class="carousel slide w-100" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="img/balbirnie.jpg" class="d-block w-100" alt="Balbirnie House">
+                </div>
+                <div class="carousel-item">
+                    <img src="img/us_1.jpg" class="d-block" alt="Us 1">
+                </div>
+                <div class="carousel-item">
+                    <img src="img/us_2.jpg" class="d-block" alt="Us 2">
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+        <div class="row align-items-center g-lg-5 p-4 p-md-5">
+            <div class="col-lg-7 text-center text-lg-start">
+                <h1 class="display-5 lh-1 mb-3">We're so excited to have you celebrate with us!</h1>
+<!--                <p class="col-lg-10 fs-5 text-muted">Not long to go now...!</p>-->
+            </div>
+            <div class="col-md-10 mx-auto col-lg-5">
+                <img src="img/flower.png" class="d-block mx-lg-auto img-fluid" alt="Flower" width="200" height="200" loading="lazy">
+            </div>
+        </div>
+        <div class="row align-items-center text-center" style="background-color: #fafafa; border: 2px dashed #f1f1f1; border-left: none; border-right: none;">
+            <div class="col">
+                <div id="countdown">
+                    <ul>
+                        <li class="countdownli"><span id="days"></span>days</li>
+                        <li class="countdownli"><span id="hours"></span>Hours</li>
+                        <li class="countdownli"><span id="minutes"></span>Minutes</li>
+                        <li class="countdownli"><span id="seconds"></span>Seconds</li>
+                    </ul>
+                </div>
+                <p class="text-muted" style="text-transform: uppercase;">Until The Big Day!</p>
+            </div>
+        </div>
+        <div class="row align-items-center g-lg-5 p-5 p-md-5">
+            <div><h1 class="display-6" style="display: inline-block; border-bottom: 2px solid #f0f0f0; margin-bottom: 0;">Venue Details</h1></div>
+            <div class="col-lg-6 text-center">
+                <img src="img/balbirnielogo.png" class="d-block mx-lg-auto img-fluid" alt="Flower" width="400" height="400" loading="lazy">
+                <address style="font-size: 22px;">
+                    <strong>Balbernie House</strong><br>
+                    Markinch<br>
+                    Glenrothes, KY7 6NE<br>
+                    <abbr title="Phone">P:</abbr> + 44 (0)1592 610066
+                </address>
+            </div>
+            <div class="col-lg-6">
+                <h5 class="display-7"><strong style="display: inline-block; border-bottom: 2px solid #f0f0f0; margin-bottom: 0;">Travelling By Road</strong></h5>
+                <strong>From Edinburgh (35 miles) / Edinburgh Airport</strong>
+                <br />
+                <p>
+                    Follow signs for the Forth Road Bridge/Queensferry Crossing – M90.  Exit junction 2A on to A92.  Follow signs to Glenrothes and the Tay Road Bridge.  At Kirkcaldy end of dual carriageway go straight through 3 roundabouts still following Tay Road Bridge signs, then at fourth roundabout turn right onto the B9130 and follow signs to Markinch and Balbirnie Park.
+                </p>
+                <br />
+                <strong>From Perth (23 miles)</strong>
+                <br />
+                <p>
+                    Take M90, exit Bridge of Earn at junction 9.  Take A912 following signs to Glenfarg, Gateside, Strathmiglo, Falkland and Glenrothes.  Just before you reach Glenrothes, turn left at roundabout signposted B9130 and follow signs for Markinch and Balbirnie Park.  Alternatively take M90 to junction 3 and follow directions as from Edinburgh (this is a longer route but is motorway or dual carriageway all the way).
+                </p>
+                <br />
+
+                <h5 class="display-7"><strong style="display: inline-block; border-bottom: 2px solid #f0f0f0; margin-bottom: 0;">Travelling By Rail</strong></h5>
+                <p>
+                    The nearest train station is located in Markinch (just 5 minutes away) and it has direct links from Edinburgh's train stations. You can arrange a local taxi to get you from the station to Balbirnie House.
+                </p>
+            </div>
+        </div>
+
+        <div class="row align-items-center g-lg-5 p-5 p-md-5" style="background-color: #fafafa; border: 2px dashed #f1f1f1; border-left: none; border-right: none;">
+            <div><h1 id="faq" class="display-6" style="display: inline-block; border-bottom: 2px solid #f0f0f0; margin-bottom: 0;">Frequently Asked Questions (FAQ)</h1></div>
+
+            <div class="col-sm-4 mb-4 mb-sm-0">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Can I bring a date?</h5>
+                        <p class="card-text">
+                            Due to limited space, we can only accommodate those guests who have been formally invited
+                            on the wedding invitation. If you received a plus one, they will appear under your name
+                            when you RSVP.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4 mb-4 mb-sm-0">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Can we bring our children?</h5>
+                        <p class="card-text">
+                            Invitations will be specific and will include the names of any children who have been invited.
+                            However, we encourage you to use this evening as a "date night" for yourself!
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4 mb-4 mb-sm-0">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Can I stay at the venue?</h5>
+                        <p class="card-text">
+                            We will notify guests of available rooms at the venue after Save The Dates are sent. However,
+                            due to a limited capacity at the wedding venue itself, please refer to our
+                            <a href="accomodation.html">Accomodation</a> tab for other options.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4 mb-4 mb-sm-0">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Is there a dress code?</h5>
+                        <p class="card-text">
+                            We'd love to see our family and friends dress up with us! We are requesting your best formal
+                            attire for the evening. No jeans, t-shirts or sneakers, please! Women, please refrain from
+                            wearing white or shades of white as to not coincide with the bride.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4 mb-4 mb-sm-0">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">What happens if I don't RSVP in time?</h5>
+                        <p class="card-text">
+                            If we do not get an RSVP back by the date which we have provided, it will be marked as "Not able to attend."
+                            We will surely miss you at our wedding and celebrating this happy occasion with us, however,
+                            we have to provide total guest counts to the venue in a timely manner and cannot accept late
+                            RSVPs due to this. We hope you understand.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4 mb-4 mb-sm-0">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Can we take photos during the ceremony?</h5>
+                        <p class="card-text">
+                            As we will have photographers at the wedding, we have a strict rule of no photographs or
+                            videos to be taken during the wedding ceremony. To put it simply, we don't want to see any
+                            phones out in our lovely photographs! However, during the evening celebrations, feel free
+                            to take as many pictures as you like and share them with us using the hashtag. <strong>#ShahsSince2024</strong>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4 mb-4 mb-sm-0">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Can we bring gifts for the bride and groom?</h5>
+                        <p class="card-text">
+                            Having your company at our wedding is a gift in itself, however if you
+                            wish to give a gift, please consider the following poem:
+                            <br />
+                            <em>"As we’ve lived together for a year or two,
+                            We really don’t need anything new.
+                            But if you were thinking of getting us a small wedding gift,
+                            Some money for our future wouldn’t go amiss."</em>
+                            <br />
+                            Gifts will go towards our first home and our honeymoon.
+                        </p>
+                    </div>
+                </div>
+            </div>
+<!--            <div class="col-sm-4 mb-4 mb-sm-0">-->
+<!--                <div class="card">-->
+<!--                    <div class="card-body">-->
+<!--                        <h5 class="card-title">Can we pay drinks, etc. using cash?</h5>-->
+<!--                        <p class="card-text">-->
+<!--                            As of May 1st 2021, Balbirnie House has been a fully cashless venue. Therefore, please make-->
+<!--                            any payments in the venue by card or contactless as no cash will be accepted.-->
+<!--                        </p>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+            <div class="col-sm-4 mb-4 mb-sm-0">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Is there anywhere for people to smoke?</h5>
+                        <p class="card-text">
+                            There will be specific smoking zones that are designated for any smokers that attend our
+                            wedding. These will be pointed out to those who wish to do so while at the venue. Anyone who
+                            is smoking cigarettes or e-cigarettes should be at least 5m away from any doors or windows
+                            to conform to Scottish law.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.bundle.min.js"></script>
+<script src="js/site.js"></script>
+
+
+</body>
+</html>

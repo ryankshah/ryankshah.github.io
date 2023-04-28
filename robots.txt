@@ -1,0 +1,4 @@
+User-agent: *
+Disallow:
+
+Sitemap: https://ryankshah.github.io//sitemap.xml
