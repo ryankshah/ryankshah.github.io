@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Minecraft Modding Tutorials</title>
+    <link rel="stylesheet"
+          id="theme_link"
+          href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.3.1/lux/bootstrap.min.css"/>
+    <!--    <link rel="stylesheet" href="css/navbar-fixed-right.min.css">-->
+    <link rel="stylesheet" href="../css/navbar-fixed-left.min.css">
+    <link rel="stylesheet" href="../css/docs.css">
+    <link rel="stylesheet" href="../css/prism.css">
+    <script
+            src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+            integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8="
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
+    <script src="../js/docs.js"></script>
+    <script src="../js/prism.js"></script>
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+</head>
+
+<body>
+<nav class="navbar navbar-expand-md navbar-dark bg-primary fixed-top">
+    <a class="navbar-brand" href="../index.html"><img src="../img/grass_block_icon.png" width="30" height="30" class="d-inline-block align-top" alt=""> Modding</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
+            aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav">
+            <div class="dropdown-divider"></div>
+            <li class="nav-item">
+                <a class="nav-link" href="../index.html">Home</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle active" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">MultiLoader 1.21+</a>
+                <div class="dropdown-menu active">
+                    <a class="dropdown-item" href="getting_started.html">Getting Started</a>
+                    <a class="dropdown-item" href="regutils.html">Setting up RegistrationUtils</a>
+                    <a class="dropdown-item active" href="items.html">Creating Items</a>
+                    <a class="dropdown-item" href="blocks.html">Creating Blocks</a>
+<!--                    <div class="dropdown-divider"></div>-->
+<!--                    <a class="dropdown-item">Separated link</a>-->
+<!--                    <a class="dropdown-item">One more separated link</a>-->
+                </div>
+            </li>
+            <div class="dropdown-divider"></div>
+            <li class="nav-item">
+                <a class="nav-link" href="../contact.html">Get in touch!</a>
+            </li>
+        </ul>
+        <!--        <ul class="navbar-nav">-->
+        <!--            <li class="nav-item">-->
+        <!--                <a class="nav-link" data-class="fixed-left">-->
+        <!--                    <i class="fa fa-arrow-left"></i>-->
+        <!--                    Fixed Left-->
+        <!--                </a>-->
+        <!--            </li>-->
+        <!--            <li class="nav-item">-->
+        <!--                <a class="nav-link" data-class="fixed-top">-->
+        <!--                    <i class="fa fa-arrow-up"></i>-->
+        <!--                    Fixed Top-->
+        <!--                    <small>(original)</small>-->
+        <!--                </a>-->
+        <!--            </li>-->
+        <!--            <li class="nav-item">-->
+        <!--                <a class="nav-link" data-class="fixed-right">-->
+        <!--                    <i class="fa fa-arrow-right"></i>-->
+        <!--                    Fixed Right-->
+        <!--                </a>-->
+        <!--            </li>-->
+        <!--        </ul>-->
+    </div>
+</nav>
+
+<div class="container" id="content">
+    <div class="jumbotron">
+        <h1 class="display-4">
+            Minecraft Modding Tutorials
+            <br>
+        </h1>
+        <p>
+            <strong>
+                Learn the basics, explore advanced techniques, and create mods that transform your Minecraft world.
+                These step-by-step tutorials are designed to make getting into modding Minecraft a bit easier!
+            </strong>
+        </p>
+        <p>
+            <!--            <a class="github-button" href="https://github.com/ryankshah/bootstrap-navbar-sidebar"-->
+            <!--               data-icon="octicon-star" data-show-count="true"-->
+            <!--               aria-label="Star mladenplavsic/bootstrap-navbar-sidebar on GitHub">Star</a>-->
+            <!--            <a class="github-button" href="https://github.com/mladenplavsic/bootstrap-navbar-sidebar/fork"-->
+            <!--               data-icon="octicon-repo-forked" data-show-count="true"-->
+            <!--               aria-label="Fork mladenplavsic/bootstrap-navbar-sidebar on GitHub">Fork</a>-->
+            <a class="github-button" href="https://github.com/ryankshah"
+               aria-label="Follow @ryankshah on GitHub">Follow @ryankshah</a>
+            <!--            <script type="text/javascript" style="padding: 0px;" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="ryankshah" data-color="#FFDD00" data-emoji=""  data-font="Comic" data-text="Buy me a coffee" data-outline-color="#000000" data-font-color="#000000" data-coffee-color="#ffffff" ></script>-->
+
+        </p>
+        <!--        <p>Same as when using <code>.fixed-top</code> for navbar - add class <code>.fixed-left</code> or <code>.fixed-right</code>-->
+        <!--            where needed.</p>-->
+        <!--        <p>Click buttons below, and appropriate class will be added to example navbar.</p>-->
+        <!--        <div class="btn-group" role="group">-->
+        <!--            <button type="button" data-class="fixed-left" class="btn btn-primary">-->
+        <!--                <i class="fa fa-arrow-left"></i>-->
+        <!--                Fixed Left-->
+        <!--            </button>-->
+        <!--            <button type="button" data-class="fixed-top" class="btn btn-primary">-->
+        <!--                <i class="fa fa-arrow-up"></i>-->
+        <!--                Fixed Top-->
+        <!--                <small>(original)</small>-->
+        <!--            </button>-->
+        <!--            <button type="button" data-class="fixed-right" class="btn btn-primary">-->
+        <!--                <i class="fa fa-arrow-right"></i>-->
+        <!--                Fixed Right-->
+        <!--            </button>-->
+    </div>
+    <div class="jumbotron" style="background: #FEFEFE;">
+        <h1 class="display-4">
+            <small>Creating Items &dash; MultiLoader 1.21+</small>
+        </h1>
+        <br />
+        <p>
+            <strong>
+                Creating new items is one of the key starting points to many mods. In this tutorial, we will create a
+                basic item with a model and texture.
+            </strong>
+        </p>
+        <br />
+        <p>
+            Before you continue with this part of the tutorial, please ensure that you have followed the tutorial for
+            <a href="regutils.html">Setting Up RegistrationUtils</a>.
+        </p>
+        <br />
+        <h3 class="display-6">Creating the Item Registry</h3>
+        <p>
+            What you will first want to do is create the class where we will register our items. For the purposes of
+            this tutorial, I will name this <kbd>ItemRegistry</kbd> and place it in another package called
+            <kbd>registry</kbd>, but feel free to call this whatever, and put it wherever, you like.
+        </p>
+        <p>
+            In the package structure, it will look like <kbd>com.example.examplemod.registry.ItemRegistry</kbd>.
+        </p>
+        <p>
+            In this class, we will first define an empty, static function called <kbd>init</kbd>, and we will use this
+            later as a point of loading the class. I use the term init as it refers to the initialisation of the class
+            and its contents, but again, you can name this whatever you like.
+        </p>
+        <p>
+            Next, we will define a <kbd>RegistrationProvider</kbd> as follows using the <kbd>Item</kbd> registry:
+        </p>
+        <code class="language-java">public static final RegistrationProvider<Item> ITEMS = RegistrationProvider.get(Registries.ITEM, Constants.MOD_ID);</code>
+        <br /><br />
+        <p>
+            This will be used to add our items to the Item registry, and we will get to where we will use this
+            elsewhere in a little bit.
+        </p>
+        <p>
+            Before creating the Item field, we will first define a function in this class called <kbd>getItemProperties</kbd>, which
+            will be used later in the tutorial.
+        </p>
+        <pre>
+            <code class="language-java">
+public static Item.Properties getItemProperties() {
+    return new Item.Properties();
+}
+            </code>
+        </pre>
+        <br />
+        <p>
+            After this, we will now create a new item, which in this tutorial we will call "Iron Stick". To do this,
+            create a new <kbd>public static final</kbd> field of the type <kbd>RegistryObject<Item></kbd> and register
+            a supplier of a new instance of the Item class to the <kbd>ITEMS</kbd> registry we just created:
+        </p>
+        <pre>
+            <code class="language-java">
+public static final RegistryObject<Item> IRON_STICK = ITEMS.register("iron_stick",
+                 () -> new Item(getItemProperties()));
+            </code>
+        </pre>
+        <br />
+        <p>
+            Now what we want to do, is in your <kbd>CommonClass</kbd> file in the common project, you will want to create
+            another <kbd>public static final</kbd> init function, where you will call the init method of your <kbd>ItemRegistry</kbd>.
+        </p>
+        <p>
+            Using this new method, in both your Fabric and NeoForge projects, you will want to go to the <kbd>ExampleMod</kbd>
+            classes for each.
+        </p>
+        <p>
+            For Fabric, you will want to call <code class="language-java">CommonClass.init();</code> in
+            the <code class="language-java">onInitialize()</code> function.
+        </p>
+        <p>
+            For NeoForge, you will want to call the init function in the class constructor: <code class="language-java">public ExampleMod(IEventBus eventBus) {}</code>
+        </p>
+        <p>
+            Congratulations, you made your first Item! But wait... how will you even be able to see it in game?
+        </p>
+        <br />
+        <h3 class="display-6">Creating an Item Model</h3>
+        <p>
+            First, in your common project, create a new file called <kbd>iron_stick.json</kbd> in the resources directory
+            in the following directory: <kbd>assets/&lt;examplemod&gt;/models/item</kbd>. You can create these folders as you
+            would create folders on your local machine, or you can create them in IntelliJ itself. Remember to replace
+            <kbd>examplemod</kbd> with your own Mod ID if you changed it.
+        </p>
+        <p>
+            Inside this file, you are going to add the following:
+        </p>
+        <pre>
+            <code class="language-json">
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "examplemod:item/iron_stick"
+  }
+}
+            </code>
+        </pre>
+        <p>
+            This defines the model using the <kbd>item/generated</kbd> parent item model from Minecraft's own set of
+            models. The <kbd>layer0</kbd> parameter sets the name of the texture file to use for the item. For this
+            parent model, it uses a single cube which takes the texture called <kbd>layer0</kbd>. Remember to replace
+            <kbd>examplemod</kbd> with your own Mod ID if you changed it. You will want
+            to name this file the same as the lowercase name you gave the item in the registry, and also change the
+            name of the item in the textures block.
+        </p>
+        <p>
+            After this, in the same resources directory, you will want to create a 16x16 PNG image file for the item,
+            and place it in the following directory: <kbd>assets/&lt;examplemod&gt;/textures/item</kbd>. You will want
+            to name this file the same as the lowercase name you gave the item in the registry.
+        </p>
+        <p>
+            Finally, we are going to create a language file so we can give our Item a proper name. To do this, create a
+            new file called <kbd>en_us.json</kbd> in the directory <kbd>assets/&lt;examplemod&gt;/lang</kbd>. In this file,
+            you are going to add the line <kbd>"item.examplemod.iron_stick": "Iron Stick"</kbd> enclosed in curly brackets
+            as follows:
+        </p>
+        <pre>
+            <code class="language-json">
+{
+  "item.examplemod.iron_stick": "Iron Stick"
+}
+            </code>
+        </pre>
+        <p>
+            For any further entries into this language file, you will need to add a comma before every new line.
+        </p>
+        <p>
+            And that's it! You should be able to get your new item using the <kbd>/give &lt;player&gt; &lt;item&gt; [amount]</kbd>
+            command in game. Replace <kbd>&lt;item&gt;</kbd> with <kbd>&lt;examplemod:iron_stick&gt;</kbd> or whatever you
+            named your Mod ID and Item.
+        </p>
+        <br />
+        <h3 class="display-6">We all like creative tabs...</h3>
+        <p>
+            I agree, using commands sucks when you can have creative tabs to get your items easier. We will create recipes
+            later in this tutorial series, but for now let's make a new creative tab for our mod.
+        </p>
+        <p>
+            In the <kbd>ItemRegistry</kbd> class, add the following code:
+        </p>
+        <pre>
+            <code class="language-java">
+public static final RegistrationProvider&lt;CreativeModeTab&gt;CREATIVE_MODE_TABS = RegistrationProvider.get(Registries.CREATIVE_MODE_TAB, Constants.MOD_ID);
+public static final RegistryObject&lt;CreativeModeTab&gt; TAB = CREATIVE_MODE_TABS.register(Constants.MOD_ID + "_tab", () -> CreativeModeTab.builder(CreativeModeTab.Row.TOP, 0)
+    .icon(() -> new ItemStack(IRON_STICK.get()))
+    .displayItems(
+            (itemDisplayParameters, output) -> {
+                output.accept(IRON_STICK.get());
+            }).title(Component.translatable("itemGroup." + Constants.MOD_ID + ".tab"))
+    .build());
+            </code>
+        </pre>
+        <p>
+            The <kbd>icon</kbd> function takes an <kbd>ItemStack</kbd> as the parameter here with our new item as the
+            icon to display for the tab in the creative mode inventory. The <kbd>displayItems</kbd> function allows us
+            to assign the output of what to put in this tab. We use the <kbd>output.accept</kbd> method here to add our
+            new item.
+        </p>
+        <p>
+            You'll notice that there is also a <kbd>title</kbd> function. This takes a <kbd>Component</kbd> as the
+            parameter, so we have to now add a new entry into our lang file to add this item group. Here's the updated
+            language file we created before:
+        </p>
+        <pre>
+            <code class="language-json">
+{
+  "item.examplemod.iron_stick": "Iron Stick",
+  "itemGroup.examplemod.tab", "Example Mod Items"
+}
+            </code>
+        </pre>
+        <br /><br />
+        <div class="btn-group" role="group" aria-label="Navigation">
+            <a class="btn btn-primary" role="button" href="regutils.html">&lt; &nbsp; Setting Up RegistrationUtils</a>
+            <a class="btn btn-success" role="button" href="blocks.html">Creating Blocks &nbsp; &gt;</a>
+        </div>
+    </div>
+    <footer class="mt-auto py-3 bg-light">
+        <div class="container">
+            <span class="text-muted">Maintained by <a href="https://github.com/ryankshah">ryankshah</a>.</span>
+        </div>
+    </footer>
+</div>
+<script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="ryankshah" data-description="Support me on Buy me a coffee!" data-message="Buy me a coffee!" data-color="#FF813F" data-position="Right" data-x_margin="80" data-y_margin="80"></script>
+
+</body>
+</html>
