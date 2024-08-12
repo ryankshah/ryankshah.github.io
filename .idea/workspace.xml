@@ -5,209 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e6f94839-0da2-4b8e-afc4-3c5c51b52da5" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/modding/contact.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modding/css/docs.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modding/css/navbar-fixed-left.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modding/js/docs.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modding/multiloader_1_21/getting_started.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/.devcontainer/devcontainer.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/.devcontainer/post-create.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/.editorconfig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/.gitattributes" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/.github/DISCUSSION_TEMPLATE/general.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/.github/DISCUSSION_TEMPLATE/ideas.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/.github/DISCUSSION_TEMPLATE/q-a.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/.github/FUNDING.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/.github/ISSUE_TEMPLATE/bug_report.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/.github/ISSUE_TEMPLATE/config.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/.github/ISSUE_TEMPLATE/feature_request.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/.github/PULL_REQUEST_TEMPLATE.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/.github/codeql/codeql-config.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/.github/dependabot.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/.github/workflows/cd.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/.github/workflows/ci.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/.github/workflows/codeql.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/.github/workflows/commitlint.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/.github/workflows/publish.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/.github/workflows/stale.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/.github/workflows/starter/pages-deploy.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/.github/workflows/style-lint.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/.gitmodules" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/.husky/commit-msg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/.markdownlint.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/.nojekyll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/.vscode/extensions.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/.vscode/settings.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/.vscode/tasks.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/Gemfile" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/LICENSE" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/_config.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/_data/authors.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/_data/contact.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/_data/locales/ar.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/_data/locales/bg-BG.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/_data/locales/cs-CZ.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/_data/locales/de-DE.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/_data/locales/el-GR.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/_data/locales/en.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/_data/locales/es-ES.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/_data/locales/fi-FI.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/_data/locales/fr-FR.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/_data/locales/hu-HU.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/_data/locales/id-ID.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/_data/locales/it-IT.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/_data/locales/ko-KR.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/_data/locales/my-MM.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/_data/locales/pt-BR.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/_data/locales/ru-RU.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/_data/locales/sl-SI.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/_data/locales/sv-SE.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/_data/locales/th.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/_data/locales/tr-TR.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/_data/locales/uk-UA.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/_data/locales/vi-VN.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/_data/locales/zh-CN.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/_data/locales/zh-TW.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/_data/media.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/_data/origin/basic.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/_data/origin/cors.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/_data/share.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/_includes/analytics/cloudflare.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/_includes/analytics/goatcounter.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/_includes/analytics/google.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/_includes/analytics/matomo.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/_includes/analytics/umami.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/_includes/comments.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/_includes/comments/disqus.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/_includes/comments/giscus.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/_includes/comments/utterances.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/_includes/datetime.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/_includes/embed/audio.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/_includes/embed/bilibili.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/_includes/embed/twitch.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/_includes/embed/video.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/_includes/embed/youtube.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/_includes/favicons.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/_includes/footer.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/_includes/head.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/_includes/js-selector.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/_includes/jsdelivr-combine.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/_includes/lang.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/_includes/language-alias.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/_includes/media-url.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/_includes/mermaid.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/_includes/metadata-hook.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/_includes/mode-toggle.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/_includes/no-linenos.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/_includes/notification.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/_includes/origin-type.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/_includes/pageviews/goatcounter.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/_includes/post-description.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/_includes/post-nav.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/_includes/post-paginator.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/_includes/post-sharing.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/_includes/read-time.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/_includes/refactor-content.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/_includes/related-posts.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/_includes/search-loader.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/_includes/search-results.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/_includes/sidebar.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/_includes/toc.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/_includes/topbar.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/_includes/trending-tags.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/_includes/update-list.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/_javascript/categories.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/_javascript/commons.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/_javascript/home.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/_javascript/misc.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/_javascript/modules/components/back-to-top.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/_javascript/modules/components/category-collapse.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/_javascript/modules/components/clipboard.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/_javascript/modules/components/img-loading.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/_javascript/modules/components/img-popup.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/_javascript/modules/components/locale-datetime.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/_javascript/modules/components/mode-watcher.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/_javascript/modules/components/search-display.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/_javascript/modules/components/sidebar.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/_javascript/modules/components/toc.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/_javascript/modules/components/tooltip-loader.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/_javascript/modules/layouts.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/_javascript/modules/layouts/basic.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/_javascript/modules/layouts/sidebar.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/_javascript/modules/layouts/topbar.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/_javascript/modules/plugins.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/_javascript/page.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/_javascript/post.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/_javascript/pwa/app.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/_javascript/pwa/sw.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/_layouts/archives.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/_layouts/categories.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/_layouts/category.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/_layouts/compress.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/_layouts/default.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/_layouts/home.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/_layouts/page.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/_layouts/post.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/_layouts/tag.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/_layouts/tags.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/_plugins/posts-lastmod-hook.rb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/_posts/2019-08-08-text-and-typography.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/_posts/2019-08-08-write-a-new-post.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/_posts/2019-08-09-getting-started.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/_posts/2019-08-11-customize-the-favicon.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/_sass/addon/commons.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/_sass/addon/module.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/_sass/addon/syntax.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/_sass/addon/variables.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/_sass/colors/syntax-dark.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/_sass/colors/syntax-light.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/_sass/colors/typography-dark.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/_sass/colors/typography-light.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/_sass/layout/archives.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/_sass/layout/categories.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/_sass/layout/category-tag.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/_sass/layout/home.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/_sass/layout/post.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/_sass/layout/tags.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/_sass/main.bundle.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/_sass/main.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/_sass/variables-hook.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/_tabs/about.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/_tabs/archives.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/_tabs/categories.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/_tabs/tags.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/assets/404.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/assets/css/jekyll-theme-chirpy.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/assets/feed.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/assets/img/favicons/android-chrome-192x192.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/assets/img/favicons/android-chrome-512x512.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/assets/img/favicons/apple-touch-icon.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/assets/img/favicons/browserconfig.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/assets/img/favicons/favicon-16x16.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/assets/img/favicons/favicon-32x32.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/assets/img/favicons/favicon.ico" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/assets/img/favicons/mstile-150x150.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/assets/img/favicons/site.webmanifest" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/assets/js/data/mathjax.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/assets/js/data/search.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/assets/js/data/swconf.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/assets/robots.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/docs/CHANGELOG.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/docs/CODE_OF_CONDUCT.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/docs/CONTRIBUTING.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/docs/SECURITY.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/modding/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/jekyll-theme-chirpy.gemspec" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/purgecss.config.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/rollup.config.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/tools/init.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/tools/release.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/tools/run.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modding/tools/test.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/modding/multiloader_1_21/getting_started.html" beforeDir="false" afterPath="$PROJECT_DIR$/modding/multiloader_1_21/getting_started.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -247,22 +46,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/ryank/Documents/ryankshah.github.io/modding",
-    "project.structure.last.edited": "Problems",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "configurable.group.editor"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/ryank/Documents/ryankshah.github.io/modding&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Problems&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.editor&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\ryank\Documents\ryankshah.github.io\modding" />

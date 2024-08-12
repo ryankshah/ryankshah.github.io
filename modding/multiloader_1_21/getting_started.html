@@ -133,95 +133,144 @@
         </p>
         <br />
         <p>
+        <h3 class="display-6">Getting the JDK</h3>
+        </p>
+        <p>
+            Prior to modding, you need to ensure you have installed JDK 21. Please find the appropriate version on
+            the <a href="https://www.oracle.com/uk/java/technologies/downloads/#java21">Oracle JDK webpage</a> and
+            install Version 21 on your machine. Ensure to set your path to point to JDK 21 correctly, advice on this
+            can be <a href="https://docs.oracle.com/cd/E19182-01/820-7851/inst_cli_jdk_javahome_t/">found on Oracle's
+            JDK installation help page</a>.
+        </p>
+        <br />
+        <p>
             <h3 class="display-6">Setting up the environment</h3>
         </p>
         <p>
             For these tutorials, we will be using <a href="https://github.com/jaredlll08/MultiLoader-Template/">jaredlll08's MultiLoader Template</a>
             to get set up. First, you want to  ensure that you have downloaded the template from their
             <a href="https://github.com/jaredlll08/MultiLoader-Template/">GitHub repository</a>. You can either download
-            it as a <samp>.zip</samp> file and extract it to where you will be modding (i.e., in Documents/examplemod), or if you are
+            it as a <samp>.zip</samp> file and extract it to where you will be modding (i.e., in <kbd>Documents/ExampleMod</kbd>), or if you are
             familiar with Git/GitHub, you can simply clone that repository.
         </p>
         <p>
-            Fabric's documentation is fairly outdated. However, it might provide some use in certain cases so you can
-            read what you like into it over <a href="https://fabricmc.net/wiki/start">here</a>.
+            Before we get to downloading any IDEs for coding your mod, there's a couple of things to do beforehand.
         </p>
         <p>
-            <pre>
-                <code class="language-java">
-                    public class ExampleBlockEntity extends BlockEntity {
-                        public ExampleBlockEntity() {}
-                    }
-                </code>
+            First, you will want to open up the <kbd>gradle.properties</kbd> file. Everything that will be used to
+            configure your mod project is set in this file. The <kbd>build.gradle</kbd> has a set of tasks it will run
+            when you build the project in a few steps, to make sure that the values set here are also set in both the
+            Fabric and NeoForge folders.
+        </p>
+        <p>
+            You will want to set the following properties to be that of your own mod:
+        </p>
+        <ul>
+            <li><kbd>group=com.example.examplemod</kbd></li>
+            <li><kbd>mod_name=ExampleMod</kbd></li>
+            <li><kbd>mod_author=YourName</kbd></li>
+            <li><kbd>mod_id=examplemod</kbd></li>
+            <li><kbd>description=An example MultiLoader mod for both Fabric and NeoForge.</kbd></li>
+        </ul>
+        <p>
+            The <kbd>group</kbd> property is typically set using common naming conventions, such as those
+            <a href="https://docs.oracle.com/javase/tutorial/java/package/namingpkgs.html">suggested by Oracle</a>.
+            Given that the package structure we will intend to use to structure our mod will start with
+            <kbd>com.example.examplemod</kbd>, we will stick to this for this tutorial. As a real example, my website
+            domain is <kbd>ryankshah.com</kbd>, so for my Skyrimcraft mod, I use <kbd>com.ryankshah.skyrimcraft</kbd>
+            as the group.
+        </p>
+        <br />
+        <a class="btn btn-primary" data-toggle="collapse" href="#gradleProps" role="button" aria-expanded="false" aria-controls="gradleProps">
+            Click to see gradle.properties
+        </a>
+        <br />
+        <div class="collapse" id="gradleProps">
+<pre>
+<code class="language-properties">
+# Important Notes:
+# Every field you add must be added to the root build.gradle expandProps map.
+
+# Project
+version=1.0.0
+group=com.example.examplemod
+java_version=21
+
+# Common
+minecraft_version=1.21
+mod_name=ExampleMod
+mod_author=Jared
+mod_id=examplemod
+license=CC0-1.0
+credits=
+description=The description of your mod. \nAccepts multilines.
+minecraft_version_range=[1.21, 1.22)
+## This is the version of minecraft that the 'common' project uses, you can find a list of all versions here
+## https://projects.neoforged.net/neoforged/neoform
+neo_form_version=1.21-20240613.152323
+# The version of ParchmentMC that is used, see https://parchmentmc.org/docs/getting-started#choose-a-version for new versions
+parchment_minecraft=1.21
+parchment_version=2024.06.23
+
+# Fabric
+fabric_version=0.100.1+1.21
+fabric_loader_version=0.15.11
+
+# Forge
+forge_version=51.0.17
+forge_loader_version_range=[51,)
+
+# NeoForge
+neoforge_version=21.0.37-beta
+neoforge_loader_version_range=[4,)
+
+# Gradle
+org.gradle.jvmargs=-Xmx3G
+org.gradle.daemon=false
+</code>
             </pre>
+        </div>
+        <br />
+        <p>
+            Next you will want to open the <kbd>settings.gradle</kbd> file and change the <kbd>rootProject.name</kbd> to the
+            folder of your project where all the multiloader files are located. For this tutorial, the folder name is
+            ExampleMod, so this property will be <kbd>rootProject.name = 'ExampleMod'</kbd>. Lastly, in this tutorial we
+            will not be covering Minecraft Forge, so use a hashtag to comment out the forge line at the bottom of the
+            settings file: <kbd># include('forge')</kbd>.
         </p>
         <br />
         <p>
-        <h3 class="display-6">Tutorials</h3>
+            <h3 class="display-6">The IDE</h3>
         </p>
         <p>
-        <table class="table table-bordered table-sm">
-            <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Title & Link</th>
-                <th scope="col">Github (Source)</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <th scope="row">1</th>
-                <td><a href="multiloader_1_21/getting_started.html">Getting Started</a></td>
-                <td><a href="https://github.com/ryankshah/examplemod/tree/1/etasdadsdadadssd">Github</a></td>
-            </tr>
-            <tr>
-                <th scope="row">2</th>
-                <td><a href="multiloader_1_21/block.html">Creating Blocks</a></td>
-                <td><a href="https://github.com/ryankshah/examplemod/tree/1/etasdadsdadadssd">Github</a></td>
-            </tr>
-            <tr>
-                <th scope="row">3</th>
-                <td><a href="multiloader_1_21/item.html">Creating Items</a></td>
-                <td><a href="https://github.com/ryankshah/examplemod/tree/1/etasdadsdadadssd">Github</a></td>
-            </tr>
-            <tr>
-                <th scope="row">4</th>
-                <td><a href="multiloader_1_21/datagen_block_states_models.html">Data Generation &dash; Block States and Models</a></td>
-                <td><a href="https://github.com/ryankshah/examplemod/tree/1/etasdadsdadadssd">Github</a></td>
-            </tr>
-            <tr>
-                <th scope="row">5</th>
-                <td><a href="multiloader_1_21/datagen_item_models.html">Data Generation &dash; Item Models</a></td>
-                <td><a href="https://github.com/ryankshah/examplemod/tree/1/etasdadsdadadssd">Github</a></td>
-            </tr>
-            <tr>
-                <th scope="row">6</th>
-                <td><a href="multiloader_1_21/datagen_lang.html">Data Generation &dash; Language</a></td>
-                <td><a href="https://github.com/ryankshah/examplemod/tree/1/etasdadsdadadssd">Github</a></td>
-            </tr>
-            <tr>
-                <th scope="row">7</th>
-                <td><a href="multiloader_1_21/datagen_recipes.html">Data Generation &dash; Recipes</a></td>
-                <td><a href="https://github.com/ryankshah/examplemod/tree/1/etasdadsdadadssd">Github</a></td>
-            </tr>
-            </tbody>
-        </table>
+            Great! So now we are ready to get started. For this tutorial, we will be using the IntelliJ IDEA development
+            environment (IDE). You can <a href="https://www.jetbrains.com/idea/download">download the Community Edition for free on their website</a>.
+        </p>
+        <p>
+            Once you have installed the IDE, press the "Open" button when launched and navigate to the root folder of your
+            modding project. This folder for the tutorial is called "ExampleMod" so I will choose this folder.
+        </p>
+        <p>
+            This will initiate the setup of the gradle project and build your mod workspaces. This may take a few minutes
+            so grab a coffee or snack while you wait.
+        </p>
+        <p>
+            If your default JVM/JDK is not Java 21 you will encounter an error when opening the project.
+            This error is fixed by going to <kbd>File > Settings > Build, Execution, Deployment > Build Tools > Gradle > Gradle JVM</kbd>
+            and changing the value to a valid Java 21 JVM. You will also need to set the Project SDK to Java 21. This
+            can be done by going to <kbd>File > Project Structure > Project SDK</kbd>. Once both have been set open the
+            Gradle tab in IntelliJ IDEA and click the refresh button to reload the project.
+        </p>
+        <p>
+            Open your <kbd>Run/Debug Configurations</kbd>. Under the <kbd>Application</kbd> category there should now
+            be options to run Fabric and NeoForge projects. Select one of the client options and try to run it. If it
+            runs, your modding workspace should now be setup and you can continue to the next part of the tutorial below.
         </p>
         <br />
-        <p>
-        <h3 class="display-6">Useful Resources</h3>
-        </p>
-        <p style="font-size: 16px;">
-            <a href="https://misode.github.io/">Misode's Data Pack Generator</a>
-            <br />
-            <a href="https://parchmentmc.org/docs/getting-started/">Parchment Wiki</a>
-            <br />
-            <a href="https://discord.gg/UvedJ9m">NeoForge Discord</a>
-            <br />
-            <a href="https://discord.com/invite/v6v4pMv">Fabric Discord</a>
-            <br />
-            <a href="https://discord.tophatcat.dev/">Minecraft Mod Development (MMD) Discord</a>
-        </p>
+        <div class="btn-group" role="group" aria-label="Navigation">
+            <button type="button" class="btn btn-primary">&lt; &nbsp; Home</button>
+            <button type="button" class="btn btn-success">Creating Blocks &nbsp; &gt;</button>
+        </div>
     </div>
     <footer class="mt-auto py-3 bg-light">
         <div class="container">
