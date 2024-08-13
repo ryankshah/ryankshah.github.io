@@ -38,15 +38,14 @@
                 <a class="nav-link" href="../index.html">Home</a>
             </li>
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle active" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">MultiLoader 1.21+</a>
-                <div class="dropdown-menu active">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="true">
+                    MultiLoader 1.21+
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="getting_started.html">Getting Started</a>
                     <a class="dropdown-item" href="regutils.html">Setting up RegistrationUtils</a>
                     <a class="dropdown-item active" href="items.html">Creating Items</a>
                     <a class="dropdown-item" href="blocks.html">Creating Blocks</a>
-<!--                    <div class="dropdown-divider"></div>-->
-<!--                    <a class="dropdown-item">Separated link</a>-->
-<!--                    <a class="dropdown-item">One more separated link</a>-->
                 </div>
             </li>
             <div class="dropdown-divider"></div>
@@ -223,6 +222,7 @@ public static final RegistryObject<Item> IRON_STICK = ITEMS.register("iron_stick
 }
             </code>
         </pre>
+        <br />
         <p>
             This defines the model using the <kbd>item/generated</kbd> parent item model from Minecraft's own set of
             models. The <kbd>layer0</kbd> parameter sets the name of the texture file to use for the item. For this
@@ -249,6 +249,7 @@ public static final RegistryObject<Item> IRON_STICK = ITEMS.register("iron_stick
 }
             </code>
         </pre>
+        <br />
         <p>
             For any further entries into this language file, you will need to add a comma before every new line.
         </p>
@@ -278,6 +279,7 @@ public static final RegistryObject&lt;CreativeModeTab&gt; TAB = CREATIVE_MODE_TA
     .build());
             </code>
         </pre>
+        <br />
         <p>
             The <kbd>icon</kbd> function takes an <kbd>ItemStack</kbd> as the parameter here with our new item as the
             icon to display for the tab in the creative mode inventory. The <kbd>displayItems</kbd> function allows us

@@ -71,3 +71,52 @@ function fixBodyMargin(className) {
 function selectTheme(theme) {
     $('#theme_link').attr('href', 'https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.3.1/' + theme + '/bootstrap.min.css');
 }
+
+
+document.addEventListener('DOMContentLoaded', function () {
+    var dropdowns = document.querySelectorAll('.navbar-nav .nav-item.dropdown');
+
+    dropdowns.forEach(function (dropdown) {
+        var toggle = dropdown.querySelector('.dropdown-toggle');
+        var menu = dropdown.querySelector('.dropdown-menu');
+        var activeItem = dropdown.querySelector('.dropdown-item.active');
+
+        // Keep dropdown open if an item has an active class
+        if (activeItem) {
+            dropdown.classList.add('show');
+            menu.classList.add('show');
+        }
+
+        // Toggle the dropdown on click
+        toggle.addEventListener('click', function (event) {
+            event.preventDefault();
+            event.stopPropagation(); // Prevent the click from closing the dropdown
+
+            // Toggle the show class
+            var isOpen = dropdown.classList.contains('show');
+            dropdowns.forEach(function (d) { // Close other open dropdowns
+                d.classList.remove('show');
+                d.querySelector('.dropdown-menu').classList.remove('show');
+            });
+
+            if (!isOpen) {
+                dropdown.classList.add('show');
+                menu.classList.add('show');
+            }
+        });
+
+        // Prevent dropdown from closing when clicking inside the dropdown menu
+        menu.addEventListener('click', function (event) {
+            event.stopPropagation();
+        });
+    });
+
+    // Allow clicking outside the navbar to close any open dropdown
+    document.addEventListener('click', function () {
+        dropdowns.forEach(function (dropdown) {
+            dropdown.classList.remove('show');
+            dropdown.querySelector('.dropdown-menu').classList.remove('show');
+        });
+    });
+});
+
