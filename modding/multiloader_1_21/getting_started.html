@@ -90,34 +90,15 @@
             </strong>
         </p>
         <p>
-            <!--            <a class="github-button" href="https://github.com/ryankshah/bootstrap-navbar-sidebar"-->
-            <!--               data-icon="octicon-star" data-show-count="true"-->
-            <!--               aria-label="Star mladenplavsic/bootstrap-navbar-sidebar on GitHub">Star</a>-->
-            <!--            <a class="github-button" href="https://github.com/mladenplavsic/bootstrap-navbar-sidebar/fork"-->
-            <!--               data-icon="octicon-repo-forked" data-show-count="true"-->
-            <!--               aria-label="Fork mladenplavsic/bootstrap-navbar-sidebar on GitHub">Fork</a>-->
+            <a class="github-button" href="https://github.com/ryankshah/ExampleMod"
+               data-icon="octicon-star" data-show-count="true"
+               aria-label="Star ryankshah/ExampleMod on GitHub">Star</a>
+            <a class="github-button" href="https://github.com/ryankshah/ExampleMod/fork"
+               data-icon="octicon-repo-forked" data-show-count="true"
+               aria-label="Fork ryankshah/ExampleMod on GitHub">Fork</a>
             <a class="github-button" href="https://github.com/ryankshah"
                aria-label="Follow @ryankshah on GitHub">Follow @ryankshah</a>
-            <!--            <script type="text/javascript" style="padding: 0px;" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="ryankshah" data-color="#FFDD00" data-emoji=""  data-font="Comic" data-text="Buy me a coffee" data-outline-color="#000000" data-font-color="#000000" data-coffee-color="#ffffff" ></script>-->
-
         </p>
-        <!--        <p>Same as when using <code>.fixed-top</code> for navbar - add class <code>.fixed-left</code> or <code>.fixed-right</code>-->
-        <!--            where needed.</p>-->
-        <!--        <p>Click buttons below, and appropriate class will be added to example navbar.</p>-->
-        <!--        <div class="btn-group" role="group">-->
-        <!--            <button type="button" data-class="fixed-left" class="btn btn-primary">-->
-        <!--                <i class="fa fa-arrow-left"></i>-->
-        <!--                Fixed Left-->
-        <!--            </button>-->
-        <!--            <button type="button" data-class="fixed-top" class="btn btn-primary">-->
-        <!--                <i class="fa fa-arrow-up"></i>-->
-        <!--                Fixed Top-->
-        <!--                <small>(original)</small>-->
-        <!--            </button>-->
-        <!--            <button type="button" data-class="fixed-right" class="btn btn-primary">-->
-        <!--                <i class="fa fa-arrow-right"></i>-->
-        <!--                Fixed Right-->
-        <!--            </button>-->
     </div>
     <div class="jumbotron" style="background: #FEFEFE;">
         <h1 class="display-4">
@@ -257,22 +238,31 @@ org.gradle.daemon=false
         <p>
             If your default JVM/JDK is not Java 21 you will encounter an error when opening the project.
             This error is fixed by going to <kbd>File > Settings > Build, Execution, Deployment > Build Tools > Gradle > Gradle JVM</kbd>
-            and changing the value to a valid Java 21 JVM. You will also need to set the Project SDK to Java 21. This
+            and changing the value to a valid Java 21 JVM.
+        </p>
+        <img src="img/set_gradle_JVM.png" style="width: 50%; margin: 0 auto"/><br />
+        <p>
+            You will also need to set the Project SDK to Java 21. This
             can be done by going to <kbd>File > Project Structure > Project SDK</kbd>. Once both have been set open the
             Gradle tab in IntelliJ IDEA and click the refresh button to reload the project.
         </p>
+        <img src="img/set_project_JDK.png" style="width: 50%; margin: 0 auto"/><br />
         <p>
             Open your <kbd>Run/Debug Configurations</kbd>. Under the <kbd>Application</kbd> category there should now
-            be options to run Fabric and NeoForge projects. Select one of the client options and try to run it. If it
+            be options to run Fabric and NeoForge projects (see image below). Select one of the client options and try to run it. If it
             runs, your modding workspace should now be setup and you can continue to the next part of the tutorial below.
         </p>
+        <img src="img/run_configs.png" style="width: 50%; margin: 0 auto"/><br />
         <p>
             Finally, before you move on, you will need to go through the fabric and neoforge project folders and change
             the package structures to match that in your common project. As well as this, make sure you go into the
             class called <kbd>Constants</kbd> in the common project folder, and change the Mod ID and name to that of
             your mod. Ensure that your Mod ID is the same as the one you defined in your <kbd>gradle.properties</kbd>
-            file earlier.
+            file earlier. You may also want to delete the mixin-related files and remove references to the mixins in
+            your <kbd>fabric.mod.json</kbd> and <kbd>neoforge.mods.toml</kbd> files. You can see the final setup example
+            by viewing the GitHub source for this tutorial above.
         </p>
+        <img src="img/mod_loaded_success.png" style="width: 50%; margin: 0 auto"/><br />
         <br />
         <div class="btn-group" role="group" aria-label="Navigation">
             <a class="btn btn-primary" role="button" href="../index.html">&lt; &nbsp; Home</a>

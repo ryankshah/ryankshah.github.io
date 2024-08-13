@@ -90,34 +90,15 @@
             </strong>
         </p>
         <p>
-            <!--            <a class="github-button" href="https://github.com/ryankshah/bootstrap-navbar-sidebar"-->
-            <!--               data-icon="octicon-star" data-show-count="true"-->
-            <!--               aria-label="Star mladenplavsic/bootstrap-navbar-sidebar on GitHub">Star</a>-->
-            <!--            <a class="github-button" href="https://github.com/mladenplavsic/bootstrap-navbar-sidebar/fork"-->
-            <!--               data-icon="octicon-repo-forked" data-show-count="true"-->
-            <!--               aria-label="Fork mladenplavsic/bootstrap-navbar-sidebar on GitHub">Fork</a>-->
+            <a class="github-button" href="https://github.com/ryankshah/ExampleMod"
+               data-icon="octicon-star" data-show-count="true"
+               aria-label="Star ryankshah/ExampleMod on GitHub">Star</a>
+            <a class="github-button" href="https://github.com/ryankshah/ExampleMod/fork"
+               data-icon="octicon-repo-forked" data-show-count="true"
+               aria-label="Fork ryankshah/ExampleMod on GitHub">Fork</a>
             <a class="github-button" href="https://github.com/ryankshah"
                aria-label="Follow @ryankshah on GitHub">Follow @ryankshah</a>
-            <!--            <script type="text/javascript" style="padding: 0px;" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="ryankshah" data-color="#FFDD00" data-emoji=""  data-font="Comic" data-text="Buy me a coffee" data-outline-color="#000000" data-font-color="#000000" data-coffee-color="#ffffff" ></script>-->
-
         </p>
-        <!--        <p>Same as when using <code>.fixed-top</code> for navbar - add class <code>.fixed-left</code> or <code>.fixed-right</code>-->
-        <!--            where needed.</p>-->
-        <!--        <p>Click buttons below, and appropriate class will be added to example navbar.</p>-->
-        <!--        <div class="btn-group" role="group">-->
-        <!--            <button type="button" data-class="fixed-left" class="btn btn-primary">-->
-        <!--                <i class="fa fa-arrow-left"></i>-->
-        <!--                Fixed Left-->
-        <!--            </button>-->
-        <!--            <button type="button" data-class="fixed-top" class="btn btn-primary">-->
-        <!--                <i class="fa fa-arrow-up"></i>-->
-        <!--                Fixed Top-->
-        <!--                <small>(original)</small>-->
-        <!--            </button>-->
-        <!--            <button type="button" data-class="fixed-right" class="btn btn-primary">-->
-        <!--                <i class="fa fa-arrow-right"></i>-->
-        <!--                Fixed Right-->
-        <!--            </button>-->
     </div>
     <div class="jumbotron" style="background: #FEFEFE;">
         <h1 class="display-4">
@@ -146,7 +127,7 @@
             In the package structure, it will look like <kbd>com.example.examplemod.registry.ItemRegistry</kbd>.
         </p>
         <p>
-            In this class, we will first define an empty, static function called <kbd>init</kbd>, and we will use this
+            In this class, we will first define an empty, public static void function called <kbd>init</kbd>, and we will use this
             later as a point of loading the class. I use the term init as it refers to the initialisation of the class
             and its contents, but again, you can name this whatever you like.
         </p>
@@ -172,41 +153,38 @@ public static Item.Properties getItemProperties() {
         </pre>
         <br />
         <p>
-            After this, we will now create a new item, which in this tutorial we will call "Iron Stick". To do this,
-            create a new <kbd>public static final</kbd> field of the type <kbd>RegistryObject<Item></kbd> and register
+            After this, we will now create a new item, which in this tutorial we will call "New Dirt". To do this,
+            create a new <kbd>public static final</kbd> field of the type <kbd>RegistryObject<Item, Item></kbd> and register
             a supplier of a new instance of the Item class to the <kbd>ITEMS</kbd> registry we just created:
         </p>
         <pre>
             <code class="language-java">
-public static final RegistryObject<Item> IRON_STICK = ITEMS.register("iron_stick",
-                 () -> new Item(getItemProperties()));
+public static final RegistryObject<Block, Block> NEW_DIRT = registerBlock("new_dirt",
+                () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.DIRT)));
             </code>
         </pre>
         <br />
         <p>
-            Now what we want to do, is in your <kbd>CommonClass</kbd> file in the common project, you will want to create
-            another <kbd>public static final</kbd> init function, where you will call the init method of your <kbd>ItemRegistry</kbd>.
+            Here we are copying all the block properties from the vanilla dirt block, but you can use the <kbd>.of()...</kbd>
+            builder pattern to assign other properties like jump factor, light level, explosion resistance, etc.
+        </p>
+        <p>
+            Now what we want to do, is in your init function in <kbd>CommonClass</kbd>, you will want to call
+            the init method of your <kbd>BlockRegistry</kbd>.
         </p>
         <p>
             Using this new method, in both your Fabric and NeoForge projects, you will want to go to the <kbd>ExampleMod</kbd>
             classes for each.
         </p>
         <p>
-            For Fabric, you will want to call <code class="language-java">CommonClass.init();</code> in
-            the <code class="language-java">onInitialize()</code> function.
-        </p>
-        <p>
-            For NeoForge, you will want to call the init function in the class constructor: <code class="language-java">public ExampleMod(IEventBus eventBus) {}</code>
-        </p>
-        <p>
-            Congratulations, you made your first Item! But wait... how will you even be able to see it in game?
+            Congratulations, you made your first Block! But wait... how will you even be able to see it in game? We'll
+            follow a similar process to creating items but its slightly different.
         </p>
         <br />
-        <h3 class="display-6">Creating an Item Model</h3>
+        <h3 class="display-6">Creating a Block Model and Defining Block State</h3>
         <p>
-            First, in your common project, create a new file called <kbd>iron_stick.json</kbd> in the resources directory
-            in the following directory: <kbd>assets/&lt;examplemod&gt;/models/item</kbd>. You can create these folders as you
-            would create folders on your local machine, or you can create them in IntelliJ itself. Remember to replace
+            First, in your common project, create a new file called <kbd>new_dirt.json</kbd> in the resources directory
+            in the following directory: <kbd>assets/&lt;examplemod&gt;/models/block</kbd>. Remember to replace
             <kbd>examplemod</kbd> with your own Mod ID if you changed it.
         </p>
         <p>
@@ -215,32 +193,40 @@ public static final RegistryObject<Item> IRON_STICK = ITEMS.register("iron_stick
         <pre>
             <code class="language-json">
 {
-  "parent": "minecraft:item/generated",
+  "parent": "minecraft:block/cube_all",
   "textures": {
-    "layer0": "examplemod:item/iron_stick"
+    "all": "examplemod:block/new_dirt"
   }
 }
             </code>
         </pre>
         <br />
         <p>
-            This defines the model using the <kbd>item/generated</kbd> parent item model from Minecraft's own set of
-            models. The <kbd>layer0</kbd> parameter sets the name of the texture file to use for the item. For this
-            parent model, it uses a single cube which takes the texture called <kbd>layer0</kbd>. Remember to replace
+            This defines the model using the <kbd>block/cube_all</kbd> parent block model from Minecraft's own set of
+            models. The <kbd>all</kbd> parameter sets the name of the texture file to use for all faces of the block. Remember to replace
             <kbd>examplemod</kbd> with your own Mod ID if you changed it. You will want
-            to name this file the same as the lowercase name you gave the item in the registry, and also change the
-            name of the item in the textures block.
+            to name this file the same as the lowercase name you gave the block in the registry, and also change the
+            name of the block in the textures block if this is also different.
         </p>
         <p>
-            After this, in the same resources directory, you will want to create a 16x16 PNG image file for the item,
-            and place it in the following directory: <kbd>assets/&lt;examplemod&gt;/textures/item</kbd>. You will want
-            to name this file the same as the lowercase name you gave the item in the registry.
+            After this, in the same resources directory, you will want to create a 16x16 PNG image file for the block,
+            and place it in the following directory: <kbd>assets/&lt;examplemod&gt;/textures/block</kbd>. You will want
+            to name this file the same as the lowercase name you gave the block in the registry.
         </p>
         <p>
-            Finally, we are going to create a language file so we can give our Item a proper name. To do this, create a
-            new file called <kbd>en_us.json</kbd> in the directory <kbd>assets/&lt;examplemod&gt;/lang</kbd>. In this file,
-            you are going to add the line <kbd>"item.examplemod.iron_stick": "Iron Stick"</kbd> enclosed in curly brackets
-            as follows:
+            Next we will create a blockstate file. Create a new json file called <kbd>new_dirt.json</kbd> in the
+            following directory: <kbd>assets/&lt;examplemod&gt;/textures/blockstates</kbd>. In this file, we will define
+            the blockstates, which allow us to change the state (i.e., model or texture) of the block using its properties.
+            In this case, we are creating just a simple block, so you can use the code below, but more information on
+            blockstates can be <a href="https://forge.gemwire.uk/wiki/BlockStates">found here</a>
+        </p>
+        <p>
+            Finally, we are going to do two more things. First we are going to change how we do our creative tabs. Create
+            a new class in the <kbd>registry</kbd> package and call it <kbd>CreativeTabRegistry</kbd>. As with the others,
+            we are going to create an init function and call this in our <kbd>CommonClass</kbd>, and we are going to copy
+            over the creative tab code from our ItemRegistry. Next, copy the item registry and rename it to blocks, and
+            make sure you change references of <kbd>TAB/tab</kbd>. Remember to remove the existing code from the ItemRegistry
+            or you will encounter errors. Your new CreativeTabRegistry file will look like this:
         </p>
         <pre>
             <code class="language-json">
@@ -251,7 +237,10 @@ public static final RegistryObject<Item> IRON_STICK = ITEMS.register("iron_stick
         </pre>
         <br />
         <p>
-            For any further entries into this language file, you will need to add a comma before every new line.
+            For any further entries into this language file, you will need to add a comma before every new line. For other
+            languages, you can use the same approach, but the only difference is the name of the language file you enter
+            this into. For other language files, refer to the "In-game" language codes found in the table in the
+            dedicated <a href="https://minecraft.fandom.com/wiki/Language">Language section on the Minecraft Wiki</a>.
         </p>
         <p>
             And that's it! You should be able to get your new item using the <kbd>/give &lt;player&gt; &lt;item&gt; [amount]</kbd>
@@ -295,11 +284,21 @@ public static final RegistryObject&lt;CreativeModeTab&gt; TAB = CREATIVE_MODE_TA
             <code class="language-json">
 {
   "item.examplemod.iron_stick": "Iron Stick",
-  "itemGroup.examplemod.tab", "Example Mod Items"
+  "itemGroup.examplemod.tab": "Example Mod Items"
 }
             </code>
         </pre>
-        <br /><br />
+        <br />
+        <p>
+            And ta-da! You've created your own item and added it to a custom creative tab successfully!
+        </p>
+        <img src="img/new_item.png" style="width: 50%; margin: 0 auto"/><br />
+        <br />
+        <p>
+            You can find the source for this tutorial here:
+        </p>
+        <a href="https://github.com/ryankshah/ExampleMod/tree/2-CreatingItems" class="btn btn-primary" role="button">View Source</a>
+        <br /><br /><br /><br />
         <div class="btn-group" role="group" aria-label="Navigation">
             <a class="btn btn-primary" role="button" href="regutils.html">&lt; &nbsp; Setting Up RegistrationUtils</a>
             <a class="btn btn-success" role="button" href="blocks.html">Creating Blocks &nbsp; &gt;</a>

@@ -90,34 +90,15 @@
             </strong>
         </p>
         <p>
-            <!--            <a class="github-button" href="https://github.com/ryankshah/bootstrap-navbar-sidebar"-->
-            <!--               data-icon="octicon-star" data-show-count="true"-->
-            <!--               aria-label="Star mladenplavsic/bootstrap-navbar-sidebar on GitHub">Star</a>-->
-            <!--            <a class="github-button" href="https://github.com/mladenplavsic/bootstrap-navbar-sidebar/fork"-->
-            <!--               data-icon="octicon-repo-forked" data-show-count="true"-->
-            <!--               aria-label="Fork mladenplavsic/bootstrap-navbar-sidebar on GitHub">Fork</a>-->
+            <a class="github-button" href="https://github.com/ryankshah/ExampleMod"
+               data-icon="octicon-star" data-show-count="true"
+               aria-label="Star ryankshah/ExampleMod on GitHub">Star</a>
+            <a class="github-button" href="https://github.com/ryankshah/ExampleMod/fork"
+               data-icon="octicon-repo-forked" data-show-count="true"
+               aria-label="Fork ryankshah/ExampleMod on GitHub">Fork</a>
             <a class="github-button" href="https://github.com/ryankshah"
                aria-label="Follow @ryankshah on GitHub">Follow @ryankshah</a>
-            <!--            <script type="text/javascript" style="padding: 0px;" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="ryankshah" data-color="#FFDD00" data-emoji=""  data-font="Comic" data-text="Buy me a coffee" data-outline-color="#000000" data-font-color="#000000" data-coffee-color="#ffffff" ></script>-->
-
         </p>
-        <!--        <p>Same as when using <code>.fixed-top</code> for navbar - add class <code>.fixed-left</code> or <code>.fixed-right</code>-->
-        <!--            where needed.</p>-->
-        <!--        <p>Click buttons below, and appropriate class will be added to example navbar.</p>-->
-        <!--        <div class="btn-group" role="group">-->
-        <!--            <button type="button" data-class="fixed-left" class="btn btn-primary">-->
-        <!--                <i class="fa fa-arrow-left"></i>-->
-        <!--                Fixed Left-->
-        <!--            </button>-->
-        <!--            <button type="button" data-class="fixed-top" class="btn btn-primary">-->
-        <!--                <i class="fa fa-arrow-up"></i>-->
-        <!--                Fixed Top-->
-        <!--                <small>(original)</small>-->
-        <!--            </button>-->
-        <!--            <button type="button" data-class="fixed-right" class="btn btn-primary">-->
-        <!--                <i class="fa fa-arrow-right"></i>-->
-        <!--                Fixed Right-->
-        <!--            </button>-->
     </div>
     <div class="jumbotron" style="background: #FEFEFE;">
         <h1 class="display-4">
@@ -139,16 +120,15 @@
         <h3 class="display-6">Creating the Block Registry</h3>
         <p>
             What you will first want to do is create the class where we will register our blocks. For the purposes of
-            this tutorial, I will name this <kbd>BlockRegistry</kbd> and place it in another package called
-            <kbd>registry</kbd>, but feel free to call this whatever, and put it wherever, you like.
+            this tutorial, I will name this <kbd>BlockRegistry</kbd> and place it in the <kbd>registry</kbd> package as
+            we did for Items, but feel free to call this whatever, and put it wherever, you like.
         </p>
         <p>
             In the package structure, it will look like <kbd>com.example.examplemod.registry.BlockRegistry</kbd>.
         </p>
         <p>
             In this class, we will first define an empty, static function called <kbd>init</kbd>, and we will use this
-            later as a point of loading the class. I use the term init as it refers to the initialisation of the class
-            and its contents, but again, you can name this whatever you like.
+            later as a point of loading the class, as we did for the ItemRegistry.
         </p>
         <p>
             Next, we will define a <kbd>RegistrationProvider</kbd> as follows using the <kbd>Block</kbd> registry:
@@ -160,28 +140,193 @@
             elsewhere in a little bit.
         </p>
         <p>
-            Before creating the Block field, we will first define a function called <kbd>registerBlock</kbd>, which
-            takes in a name for the block, a <kbd>Supplier</kbd> for the block
+            Before creating the Block field, we will first define two functions called <kbd>registerBlock</kbd>, which
+            will set up using the new <kbd>BLOCKS</kbd> registry we made, and also use the <kbd>ITEMS</kbd> registry we
+            made in the last tutorial for registering the item for your block. A BlockItem is a subclass of Item which
+            holds a reference to your Block.
         </p>
+        <pre>
+            <code class="language-java">
+public static &lt;T extends Block&gt; RegistryObject&lt;Block, T&gt; registerBlock(String name, Supplier&lt;T&gt; block) {
+    return registerBlock(name, block, b -&gt; () -> new BlockItem(b.get(), ItemRegistry.getItemProperties()));
+}
+
+protected static &lt;T extends Block&gt; RegistryObject&lt;Block, T&gt; registerBlock(String name, Supplier&lt;T&gt; block, Function&lt;RegistryObject&lt;Block, T&gt;, Supplier&lt;? extends BlockItem&gt;&gt; item) {
+    var reg = BLOCKS.register(name, block);
+    ItemRegistry.ITEMS.register(name, () -> item.apply(reg).get());
+    return reg;
+}
+            </code>
+        </pre>
         <p>
             After this, we will now create a new block, which in this tutorial we will call "New Dirt". To do this,
-            create a new <kbd>public static final</kbd> field of the type <kbd>RegistryObject<Block></kbd> and
+            create a new <kbd>public static final</kbd> field of the type <kbd>RegistryObject<Block, Block></kbd> and register
+            a supplier of a new instance of the Item class to the <kbd>ITEMS</kbd> registry we just created:
         </p>
+        <pre>
+            <code class="language-java">
+public static final RegistryObject<Block, Block> NEW_DIRT = registerBlock("new_dirt",
+                () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.DIRT)));
+            </code>
+        </pre>
         <br />
         <p>
-            <h3 class="display-6">Setting up the environment</h3>
+            Here we are copying all the block properties from the vanilla dirt block, but you can use the <kbd>.of()...</kbd>
+            builder pattern to assign other properties like jump factor, light level, explosion resistance, etc.
         </p>
         <p>
-            For these tutorials, we will be using <a href="https://github.com/jaredlll08/MultiLoader-Template/">jaredlll08's MultiLoader Template</a>
-            to get set up. First, you want to  ensure that you have downloaded the template from their
-            <a href="https://github.com/jaredlll08/MultiLoader-Template/">GitHub repository</a>. You can either download
-            it as a <samp>.zip</samp> file and extract it to where you will be modding (i.e., in <kbd>Documents/ExampleMod</kbd>), or if you are
-            familiar with Git/GitHub, you can simply clone that repository.
+            Now what we want to do, is in your init function in <kbd>CommonClass</kbd>, you will want to call
+            the init method of your <kbd>BlockRegistry</kbd>.
+        </p>
+        <p>
+            Using this new method, in both your Fabric and NeoForge projects, you will want to go to the <kbd>ExampleMod</kbd>
+            classes for each.
+        </p>
+        <p>
+            Congratulations, you made your first Block! But wait... how will you even be able to see it in game? We'll
+            follow a similar process to creating items but its slightly different.
         </p>
         <br />
+        <h3 class="display-6">Creating a Block/Item Model and Defining Block State</h3>
+        <p>
+            First, in your common project, create a new file called <kbd>new_dirt.json</kbd> in the resources directory
+            in the following directory: <kbd>assets/&lt;examplemod&gt;/models/block</kbd>. Remember to replace
+            <kbd>examplemod</kbd> with your own Mod ID if you changed it.
+        </p>
+        <p>
+            Inside this file, you are going to add the following:
+        </p>
+        <pre>
+            <code class="language-json">
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "examplemod:block/new_dirt"
+  }
+}
+            </code>
+        </pre>
+        <br />
+        <p>
+            This defines the model using the <kbd>block/cube_all</kbd> parent block model from Minecraft's own set of
+            models. The <kbd>all</kbd> parameter sets the name of the texture file to use for all faces of the block. Remember to replace
+            <kbd>examplemod</kbd> with your own Mod ID if you changed it. You will want
+            to name this file the same as the lowercase name you gave the block in the registry, and also change the
+            name of the block in the textures block if this is also different.
+        </p>
+        <p>
+            You will also need to create an item model for the new dirt block. Create a new file in
+            <kbd>assets/&lt;examplemod&gt;/models/item</kbd> called <kbd>new_dirt.json</kbd> and place the following in
+            this file:
+        </p>
+        <pre>
+            <code class="language-json">
+{
+  "parent": "examplemod:block/new_dirt"
+}
+            </code>
+        </pre>
+        <br />
+        <p>
+            This looks a little different to our other item model file, as in this case we are going to use our block
+            model as the parent for the item.
+        </p>
+        <p>
+            After this, in the same resources directory, you will want to create a 16x16 PNG image file for the block,
+            and place it in the following directory: <kbd>assets/&lt;examplemod&gt;/textures/block</kbd>. You will want
+            to name this file the same as the lowercase name you gave the block in the registry.
+        </p>
+        <p>
+            Next we will create a blockstate file. Create a new json file called <kbd>new_dirt.json</kbd> in the
+            following directory: <kbd>assets/&lt;examplemod&gt;/textures/blockstates</kbd>. In this file, we will define
+            the blockstates, which allow us to change aspects of the block, such as its model, using its properties.
+            In this case, we are creating just a simple block, so you can use the code below, but more information on
+            blockstates can be <a href="https://forge.gemwire.uk/wiki/BlockStates">found here</a>. The blockstate json
+            will look like the following:
+        </p>
+        <pre>
+            <code class="language-json">
+{
+  "variants": {
+    "": {
+      "model": "fieldtofork:block/new_dirt"
+    }
+  }
+}
+            </code>
+        </pre>
+        <br />
+        <p>
+            This file states there is only one variant (the main block itself), and the model to use for this variant &dash;
+            the <kbd>new_dirt</kbd> model file we created just before this.
+        </p>
+        <p>
+            Finally, we are going to do two more things. First we are going to change how we do our creative tabs. Create
+            a new class in the <kbd>registry</kbd> package and call it <kbd>CreativeTabRegistry</kbd>. As with the others,
+            we are going to create an init function and call this in our <kbd>CommonClass</kbd>, and we are going to copy
+            over the creative tab code from our ItemRegistry. Next, copy the item registry and rename it to blocks, and
+            make sure you change references of <kbd>TAB/tab</kbd> to something more meaningful. I separated these into
+            <kbd>block/item</kbd>. Remember to remove the existing code from the ItemRegistry or you will encounter
+            errors. Your new CreativeTabRegistry file will look like this:
+        </p>
+        <pre>
+            <code class="language-java">
+public class CreativeTabRegistry
+{
+    public static void init() {}
+
+    public static final RegistrationProvider<CreativeModeTab> CREATIVE_MODE_TABS = RegistrationProvider.get(Registries.CREATIVE_MODE_TAB, Constants.MOD_ID);
+
+    public static final RegistryObject<CreativeModeTab, CreativeModeTab> ITEMS_TAB = CREATIVE_MODE_TABS.register(Constants.MOD_ID + "_items_tab", () -> CreativeModeTab.builder(CreativeModeTab.Row.TOP, 0)
+            .icon(() -> new ItemStack(ItemRegistry.IRON_STICK.get()))
+            .displayItems(
+                    (itemDisplayParameters, output) -> {
+                        output.accept(ItemRegistry.IRON_STICK.get());
+                    }).title(Component.translatable("itemGroup." + Constants.MOD_ID + ".items"))
+            .build());
+
+    public static final RegistryObject<CreativeModeTab, CreativeModeTab> BLOCKS_TAB = CREATIVE_MODE_TABS.register(Constants.MOD_ID + "_blocks_tab", () -> CreativeModeTab.builder(CreativeModeTab.Row.TOP, 0)
+            .icon(() -> new ItemStack(BlockRegistry.NEW_DIRT.get()))
+            .displayItems(
+                    (itemDisplayParameters, output) -> {
+                        output.accept(BlockRegistry.NEW_DIRT.get());
+                    }).title(Component.translatable("itemGroup." + Constants.MOD_ID + ".blocks"))
+            .build());
+}
+            </code>
+        </pre>
+        <br />
+        <p>
+            The second and last thing we will do is update our lang file to include the new changes for our creative tabs,
+            and also add our new block:
+        </p>
+        <pre>
+            <code class="language-json">
+{
+  "item.examplemod.iron_stick": "Iron Stick",
+  "block.examplemod.new_dirt": "New Dirt",
+  "itemGroup.examplemod.items": "Example Mod Items",
+  "itemGroup.examplemod.blocks": "Example Mod Blocks"
+}
+            </code>
+        </pre>
+        <br />
+        <p>
+            And that's it! You should be able to get your new block using the creative tab and also using the give
+            command. In the next tutorial, we will look at setting up our datagen so we can automatically generate our
+            item models, block states and block models! This datagen will also be used later on to create recipes,
+            do worldgen and much more!
+        </p>
+        <img src="img/new_block.png" style="width: 50%; margin: 0 auto"/><br />
+        <br />
+        <p>
+            You can find the source for this tutorial here:
+        </p>
+        <a href="https://github.com/ryankshah/ExampleMod/tree/3-CreatingBlocks" class="btn btn-primary" role="button">View Source</a>
+        <br /><br /><br /><br />
         <div class="btn-group" role="group" aria-label="Navigation">
             <a class="btn btn-primary" role="button" href="items.html">&lt; &nbsp; Creating Items</a>
-            <a class="btn btn-success" role="button" href="#">COMING SOON &nbsp; &gt;</a>
+            <a class="btn btn-success" role="button" href="#">Data Generation &dash; Items and Blocks (COMING SOON) &nbsp; &gt;</a>
         </div>
     </div>
     <footer class="mt-auto py-3 bg-light">
