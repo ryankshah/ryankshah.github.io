@@ -48,8 +48,8 @@
                     <a class="dropdown-item" href="regutils.html">Setting up RegistrationUtils</a>
                     <a class="dropdown-item" href="items.html">Creating Items</a>
                     <a class="dropdown-item" href="blocks.html">Creating Blocks</a>
-                    <a class="dropdown-item active" href="datagen_blocks_items.html">Data Generation - Blocks and Items</a>
-                    <a class="dropdown-item" href="datagen_block_loot.html">Data Generation - Block Loot</a>
+                    <a class="dropdown-item" href="datagen_blocks_items.html">Data Generation - Blocks and Items</a>
+                    <a class="dropdown-item active" href="datagen_block_loot.html">Data Generation - Block Loot</a>
                 </div>
             </li>
             <div class="dropdown-divider"></div>
@@ -126,30 +126,16 @@
             common folder.
         </p>
         <p>
-            Next, you should open up your Common <kbd>build.gradle</kbd> file. In here we will do two things. First, add
-            this line before the <kbd>dependencies</kbd> block:
+            Next, you should open up your NeoForge <kbd>build.gradle</kbd> file. In here we will do two things. First,
+            replace the line at the bottom defining the main source sets with the following line:
         </p>
         <code class="language-gradle">
             sourceSets.main.resources { srcDir file('../common/src/generated/resources').getAbsolutePath() }
         </code>
         <br />
         <p>
-            Second, you will need to modify the <kbd>artifacts</kbd> block to the following:
-        </p>
-        <pre>
-            <code class="language-gradle">
-artifacts {
-    commonJava sourceSets.main.java.sourceDirectories.singleFile
-    for (def dir : sourceSets.main.resources.sourceDirectories.files) {
-        commonResources dir
-    }
-}
-            </code>
-        </pre>
-        <br />
-        <p>
-            And finally, in your NeoForge <kbd>build.gradle</kbd> you need to modify the <kbd>data</kbd> block to the
-            following:
+            Second, you will need  to add the following line to your <kbd>data</kbd> run configuration beneath the
+            <kbd>data()</kbd> method  call:
         </p>
         <pre>
             <code class="language-gradle">
