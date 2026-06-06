@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en-GB" data-palette="sage" data-type="newsreader">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Adaptive by design ~ Dr. Ryan Shah</title>
+<meta name="description" content="A research team demonstrated an AI-powered worm that adapts its attack strategy to each target it encounters. The most important finding is not the worm itself.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Hanken+Grotesk:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/styles.css">
+<style>
+    .post-hero { padding-top: clamp(3rem, 7vw, 5.5rem); padding-bottom: clamp(2rem, 5vw, 4rem); border-bottom: 1px solid var(--line); }
+    .post-hero__kicker { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.6rem; }
+    .post-hero__kicker .tick { width: 2.2rem; height: 1px; background: var(--accent); }
+    .post-topic {
+        display: inline-block; font-family: var(--font-mono);
+        font-size: 0.66rem; letter-spacing: 0.1em; text-transform: uppercase;
+        color: var(--accent); border: 1px solid var(--accent-soft);
+        background: var(--accent-soft); padding: 0.25rem 0.5rem;
+        margin-bottom: 1.2rem;
+    }
+    .post-hero h1 {
+        font-family: var(--font-serif);
+        font-weight: 400;
+        font-size: clamp(2.4rem, 6vw, 5rem);
+        line-height: 1.0;
+        letter-spacing: -0.03em;
+        max-width: 22ch;
+        margin-bottom: 1.4rem;
+    }
+    .post-hero h1 em { font-style: italic; color: var(--accent); }
+    .post-byline {
+        display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem;
+        font-family: var(--font-mono); font-size: 0.72rem;
+        letter-spacing: 0.08em; text-transform: uppercase;
+        color: var(--ink-faint);
+    }
+    .post-body {
+        max-width: 85ch;
+        margin-inline: auto;
+        padding-block: clamp(3rem, 7vw, 5rem);
+    }
+    .post-body p {
+        font-family: var(--font-serif);
+        font-size: clamp(1.1rem, 2vw, 1.3rem);
+        line-height: 1.7;
+        color: var(--ink-soft);
+        margin-bottom: 1.6rem;
+    }
+    .post-body p:first-child { color: var(--ink); font-size: clamp(1.2rem, 2.2vw, 1.45rem); }
+    .post-body h2 {
+        font-family: var(--font-serif); font-weight: 500;
+        font-size: clamp(1.4rem, 3vw, 2rem); line-height: 1.2;
+        letter-spacing: -0.02em; margin: 2.4rem 0 1rem;
+    }
+    .post-body h3 {
+        font-family: var(--font-mono); font-size: 0.78rem;
+        letter-spacing: 0.12em; text-transform: uppercase;
+        color: var(--ink-soft); margin: 2rem 0 0.8rem;
+    }
+    .post-body blockquote {
+        border-left: 2px solid var(--accent);
+        padding-left: 1.5rem; margin: 2rem 0;
+        font-family: var(--font-serif); font-style: italic;
+        font-size: clamp(1.15rem, 2vw, 1.35rem);
+        color: var(--ink-soft);
+    }
+    .post-body ul, .post-body ol {
+        padding-left: 1.5rem; margin-bottom: 1.6rem;
+    }
+    .post-body li {
+        font-family: var(--font-serif);
+        font-size: clamp(1.1rem, 2vw, 1.25rem);
+        line-height: 1.65; color: var(--ink-soft);
+        margin-bottom: 0.5rem;
+    }
+    .post-footer {
+        border-top: 1px solid var(--line);
+        padding-block: clamp(2rem, 5vw, 4rem);
+    }
+    .backlink { font-family: var(--font-mono); font-size: 0.74rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-soft); display: inline-flex; align-items: center; gap: 0.5rem; }
+    .backlink:hover { color: var(--accent); }
+    .post-body strong { color: var(--ink); font-weight: 600; }
+    .takeaway {
+        background: var(--paper-deep);
+        border: 1px solid var(--line);
+        border-left: 3px solid var(--accent);
+        padding: 1.25rem 1.6rem;
+        margin: 2.2rem 0;
+    }
+    .takeaway__label {
+        font-family: var(--font-mono);
+        font-size: 0.66rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--accent);
+        display: block;
+        margin-bottom: 0.6rem;
+    }
+    .takeaway__text {
+        font-family: var(--font-serif);
+        font-style: italic;
+        font-size: clamp(1.05rem, 1.9vw, 1.2rem);
+        line-height: 1.55;
+        color: var(--ink);
+        margin: 0;
+    }
+    .post-figure {
+        margin: 2.4rem 0;
+        border: 1px solid var(--line);
+        background: var(--paper-deep);
+        overflow: hidden;
+    }
+    .post-figure figcaption {
+        font-family: var(--font-mono);
+        font-size: 0.68rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--ink-faint);
+        padding: 0.75rem 1.2rem;
+        border-top: 1px solid var(--line);
+    }
+    .comparison-grid { display: grid; grid-template-columns: 1fr 1fr; }
+    .comparison-col { padding: 1.5rem 1.75rem; }
+    .comparison-col:first-child { border-right: 1px solid var(--line); }
+    .comparison-col__head {
+        font-family: var(--font-mono);
+        font-size: 0.68rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--accent);
+        margin-bottom: 1rem;
+        padding-bottom: 0.75rem;
+        border-bottom: 1px solid var(--line);
+    }
+    .comparison-list { list-style: none; padding: 0; margin: 0; }
+    .comparison-list li {
+        font-family: var(--font-serif);
+        font-size: 1rem;
+        line-height: 1.65;
+        color: var(--ink-soft);
+        margin-bottom: 0.65rem;
+        padding-left: 1.25rem;
+        position: relative;
+    }
+    .comparison-list li::before {
+        content: "";
+        position: absolute;
+        left: 0; top: 0.62em;
+        width: 4px; height: 4px;
+        background: var(--accent);
+        transform: rotate(45deg);
+    }
+    @media (max-width: 580px) {
+        .comparison-grid { grid-template-columns: 1fr; }
+        .comparison-col:first-child { border-right: 0; border-bottom: 1px solid var(--line); }
+    }
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<header class="topbar">
+    <div class="wrap topbar__inner">
+        <a class="wordmark" href="../index.html" aria-label="Ryan K. Shah, home">
+            <span class="wordmark__mark">RS</span>
+        </a>
+        <button class="menu-toggle" aria-label="Toggle navigation" onclick="document.getElementById('nav').classList.toggle('open')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+        </button>
+        <nav class="nav" id="nav">
+            <a href="../index.html#practice">Practice</a>
+            <a href="../index.html#trajectory">Trajectory</a>
+            <a href="../index.html#research">Research</a>
+            <a href="../index.html#capability">Capability</a>
+            <a href="../index.html#credentials">Credentials</a>
+            <a href="../writing.html" style="color:var(--ink)">Writing</a>
+            <a class="nav__cta" href="../index.html#contact">
+                Get in touch
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+            </a>
+        </nav>
+    </div>
+</header>
+
+<main>
+
+<!-- POST HERO -->
+<section class="post-hero">
+    <div class="wrap">
+        <a class="backlink" href="../writing.html">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M19 12H5M5 12l7 7M5 12l7-7"/></svg>
+            Field Notes
+        </a>
+        <div class="post-hero__kicker" style="margin-top:1.8rem">
+            <span class="tick"></span>
+            <span class="mono mono--ink">Section 07 · Field Notes</span>
+        </div>
+        <span class="post-topic">Research</span>
+        <h1>Adaptive by <em>design</em></h1>
+        <div class="post-byline">
+            <span>Dr R. K. Shah</span>
+            <span>June 2026</span>
+            <span>~ 12 min read</span>
+        </div>
+    </div>
+</section>
+
+<!-- POST BODY -->
+<article>
+    <div class="wrap">
+        <div class="post-body">
+
+            <p>The conversation around artificial intelligence in cybersecurity tends to oscillate between two extremes. On one side sits breathless prediction: AI will automate offensive operations end to end and render defenders helpless. On the other sits dismissal: the capability is overstated, the threat models are unrealistic, and the research is conducted in toy environments that bear no resemblance to production infrastructure.</p>
+
+            <p>Both tendencies are understandable. Neither is particularly useful. This is partly what drew my attention to a recent paper, "AI Agents Enable Adaptive Computer Worms" (arXiv:2606.03811). The researchers attempt to demonstrate a capability rather than speculate about one. They measure it, quantify it, and acknowledge its limitations. That combination is rarer than it should be, and it makes the paper worth reading slowly rather than reacting to. The headline finding, that an AI-powered worm can propagate autonomously across a heterogeneous network, is interesting. But it is not the most interesting finding. The most interesting findings are quieter, and they are the ones worth sitting with.</p>
+
+            <h2>What the paper actually demonstrates</h2>
+
+            <p>Traditional computer worms operate through predefined logic. The exploit paths, payloads, and propagation mechanisms are written in advance. A worm knows what it is going to do before it arrives anywhere. Its effectiveness depends on the accuracy of that prediction.</p>
+
+            <p>This paper demonstrates something structurally different. The researchers built a worm powered by an open-weight large language model (the specific model is redacted in the public version, though the paper confirms it runs on a single GPU with 80GB VRAM). Rather than encoding a fixed attack sequence, the worm conducts reconnaissance on each target it reaches, reasons about what it finds, generates tailored attack logic at runtime, and adjusts when approaches fail.</p>
+
+            <p>The worm operates across a heterogeneous 33-host test network spanning multiple Linux distributions, Windows Server versions ranging from 2008 R2 to 2022, and IoT devices. The results are reported over seven days of autonomous operation across fifteen experimental runs. On average, the worm correctly identified 31.3 vulnerabilities per run, achieved elevated access on 23.1 hosts, and successfully propagated to 20.4 hosts, reaching 61.8% of the test network on average. Up to seven generations of self-replication were observed. Three of the planted vulnerabilities were based on CVEs disclosed after the model's training cutoff; the worm exploited these at a 61.2% success rate by ingesting publicly available advisory information at runtime.</p>
+
+            <p>The paper is best understood as a research demonstration of feasibility. The test environment assumes every host contains at least one exploitable vulnerability and includes no endpoint detection or active firewalls. The worm also lacks stealth features, log cleanup, or detection evasion capability. These are significant caveats, and the researchers state them clearly. This is not a prediction of what happens on the internet next week. It is a demonstration of what is technically possible under controlled conditions. With those caveats stated, there is still quite a lot worth examining.</p>
+
+            <h2>What surprised me most</h2>
+
+            <h3>Commodity hardware requirements</h3>
+
+            <p>The worm runs on hardware that is widely available. The paper specifically names the NVIDIA A100 and RTX PRO 6000 Blackwell Edition as the tested platforms, and notes that GPUs of this class have shipped in the millions of units over the past four years. The model fits on a single A100 with 80GB of VRAM. Cloud compute in this range costs a few dollars per hour.</p>
+
+            <p>This is more significant than it might appear. A few years ago, discussions about AI-enabled offensive tooling implicitly assumed that meaningful capability required meaningful infrastructure. Running frontier models required cloud access at scale or significant on-premise hardware investment. That assumption has eroded. A single GPU or a modest cloud instance is sufficient to run the reasoning engine described in this paper.</p>
+
+            <p>The implication is not that every attacker will immediately deploy an AI-powered worm. The implication is that the hardware barrier has effectively collapsed. Experimentation, iteration, and tooling development no longer require infrastructure that limits who can participate. Attacker capability is increasingly a software problem rather than a hardware problem. That is a meaningful shift, and arguably a more important observation than the worm's success rate.</p>
+
+            <h3>Open-weight models and structural independence</h3>
+
+            <p>The paper uses an open-weight model, and this choice matters beyond the technical detail. Open-weight models can be downloaded, run locally, fine-tuned, modified, and integrated into arbitrary tooling without dependency on a commercial provider. There are no API rate limits, no usage policies, and no content filters applied at inference time.</p>
+
+            <p>The paper notes this directly: centralised safety controls, such as service refusals or rate limiting, are structurally irrelevant when the model runs locally on attacker-controlled infrastructure. This is not a criticism of any particular AI provider. It is an observation about the architecture of open-weight models. As those models improve in capability, which they have been doing at a visible pace, the offensive utility of running them locally will increase alongside that improvement.</p>
+
+            <p>For defenders, the significance is that capability monitoring through API-level telemetry has fundamental limits. The most capable locally-runnable model today is not the most capable locally-runnable model in two years.</p>
+
+            <h3>Adaptation rather than automation</h3>
+
+            <p>The distinction the paper makes between adaptation and automation is worth holding onto. Automation, in the offensive sense, is not new. Scripts, exploit frameworks, and commodity malware have automated attack tasks for decades. What is different here is that the system reasons about what it encounters and modifies its approach accordingly.</p>
+
+            <p>The worm uses a reasoning graph with specialised nodes: one that formulates attack strategies, one that prevents repeating failed approaches, one that selects tools and parameters, and others that track momentum and summarise findings. The worm does not simply execute a pre-written playbook. It formulates a hypothesis about each target based on reconnaissance results, tests that hypothesis, observes the outcome, and adjusts. That is meaningfully different from a script that tries exploit A, then exploit B, then exploit C, in a fixed order.</p>
+
+            <h3>Good enough is a real threshold</h3>
+
+            <p>The exploitation success rate of 44% might seem underwhelming in isolation. Consider the context: 44% success across a heterogeneous network containing multiple operating systems and vulnerability classes, operating autonomously over multiple days, with no human operator directing each step. The worm exploited 23 hosts on average from a 33-host network, and replicated successfully on 88% of hosts it managed to exploit.</p>
+
+            <p>Human attackers are not perfect either. Threat actors succeed despite errors, detection events, and failed payloads. What matters operationally is whether a technique works often enough to be worth using. That threshold is lower than perfection, and the paper provides evidence it has been crossed, at least in a controlled environment.</p>
+
+            <h2>A useful historical comparison</h2>
+
+            <p>The Morris Worm in 1988 spread farther and faster than its creator intended, exploiting a small number of well-understood vulnerabilities. Conficker in 2008 infected millions of machines through a combination of known vulnerability exploitation, default credential abuse, and network propagation. WannaCry and NotPetya in 2017 demonstrated how a single vulnerability class could be weaponised at global scale with devastating economic consequences.</p>
+
+            <p>The paper is not equivalent to any of these events. The test environment is controlled, the scale is deliberately limited, and the technology is at a research prototype stage. But the historical record is useful for grounding the discussion and understanding what has and has not changed.</p>
+
+            <figure class="post-figure">
+                <div class="comparison-grid">
+                    <div class="comparison-col">
+                        <div class="comparison-col__head">What remains the same</div>
+                        <ul class="comparison-list">
+                            <li>Initial access still requires exploitable vulnerabilities</li>
+                            <li>Asset visibility still determines what you can protect</li>
+                            <li>Identity and access management still limits lateral movement</li>
+                            <li>Network segmentation still constrains propagation</li>
+                            <li>Security fundamentals remain the correct response</li>
+                        </ul>
+                    </div>
+                    <div class="comparison-col">
+                        <div class="comparison-col__head">What has changed</div>
+                        <ul class="comparison-list">
+                            <li>Decision-making can occur during execution, not just before</li>
+                            <li>Attack paths do not need to be completely predefined</li>
+                            <li>Strategy adapts in response to environmental conditions</li>
+                            <li>Attacker effort per target may decrease significantly</li>
+                            <li>Campaigns may become more resilient to environmental variation</li>
+                        </ul>
+                    </div>
+                </div>
+                <figcaption>The fundamentals have not changed. What has changed is where attacker decision-making occurs.</figcaption>
+            </figure>
+
+            <p>Every major worm campaign in history required initial access. WannaCry needed an exposed SMB service. NotPetya needed a foothold in the network. The AI-powered worm in this paper is no different: it still requires exploitable vulnerabilities, network-reachable targets, and credentials or configuration weaknesses to abuse. Asset visibility, identity security, segmentation, and the rest of the defensive fundamentals have not been invalidated. If anything, a system that can discover and chain vulnerabilities autonomously makes gaps in these fundamentals more consequential, not less.</p>
+
+            <h2>The economic shift that stood out</h2>
+
+            <p>The paper describes a mechanism that deserves careful attention: compromised hosts with GPU resources can themselves run the LLM inference engine. Once a machine with sufficient compute is compromised, the worm deploys a local copy of the model on that hardware, creating an independent reasoning node. Lower-resource devices on the network query these upstream GPU nodes for reasoning capability.</p>
+
+            <p>The economic consequence is that the attacker's marginal cost per additional infection approaches zero. The compute required to reason about and exploit each new target is provided by previously compromised machines. The attacker's infrastructure cost does not scale linearly with the number of targets. The victims fund the computation required to victimise more victims.</p>
+
+            <blockquote>Cost often matters more than capability. Many major changes in cybersecurity become important not because they introduce entirely new techniques, but because they change the economics of attack.</blockquote>
+
+            <p>This is not a new concept. Botnets have used compromised compute for decades, whether for DDoS traffic, cryptocurrency mining, or spam delivery. The novel element here is applying that model to reasoning-intensive offensive operations. The marginal cost of adding autonomous reasoning capability to a botnet-style network may decrease substantially as more GPU-equipped hosts are compromised.</p>
+
+            <div class="takeaway">
+                <span class="takeaway__label">The economic observation</span>
+                <p class="takeaway__text">WannaCry was devastating not because EternalBlue was elegant, but because it created a highly leveraged attack with low marginal cost per target. The mechanism described here, compromised hosts funding further reasoning and propagation, follows the same economic logic.</p>
+            </div>
+
+            <p>Reduced operator effort means increased scalability. Increased scalability changes the threat model. Defenders should pay attention to economic shifts rather than focusing solely on technical novelty, because that is typically where the lasting changes occur.</p>
+
+            <h2>What the paper does not prove</h2>
+
+            <p>It is worth being explicit about what the paper does not demonstrate, because intellectual honesty about limitations strengthens the discussion rather than weakening it.</p>
+
+            <p>The paper does not prove that fully autonomous cyber operations are a solved problem. The tested environment was purpose-built for evaluation, assumes the presence of exploitable vulnerabilities on every host, and lacks the defensive controls present in most real environments.</p>
+
+            <p>The paper does not prove that internet-scale deployment is practical today. The test was conducted across 33 virtual machines in a controlled laboratory environment. The challenges of operating across real-world networks, with active monitoring, endpoint detection, firewall controls, and patch management, are significant and are not addressed.</p>
+
+            <p>The paper does not prove that human operators are no longer required, that existing security controls are obsolete, or that organisations are helpless against adaptive attackers. The test environment explicitly excluded endpoint detection, antivirus, and active firewalls. Those controls were not tested against.</p>
+
+            <p>Separating demonstrated findings from speculation matters. The paper demonstrates feasibility in a controlled environment. It does not demonstrate operational effectiveness at scale in real-world conditions. Losing that distinction leads to either unnecessary alarm or unjustified dismissal.</p>
+
+            <h2>Why practitioners should still pay attention</h2>
+
+            <p>The gap between a research prototype and operational malware has historically narrowed over time. The Morris Worm was an academic curiosity that became a cautionary tale. Proof-of-concept exploits regularly appear in commodity tooling within months of publication. Ransomware families improve substantially between major versions.</p>
+
+            <p>The current prototype has real limitations. It lacks stealth. It leaves detectable artefacts. It operates in an environment stripped of defensive controls. These are significant gaps between research demonstration and real-world threat. But the question worth sitting with is not whether this specific worm poses an immediate threat.</p>
+
+            <blockquote>If this is achievable as a research prototype today, what assumptions should we revisit in our threat models if these capabilities improve incrementally over the next three to five years?</blockquote>
+
+            <p>The key observation is not that tasks can be automated. It is that the system modifies behaviour based on what it encounters. Dynamic attack path generation, environmental reasoning, and adaptation to failure are qualitatively different from the fixed-logic exploitation that defenders have spent thirty years building detection and prevention controls around.</p>
+
+            <p>Detection engineering built around known exploit signatures, fixed lateral movement patterns, and predictable tool behaviour becomes less reliable when the attack logic can vary between targets. This does not mean existing detection fails entirely. It means the detection surface changes, and some assumptions embedded in current approaches deserve scrutiny.</p>
+
+            <h2>What defenders should actually take from this</h2>
+
+            <p>The paper reinforces rather than undermines the case for resilient security fundamentals.</p>
+
+            <p><strong>Asset visibility</strong> remains foundational. You cannot detect adaptive behaviour on hosts you do not know about, or segment a network you have not mapped. Adaptive attackers make gaps in asset management more consequential, not less.</p>
+
+            <p><strong>Identity security</strong> remains a core priority. Lateral movement in this paper, as in every significant intrusion, depends on credential abuse, privilege escalation, and identity relationships between hosts. Strong privilege management and robust identity monitoring reduce the attack surface that adaptive systems can navigate.</p>
+
+            <p><strong>Network segmentation</strong> limits propagation regardless of how intelligent the attacker is. A system that can adapt its attack logic to different environments is still constrained by what it can reach. The architectural fundamentals of segmentation and reduced network exposure remain sound.</p>
+
+            <p><strong>Behavioural monitoring and detection engineering</strong> become more important, not less. If attack paths vary between targets, signature-based detection will cover less of the threat surface. Detecting the behaviour patterns that remain consistent, such as reconnaissance activity, unusual process execution, and anomalous lateral movement indicators, becomes more valuable when the attack logic itself becomes less predictable.</p>
+
+            <p><strong>Assumed-breach thinking and incident response readiness</strong> matter because detection alone does not stop an active intrusion. The ability to contain, investigate, and recover quickly reduces the impact of any intrusion, adaptive or otherwise. Threat hunting practices that assume adversary presence may prove more effective against adaptive systems than perimeter-oriented approaches.</p>
+
+            <h2>Questions worth watching</h2>
+
+            <p>Several questions emerge from this paper that do not have clear answers yet, but seem worth tracking carefully:</p>
+
+            <ul>
+                <li>How quickly will open-weight models improve for offensive reasoning tasks specifically? General reasoning capability is not the same as effective exploitation reasoning, but the gap may narrow as models improve and as purpose-specific fine-tuning matures.</li>
+                <li>What happens to this capability when integrated into existing malware ecosystems that already have delivery mechanisms, command and control infrastructure, and operational security practices? The research prototype lacks all of these; established malware families do not.</li>
+                <li>How effective are current detection approaches against attack paths generated dynamically at runtime? Most enterprise detection engineering is built around observed attacker behaviour patterns. Those patterns may shift as the tooling shifts.</li>
+                <li>Which telemetry sources become most valuable when attacker behaviour becomes more adaptive? If attack logic varies between targets, what remains constant enough to detect reliably?</li>
+                <li>What attacker economics change first? Reduced operator effort during exploitation, reconnaissance, or lateral movement each changes the threat model in different ways. Understanding which changes arrive earliest may help prioritise defensive investment.</li>
+                <li>How should organisations measure their exposure to this class of threat? The standard vulnerability management metrics were developed in a context of fixed exploit code and may not capture adaptive risk accurately.</li>
+                <li>At what point does incremental capability improvement in this area change the assumptions embedded in current threat models for the organisations most at risk?</li>
+            </ul>
+
+            <h2>Closing reflection</h2>
+
+            <p>The most important finding in this paper is not that a research team built an AI-powered worm. The most important finding is that the components required to build one, open-weight models, single-GPU compute, and agentic reasoning frameworks, are already widely accessible. The researchers did not need a supercomputer, a nation-state budget, or access to closed frontier models. They needed hardware that has shipped in the millions of units, software that is publicly available, and the time to build a capable harness around it.</p>
+
+            <p>The paper is best viewed as an indicator of direction rather than destination. The system it describes is a research prototype with significant gaps. The trajectory, however, is visible.</p>
+
+            <p>I am not concerned about reproducing the exact worm described in this paper. I am paying attention because it offers a credible glimpse of where offensive capability may be heading, and because history has repeatedly shown that today's imperfect research prototypes often become tomorrow's operational tooling. The right response is not alarm. It is careful attention to where the trajectory leads, and honest evaluation of which assumptions in current security programmes deserve to be tested again.</p>
+
+            <p style="font-family:var(--font-mono);font-size:0.72rem;letter-spacing:0.08em;color:var(--ink-faint);margin-top:2.4rem;padding-top:1.6rem;border-top:1px solid var(--line)">Based on: "AI Agents Enable Adaptive Computer Worms" (arXiv:2606.03811). The research prototype described does not represent a deployed real-world threat. Findings should be interpreted in the context of the controlled evaluation environment described in the paper.</p>
+
+        </div>
+    </div>
+</article>
+
+<!-- POST FOOTER -->
+<div class="post-footer">
+    <div class="wrap">
+        <a class="backlink" href="../writing.html">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M19 12H5M5 12l7 7M5 12l7-7"/></svg>
+            Back to Field Notes
+        </a>
+    </div>
+</div>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="contact" style="border-top:1px solid var(--line)">
+    <div class="wrap" style="padding-block: clamp(2.5rem,5vw,4rem)">
+        <div class="colophon" style="margin-top:0; border-top:0">
+            <span>© 2026 Dr Ryan K. Shah · ryankshah.com</span>
+            <span><a href="../writing.html">Back to Field Notes ↗</a></span>
+        </div>
+    </div>
+</footer>
+
+<script>
+    try {
+        var keys = Object.keys(localStorage);
+        for (var i = 0; i < keys.length; i++) {
+            if (keys[i].indexOf('tweak') !== -1 || keys[i].indexOf('Tweak') !== -1) {
+                var v = JSON.parse(localStorage.getItem(keys[i]));
+                if (v && v.palette) document.documentElement.setAttribute('data-palette', v.palette);
+                if (v && v.typeface) document.documentElement.setAttribute('data-type', v.typeface);
+            }
+        }
+    } catch (e) {}
+    document.getElementById('nav').addEventListener('click', function (e) {
+        if (e.target.closest('a')) this.classList.remove('open');
+    });
+</script>
+
+</body>
+</html>

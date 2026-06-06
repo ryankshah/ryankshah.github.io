@@ -1,5 +1,16 @@
 [
   {
+    "slug": "adaptive-by-design-ai-worms-and-offensive-capability",
+    "title": "Adaptive by design",
+    "topic": "Research",
+    "date": "June 2026",
+    "status": "published",
+    "featured": false,
+    "glyph": "∿",
+    "dek": "A research team demonstrated an AI-powered worm that adapts its attack strategy to each target it encounters. The most important finding is not the worm itself. It is what the paper reveals about attacker adaptability, accessibility, and the economics of offensive capability.",
+    "readTime": "12 min"
+  },
+  {
     "slug": "reading-regulation-like-a-threat-model",
     "title": "Reading regulation like a threat model",
     "topic": "GRC",
