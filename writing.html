@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en-GB" data-palette="sage" data-type="newsreader">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Field Notes ~ Dr. Ryan Shah</title>
+<meta name="description" content="Field Notes: writing on GRC, data protection, regulation and security research by Dr Ryan K. Shah.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Hanken+Grotesk:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/styles.css">
+<style>
+    .fn-hero { padding-top: clamp(3rem, 7vw, 5.5rem); }
+    .fn-hero__kicker { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.6rem; }
+    .fn-hero__kicker .tick { width: 2.2rem; height: 1px; background: var(--accent); }
+    .fn-hero h1 {
+        font-family: var(--font-serif);
+        font-weight: 400;
+        font-size: clamp(2.8rem, 9vw, 6.5rem);
+        line-height: 0.95;
+        letter-spacing: -0.03em;
+        margin-bottom: 1.4rem;
+    }
+    .fn-hero h1 em { font-style: italic; color: var(--accent); }
+    .fn-hero__lead {
+        font-family: var(--font-serif);
+        font-size: clamp(1.2rem, 2.4vw, 1.65rem);
+        line-height: 1.45;
+        color: var(--ink-soft);
+        max-width: 42ch;
+    }
+    .fn-meta {
+        display: flex; flex-wrap: wrap; gap: 0.5rem 1.75rem;
+        padding: 1.2rem 0; margin-top: 2rem;
+        border-top: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+    }
+
+    /* Featured card */
+    .feature {
+        display: grid;
+        grid-template-columns: 1.15fr 1fr;
+        gap: clamp(1.5rem, 4vw, 3.5rem);
+        align-items: stretch;
+        margin-block: clamp(3rem, 7vw, 5rem);
+        border: 1px solid var(--line);
+    }
+    .feature__art {
+        position: relative;
+        background: var(--paper-deep);
+        border-right: 1px solid var(--line);
+        min-height: 280px;
+        display: flex; align-items: flex-end; padding: 1.5rem;
+    }
+    .feature__art .glyph {
+        position: absolute; inset: 0;
+        display: flex; align-items: center; justify-content: center;
+        font-family: var(--font-serif); font-style: italic;
+        font-size: clamp(4rem, 12vw, 9rem); color: var(--accent);
+        opacity: 0.85;
+    }
+    .feature__body { padding: clamp(1.5rem, 3vw, 2.6rem); display: flex; flex-direction: column; justify-content: center; }
+    .feature__body h2 {
+        font-family: var(--font-serif); font-weight: 500;
+        font-size: clamp(1.6rem, 3.4vw, 2.6rem); line-height: 1.12;
+        letter-spacing: -0.025em; margin: 0.9rem 0 1rem;
+    }
+    .feature__body p { color: var(--ink-soft); margin-bottom: 1.5rem; max-width: 50ch; }
+
+    .topic {
+        display: inline-block; font-family: var(--font-mono);
+        font-size: 0.66rem; letter-spacing: 0.1em; text-transform: uppercase;
+        color: var(--accent); border: 1px solid var(--accent-soft);
+        background: var(--accent-soft); padding: 0.25rem 0.5rem;
+    }
+
+    .note__byline { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.06em; color: var(--ink-faint); text-transform: uppercase; display: flex; gap: 1rem; flex-wrap: wrap; }
+
+    .draft-flag {
+        display: inline-flex; align-items: center; gap: 0.45rem;
+        font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.1em;
+        text-transform: uppercase; color: var(--ink-faint);
+    }
+    .draft-flag::before { content: ""; width: 6px; height: 6px; background: var(--ink-faint); border-radius: 50%; }
+
+    .backlink { font-family: var(--font-mono); font-size: 0.74rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-soft); display: inline-flex; align-items: center; gap: 0.5rem; }
+    .backlink:hover { color: var(--accent); }
+
+    /* Filter bar */
+    .posts-bar {
+        display: flex; flex-wrap: wrap; align-items: center;
+        justify-content: space-between; gap: 1rem;
+        padding: 1.2rem 0; border-bottom: 1px solid var(--line);
+    }
+
+    .note.is-hidden { display: none; }
+
+    .subscribe {
+        display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+        gap: 1.5rem; padding: clamp(1.8rem, 4vw, 2.6rem);
+        background: var(--ink); color: var(--paper);
+        margin-block: clamp(3rem, 6vw, 4.5rem);
+    }
+    .subscribe h3 { font-family: var(--font-serif); font-weight: 500; font-size: clamp(1.3rem, 2.6vw, 1.9rem); letter-spacing: -0.015em; max-width: 24ch; }
+    .subscribe .btn--solid { border-color: var(--accent); }
+
+    @media (max-width: 760px) {
+        .feature { grid-template-columns: 1fr; }
+        .feature__art { border-right: 0; border-bottom: 1px solid var(--line); min-height: 200px; }
+    }
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<header class="topbar">
+    <div class="wrap topbar__inner">
+        <a class="wordmark" href="index.html" aria-label="Ryan K. Shah, home">
+            <span class="wordmark__mark">RKS</span>
+            <span class="wordmark__name">Ryan K. Shah <span>/ Dr</span></span>
+        </a>
+        <button class="menu-toggle" aria-label="Toggle navigation" onclick="document.getElementById('nav').classList.toggle('open')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+        </button>
+        <nav class="nav" id="nav">
+            <a href="index.html#practice">Practice</a>
+            <a href="index.html#trajectory">Trajectory</a>
+            <a href="index.html#research">Research</a>
+            <a href="index.html#capability">Capability</a>
+            <a href="index.html#credentials">Credentials</a>
+            <a href="writing.html" style="color:var(--ink)">Writing</a>
+            <a class="nav__cta" href="index.html#contact">
+                Get in touch
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+            </a>
+        </nav>
+    </div>
+</header>
+
+<main>
+
+<!-- HERO -->
+<section class="fn-hero">
+    <div class="wrap">
+        <a class="backlink" href="index.html">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M19 12H5M5 12l7 7M5 12l7-7"/></svg>
+            Back to the dossier
+        </a>
+        <div class="fn-hero__kicker" style="margin-top:1.8rem">
+            <span class="tick"></span>
+            <span class="mono mono--ink">Section 07 · Working notes</span>
+        </div>
+        <h1>Field<br>Notes<em>.</em></h1>
+        <p class="fn-hero__lead">Short essays on where governance, data protection and security research actually meet. Written in the open, revised often.</p>
+        <div class="fn-meta mono">
+            <span id="metaCount">— entries</span>
+            <span>Topics: GRC · Data protection · DORA · Research</span>
+            <span class="mono--accent">Updated 2026</span>
+        </div>
+    </div>
+</section>
+
+<!-- FEATURED (injected by JS) -->
+<section class="wrap">
+    <div id="featuredPost"></div>
+</section>
+
+<!-- LIST -->
+<section class="wrap" style="padding-bottom: clamp(2rem,5vw,4rem)">
+    <div class="section__index" style="margin-bottom: 0">
+        <span class="section__no">IDX</span>
+        <h2 class="section__title" style="font-size:clamp(1.5rem,3vw,2.2rem)">The index</h2>
+        <span class="section__aside">All notes,<br>newest first</span>
+    </div>
+
+    <!-- Filter bar (populated by JS) -->
+    <div class="posts-bar">
+        <div class="filters" id="postFilters" role="group" aria-label="Filter by topic"></div>
+        <span class="research__count" id="noteCount"></span>
+    </div>
+
+    <!-- Post list (populated by JS) -->
+    <div class="writing__list" id="postList"></div>
+
+    <div class="subscribe">
+        <h3>These notes are being written now. Want to know when the first lands?</h3>
+        <a class="btn btn--solid" href="https://linkedin.com/in/ryankshah" target="_blank" rel="noopener">
+            Follow on LinkedIn
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+        </a>
+    </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="contact" style="border-top:1px solid var(--line)">
+    <div class="wrap" style="padding-block: clamp(2.5rem,5vw,4rem)">
+        <div class="colophon" style="margin-top:0; border-top:0">
+            <span>© 2026 Dr Ryan K. Shah · ryankshah.com</span>
+            <span><a href="index.html">Return to the dossier ↗</a></span>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // Palette / typeface persistence
+    try {
+        var keys = Object.keys(localStorage);
+        for (var i = 0; i < keys.length; i++) {
+            if (keys[i].indexOf('tweak') !== -1 || keys[i].indexOf('Tweak') !== -1) {
+                var v = JSON.parse(localStorage.getItem(keys[i]));
+                if (v && v.palette) document.documentElement.setAttribute('data-palette', v.palette);
+                if (v && v.typeface) document.documentElement.setAttribute('data-type', v.typeface);
+            }
+        }
+    } catch (e) {}
+    document.getElementById('nav').addEventListener('click', function (e) {
+        if (e.target.closest('a')) this.classList.remove('open');
+    });
+
+    function esc(str) {
+        return String(str)
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;');
+    }
+
+    function renderFeatured(post) {
+        var el = document.getElementById('featuredPost');
+        if (!el || !post) return;
+        var href = post.status === 'draft' ? '#' : 'posts/' + esc(post.slug) + '.html';
+        var statusBadge = post.status === 'draft' ? '<span class="draft-flag">In draft</span>' : '';
+        var dateLabel = post.status === 'draft' ? 'Forthcoming' : esc(String(post.date));
+        var readBtn = post.status !== 'draft'
+            ? '<a class="btn btn--ghost" href="' + href + '" style="margin-top:1.2rem">Read now ' +
+              '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></a>'
+            : '';
+        el.innerHTML =
+            '<article class="feature">' +
+                '<div class="feature__art">' +
+                    '<span class="glyph">' + esc(post.glyph || '§') + '</span>' +
+                    '<span class="topic">' + esc(post.topic) + '</span>' +
+                '</div>' +
+                '<div class="feature__body">' +
+                    statusBadge +
+                    '<h2>' + esc(post.title) + '</h2>' +
+                    '<p>' + esc(post.dek) + '</p>' +
+                    '<div class="note__byline">' +
+                        '<span>Dr R. K. Shah</span>' +
+                        '<span>~ ' + esc(post.readTime) + ' read</span>' +
+                        '<span>' + dateLabel + '</span>' +
+                    '</div>' +
+                    readBtn +
+                '</div>' +
+            '</article>';
+    }
+
+    function renderList(posts) {
+        var list = document.getElementById('postList');
+        if (!list) return;
+        if (!posts.length) {
+            list.innerHTML = '<p style="padding:2rem 1.7rem;color:var(--ink-faint);font-family:var(--font-mono);font-size:0.8rem;letter-spacing:0.08em;text-transform:uppercase">No posts yet — check back soon.</p>';
+            return;
+        }
+        list.innerHTML = posts.map(function (post) {
+            var href = post.status === 'draft' ? '#' : 'posts/' + esc(post.slug) + '.html';
+            var label = post.status === 'draft' ? 'Draft' : 'Published';
+            return '<a class="note" href="' + href + '" data-topic="' + esc(post.topic) + '">' +
+                '<div class="note__when">' + esc(String(post.date)) + ' &middot; ' + label + '</div>' +
+                '<div>' +
+                    '<span class="note__topic">' + esc(post.topic) + '</span>' +
+                    '<div class="note__title">' + esc(post.title) + '</div>' +
+                    '<p class="note__dek">' + esc(post.dek) + '</p>' +
+                '</div>' +
+                '<span class="note__arrow">↗</span>' +
+            '</a>';
+        }).join('');
+    }
+
+    function buildFilters(topics, initialCount) {
+        var container = document.getElementById('postFilters');
+        var countEl = document.getElementById('noteCount');
+        if (!container) return;
+        var html = '<button class="filter" data-filter="all" aria-pressed="true">All</button>';
+        topics.forEach(function (t) {
+            html += '<button class="filter" data-filter="' + esc(t) + '" aria-pressed="false">' + esc(t) + '</button>';
+        });
+        container.innerHTML = html;
+        if (countEl) countEl.textContent = initialCount + ' note' + (initialCount !== 1 ? 's' : '');
+    }
+
+    function setupFilters() {
+        var filtersEl = document.getElementById('postFilters');
+        var countEl = document.getElementById('noteCount');
+        if (!filtersEl) return;
+        filtersEl.addEventListener('click', function (e) {
+            var btn = e.target.closest('.filter');
+            if (!btn) return;
+            filtersEl.querySelectorAll('.filter').forEach(function (b) {
+                b.setAttribute('aria-pressed', 'false');
+            });
+            btn.setAttribute('aria-pressed', 'true');
+            var f = btn.dataset.filter;
+            var notes = document.querySelectorAll('#postList .note');
+            var visible = 0;
+            notes.forEach(function (note) {
+                var match = f === 'all' || note.dataset.topic === f;
+                note.classList.toggle('is-hidden', !match);
+                if (match) visible++;
+            });
+            if (countEl) countEl.textContent = visible + ' note' + (visible !== 1 ? 's' : '');
+        });
+    }
+
+    // Fetch and render posts from manifest
+    fetch('posts/posts.json')
+        .then(function (res) { return res.json(); })
+        .then(function (posts) {
+            var total = posts.length;
+            var metaCount = document.getElementById('metaCount');
+            if (metaCount) metaCount.textContent = total + (total === 1 ? ' entry' : ' entries');
+
+            var featured = null;
+            posts.forEach(function (p) { if (p.featured && !featured) featured = p; });
+            if (!featured) featured = posts[0];
+
+            var listPosts = posts.filter(function (p) { return !p.featured; });
+
+            renderFeatured(featured);
+
+            var topics = [];
+            listPosts.forEach(function (p) {
+                if (topics.indexOf(p.topic) === -1) topics.push(p.topic);
+            });
+
+            buildFilters(topics, listPosts.length);
+            renderList(listPosts);
+            setupFilters();
+        })
+        .catch(function (err) {
+            console.warn('Could not load posts/posts.json:', err);
+            var list = document.getElementById('postList');
+            if (list) list.innerHTML = '<p style="padding:2rem 1.7rem;color:var(--ink-faint);font-family:var(--font-mono);font-size:0.8rem;letter-spacing:0.08em;text-transform:uppercase">Posts unavailable &mdash; ensure the site is served over HTTP.</p>';
+        });
+</script>
+
+</body>
+</html>

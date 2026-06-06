@@ -1,0 +1,46 @@
+[
+  {
+    "slug": "reading-regulation-like-a-threat-model",
+    "title": "Reading regulation like a threat model",
+    "topic": "GRC",
+    "date": "June 2026",
+    "status": "published",
+    "featured": true,
+    "glyph": "§",
+    "dek": "Auditors read a regulation for clauses to evidence. Researchers read a system for the assumptions that break it. This is what happens when you point the second habit at the first: faster gap analysis, sharper scoping, and controls that map to real exposure rather than to a checklist.",
+    "readTime": "8 min"
+  },
+  {
+    "slug": "understanding-the-criticality-of-securing-our-robots",
+    "title": "Understanding the criticality of securing our robots",
+    "topic": "Research",
+    "date": "June 2026",
+    "status": "published",
+    "featured": false,
+    "glyph": "∞",
+    "dek": "From Ancient Greek automata to connected surgical robots — why the safety of modern robotic systems has become a critical cybersecurity challenge, and where we need to start.",
+    "readTime": "9 min"
+  },
+  {
+    "slug": "what-side-channels-taught-me-about-assurance",
+    "title": "What side-channels taught me about assurance",
+    "topic": "Research",
+    "date": "June 2026",
+    "status": "published",
+    "featured": false,
+    "glyph": "≈",
+    "dek": "Systems leak in ways their designers never intended. So do compliance programmes. A look at the gap between what a control claims and what it actually emits.",
+    "readTime": "8 min"
+  },
+  {
+    "slug": "supply-chain-due-diligence-without-the-theatre",
+    "title": "Supply chain due diligence without the theatre",
+    "topic": "GRC",
+    "date": "June 2026",
+    "status": "published",
+    "featured": false,
+    "glyph": "◊",
+    "dek": "Traditional third-party risk management was designed for a slower era. Why the operating assumptions behind vendor assurance have collapsed, and where the discipline is going.",
+    "readTime": "15 min"
+  }
+]

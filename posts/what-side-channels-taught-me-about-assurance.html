@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en-GB" data-palette="sage" data-type="newsreader">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What side-channels taught me about assurance ~ Dr. Ryan Shah</title>
+<meta name="description" content="Systems leak in ways their designers never intended. So do compliance programmes. A look at the gap between what a control claims and what it actually emits.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Hanken+Grotesk:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/styles.css">
+<style>
+    .post-hero { padding-top: clamp(3rem, 7vw, 5.5rem); padding-bottom: clamp(2rem, 5vw, 4rem); border-bottom: 1px solid var(--line); }
+    .post-hero__kicker { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.6rem; }
+    .post-hero__kicker .tick { width: 2.2rem; height: 1px; background: var(--accent); }
+    .post-topic {
+        display: inline-block; font-family: var(--font-mono);
+        font-size: 0.66rem; letter-spacing: 0.1em; text-transform: uppercase;
+        color: var(--accent); border: 1px solid var(--accent-soft);
+        background: var(--accent-soft); padding: 0.25rem 0.5rem;
+        margin-bottom: 1.2rem;
+    }
+    .post-hero h1 {
+        font-family: var(--font-serif);
+        font-weight: 400;
+        font-size: clamp(2.4rem, 6vw, 5rem);
+        line-height: 1.0;
+        letter-spacing: -0.03em;
+        max-width: 22ch;
+        margin-bottom: 1.4rem;
+    }
+    .post-byline {
+        display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem;
+        font-family: var(--font-mono); font-size: 0.72rem;
+        letter-spacing: 0.08em; text-transform: uppercase;
+        color: var(--ink-faint);
+    }
+    .post-body {
+        max-width: 85ch;
+        margin-inline: auto;
+        padding-block: clamp(3rem, 7vw, 5rem);
+    }
+    .post-body p {
+        font-family: var(--font-serif);
+        font-size: clamp(1.1rem, 2vw, 1.3rem);
+        line-height: 1.75;
+        color: var(--ink-soft);
+        margin-bottom: 1.6rem;
+    }
+    .post-body > p:first-of-type {
+        font-size: clamp(1.2rem, 2.2vw, 1.45rem);
+        color: var(--ink);
+    }
+    .post-body h2 {
+        font-family: var(--font-serif); font-weight: 500;
+        font-size: clamp(1.5rem, 3vw, 2.1rem); line-height: 1.2;
+        letter-spacing: -0.02em;
+        margin: 3rem 0 1.1rem;
+        padding-top: 1rem;
+        border-top: 1px solid var(--line);
+        color: var(--ink);
+    }
+    .post-body h3 {
+        font-family: var(--font-mono); font-size: 0.75rem;
+        letter-spacing: 0.14em; text-transform: uppercase;
+        color: var(--ink-soft); margin: 2.2rem 0 0.8rem;
+    }
+    .post-body blockquote {
+        border-left: 2px solid var(--accent);
+        padding: 0.75rem 0 0.75rem 1.75rem;
+        margin: 2rem 0;
+        font-family: var(--font-serif); font-style: italic;
+        font-size: clamp(1.1rem, 2vw, 1.3rem);
+        line-height: 1.6;
+        color: var(--ink-soft);
+    }
+    .post-body blockquote cite {
+        display: block;
+        font-style: normal;
+        font-family: var(--font-mono);
+        font-size: 0.7rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--ink-faint);
+        margin-top: 0.75rem;
+    }
+    .post-body ul {
+        padding-left: 0;
+        margin-bottom: 1.6rem;
+        list-style: none;
+    }
+    .post-body ul li {
+        font-family: var(--font-serif);
+        font-size: clamp(1.05rem, 2vw, 1.2rem);
+        line-height: 1.7; color: var(--ink-soft);
+        margin-bottom: 0.85rem;
+        padding-left: 1.5rem;
+        position: relative;
+    }
+    .post-body ul li::before {
+        content: "";
+        position: absolute;
+        left: 0; top: 0.65em;
+        width: 5px; height: 5px;
+        background: var(--accent);
+        transform: rotate(45deg);
+    }
+    .post-body strong { color: var(--ink); font-weight: 600; }
+    .takeaway {
+        background: var(--paper-deep);
+        border: 1px solid var(--line);
+        border-left: 3px solid var(--accent);
+        padding: 1.25rem 1.6rem;
+        margin: 2.2rem 0;
+    }
+    .takeaway__label {
+        font-family: var(--font-mono);
+        font-size: 0.66rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--accent);
+        display: block;
+        margin-bottom: 0.6rem;
+    }
+    .takeaway__text {
+        font-family: var(--font-serif);
+        font-style: italic;
+        font-size: clamp(1.05rem, 1.9vw, 1.2rem);
+        line-height: 1.55;
+        color: var(--ink);
+        margin: 0;
+    }
+    .post-figure {
+        margin: 2.4rem 0;
+        border: 1px solid var(--line);
+        background: var(--paper-deep);
+        overflow: hidden;
+    }
+    .post-figure figcaption {
+        font-family: var(--font-mono);
+        font-size: 0.68rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--ink-faint);
+        padding: 0.75rem 1.2rem;
+        border-top: 1px solid var(--line);
+    }
+    .channel { padding: 1.5rem 1.75rem; border-bottom: 1px solid var(--line); }
+    .channel:last-child { border-bottom: 0; }
+    .channel--emission { border-left: 3px solid var(--accent); }
+    .channel__label {
+        font-family: var(--font-mono);
+        font-size: 0.68rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--ink-faint);
+        margin-bottom: 0.75rem;
+    }
+    .channel--emission .channel__label { color: var(--accent); }
+    .channel p {
+        font-family: var(--font-serif) !important;
+        font-size: 1rem !important;
+        line-height: 1.6 !important;
+        color: var(--ink-soft) !important;
+        margin-bottom: 0.5rem !important;
+    }
+    .channel p:last-child { margin-bottom: 0 !important; }
+    .channel__claim {
+        font-family: var(--font-mono) !important;
+        font-size: 0.72rem !important;
+        letter-spacing: 0.06em !important;
+        color: var(--ink-faint) !important;
+        margin-top: 0.6rem !important;
+        font-style: normal !important;
+    }
+    .post-footer { border-top: 1px solid var(--line); padding-block: clamp(2rem, 5vw, 4rem); }
+    .backlink { font-family: var(--font-mono); font-size: 0.74rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-soft); display: inline-flex; align-items: center; gap: 0.5rem; }
+    .backlink:hover { color: var(--accent); }
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<header class="topbar">
+    <div class="wrap topbar__inner">
+        <a class="wordmark" href="../index.html" aria-label="Ryan K. Shah, home">
+            <span class="wordmark__mark">RS</span>
+            <!-- <span class="wordmark__name">Ryan K. Shah <span>/ Dr</span></span> -->
+        </a>
+        <button class="menu-toggle" aria-label="Toggle navigation" onclick="document.getElementById('nav').classList.toggle('open')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+        </button>
+        <nav class="nav" id="nav">
+            <a href="../index.html#practice">Practice</a>
+            <a href="../index.html#trajectory">Trajectory</a>
+            <a href="../index.html#research">Research</a>
+            <a href="../index.html#capability">Capability</a>
+            <a href="../index.html#credentials">Credentials</a>
+            <a href="../writing.html" style="color:var(--ink)">Writing</a>
+            <a class="nav__cta" href="../index.html#contact">
+                Get in touch
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+            </a>
+        </nav>
+    </div>
+</header>
+
+<main>
+
+<!-- POST HERO -->
+<section class="post-hero">
+    <div class="wrap">
+        <a class="backlink" href="../writing.html">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M19 12H5M5 12l7 7M5 12l7-7"/></svg>
+            Field Notes
+        </a>
+        <div class="post-hero__kicker" style="margin-top:1.8rem">
+            <span class="tick"></span>
+            <span class="mono mono--ink">Section 07 · Field Notes</span>
+        </div>
+        <span class="post-topic">Research</span>
+        <h1>What side-channels taught me about assurance</h1>
+        <div class="post-byline">
+            <span>Dr R. K. Shah</span>
+            <span>June 2026</span>
+            <span>~ 8 min read</span>
+        </div>
+    </div>
+</section>
+
+<!-- POST BODY -->
+<article>
+    <div class="wrap">
+        <div class="post-body">
+
+            <p>Systems leak information in ways their designers never intended. So do compliance programmes. The gap between what a control claims and what it actually emits is where real assurance lives, and finding it requires a different kind of measurement.</p>
+
+            <h2>What side channels are</h2>
+
+            <p>In 1996, Paul Kocher published a paper demonstrating that the time taken to perform RSA private-key operations varied measurably with the value of the key. The cryptographic protocol was correct. The mathematics were sound. The specification did not include timing as an information channel. None of that mattered: the implementation leaked the key anyway, through a pathway nobody had designed and nobody had defended.</p>
+
+            <p>This is a side channel: an unintended information pathway created by the physical or operational characteristics of a system's behaviour, distinct from and outside the designed interface. Power consumption, electromagnetic emissions, cache access patterns, timing variations. None of these appear in a system's specification, and none are addressed by evaluations that test only the specified interface.</p>
+
+            <p>Differential power analysis, developed by Kocher and colleagues three years later, showed that even small statistical correlations between power consumption and secret data were sufficient to recover cryptographic keys from hardware that was, by every formal standard, secure. The designed interface was fine. The side channel was the real attack surface.</p>
+
+            <blockquote>The security boundary was drawn around the designed interface. The attack went around it.</blockquote>
+
+            <h2>The compliance programme has side channels too</h2>
+
+            <p>A control is a designed interface. It specifies a process, a set of inputs, a set of outputs, and a claim about what it achieves. An annual access review claims that inappropriate access is identified and removed. A penetration test claims that critical vulnerabilities are found and remediated. A vendor questionnaire claims that third-party risk is assessed and managed.</p>
+
+            <p>These claims describe what the control is supposed to do. They say nothing about what the control actually emits.</p>
+
+            <p>Consider an access review. Reviewers receive a list of accounts and are asked to confirm or revoke each one. The process is documented. The manager approval is recorded. The audit trail is retained. The designed interface is clean.</p>
+
+            <p>What does the control actually emit? In most organisations: reviewers confirm access because revoking it requires a separate process, a separate ticket, a separate team, and a follow-up that may never happen. Reviewers lack the context to understand what half the accounts are. Reviews are completed in bulk, minutes before the deadline. The process has run for three years without a single account being removed as a result.</p>
+
+            <figure class="post-figure">
+                <div class="channel">
+                    <div class="channel__label">Designed interface</div>
+                    <p>Access review runs annually. Reviewer confirms or revokes each entry. Manager approves. Audit trail retained.</p>
+                    <p class="channel__claim">Claim: inappropriate access is identified and removed.</p>
+                </div>
+                <div class="channel channel--emission">
+                    <div class="channel__label">Actual emission</div>
+                    <p><strong>No accounts removed in three cycles.</strong> Reviews completed in bulk. Reviewers lack context to challenge entries. Mean time to deprovision: not measured, effectively unknown.</p>
+                    <p class="channel__claim">Reality: no measurable change in access posture.</p>
+                </div>
+                <figcaption>An access review control: designed interface versus actual emission. The first is tested at audit. The second is not.</figcaption>
+            </figure>
+
+            <p>The side channel says: the organisation does not know who has access to what, and has no mechanism for finding out. The designed interface says something different entirely.</p>
+
+            <h2>Measuring the emission</h2>
+
+            <p>Testing the designed interface asks: does the control exist, is it documented, is there evidence it ran? Testing the emission asks: what changed in the environment as a result of this control operating?</p>
+
+            <p>For the access review, the emission questions are straightforward. How many accounts have been removed in the past three cycles? What is the mean time from review completion to deprovisioning? When did the review population last expand to cover a new system that came into scope? Has the reviewer pool changed, and if so, how was continuity maintained?</p>
+
+            <p>These are not hostile questions. If the control is working, the answers are available and positive. If the control is not working, the questions reveal that fact quickly and precisely, far more quickly than repeating the designed interface test would.</p>
+
+            <p>The measurement approach generalises. For a penetration test: what findings from the previous assessment remain open? What is the mean time to remediation for critical findings across the last three cycles? Has the scope changed, and if so, what drove that change? For a vulnerability management programme: what is the current mean time to patch critical CVEs, and how does that compare to the commitment in the policy?</p>
+
+            <div class="takeaway">
+                <span class="takeaway__label">The test</span>
+                <p class="takeaway__text">Ask not whether the control ran, but what changed in the environment as a result of it running.</p>
+            </div>
+
+            <h2>Why this gap exists</h2>
+
+            <p>The gap between designed interface and actual emission is not usually the result of bad faith. It is the result of optimising for auditability rather than effectiveness.</p>
+
+            <p>Audit evidence is point-in-time and binary: the control either ran or it did not, the document either exists or it does not. Programmes designed primarily for audit evidence optimise for those binary tests. They produce documentation that passes the test. They do not necessarily produce controls that work.</p>
+
+            <p>This is not a criticism of audit as a function. Audit is a check on whether the designed interface is in place, and that check is necessary. The insufficient part is treating it as sufficient. Programmes that conflate the two gradually accumulate controls without accumulating assurance. The control list grows. The risk picture does not improve. The first indicator is usually an incident the control was supposed to prevent.</p>
+
+            <h2>Building for emission</h2>
+
+            <p>Three things change when you design controls to emit measurable outcomes rather than auditable evidence.</p>
+
+            <p>The first is that you define metrics before deployment rather than after. What would successful operation of this control look like in the environment? What would change? What numbers would move? These questions are easier to answer at design time than after the control has been running for two years and the team has reorganised twice.</p>
+
+            <p>The second is that control reviews become evidence reviews rather than process reviews. The question is not "did this run?" but "what did this find, and what happened as a result?" A review that cannot answer those questions is a review of the designed interface. It is not evidence of assurance.</p>
+
+            <p>The third is that you can distinguish between controls that are primarily about accountability and controls that are primarily about risk reduction. Both types are legitimate. An audit trail, a signed-off decision, a documented approval: the "emission" of these controls is the record, and a clean record is the intended output. But for controls whose purpose is to reduce real-world risk, the designed interface is rarely sufficient evidence of effectiveness. Knowing the difference, and being able to show which of the two you have, is the work.</p>
+
+            <h2>When assessing third parties</h2>
+
+            <p>The designed interface versus emission distinction matters most when assessing organisations you cannot directly observe. A vendor's security questionnaire response describes their designed interface. What their programme actually emits is harder to see, but not invisible.</p>
+
+            <p>Penetration test reports and red team findings describe what was discovered when someone looked for the gap between designed interface and actual behaviour. Bug bounty disclosure histories reveal how the organisation responds when that gap is found by an outsider. Regulatory inspection outcomes, where available, are a direct test of emission under external pressure. Incident disclosure history, both what happened and how quickly it was contained and communicated, says more about a programme's operational reality than any questionnaire.</p>
+
+            <p>Asking "do you have an access review process?" tests the designed interface. Asking "what did your last access review find, and what changed as a result?" tests the emission. The second question is harder to answer convincingly if the emission is poor, and that difficulty is itself informative.</p>
+
+            <h2>A note on what this is not</h2>
+
+            <p>Side-channel thinking applied to assurance is not an argument against controls, against documentation, or against audit. It is an argument against treating those things as sufficient.</p>
+
+            <p>Controls that exist, are documented, and are audited are better than controls that do not exist. Documentation creates accountability. Audit creates external verification. These are real goods.</p>
+
+            <p>The point is simply that they are not the same good as a programme that actually reduces risk. Knowing the difference, and being able to demonstrate which of the two you have built, is what separates assurance from theatre.</p>
+
+        </div>
+    </div>
+</article>
+
+<!-- POST FOOTER -->
+<div class="post-footer">
+    <div class="wrap" style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:1rem">
+        <a class="backlink" href="../writing.html">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M19 12H5M5 12l7 7M5 12l7-7"/></svg>
+            Back to Field Notes
+        </a>
+        <a class="backlink" href="supply-chain-due-diligence-without-the-theatre.html">
+            Supply chain due diligence without the theatre
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+    </div>
+</div>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="contact" style="border-top:1px solid var(--line)">
+    <div class="wrap" style="padding-block: clamp(2.5rem,5vw,4rem)">
+        <div class="colophon" style="margin-top:0; border-top:0">
+            <span>© 2026 Dr Ryan K. Shah · ryankshah.com</span>
+            <span><a href="../writing.html">Back to Field Notes ↗</a></span>
+        </div>
+    </div>
+</footer>
+
+<script>
+    try {
+        var keys = Object.keys(localStorage);
+        for (var i = 0; i < keys.length; i++) {
+            if (keys[i].indexOf('tweak') !== -1 || keys[i].indexOf('Tweak') !== -1) {
+                var v = JSON.parse(localStorage.getItem(keys[i]));
+                if (v && v.palette) document.documentElement.setAttribute('data-palette', v.palette);
+                if (v && v.typeface) document.documentElement.setAttribute('data-type', v.typeface);
+            }
+        }
+    } catch (e) {}
+    document.getElementById('nav').addEventListener('click', function (e) {
+        if (e.target.closest('a')) this.classList.remove('open');
+    });
+</script>
+
+</body>
+</html>

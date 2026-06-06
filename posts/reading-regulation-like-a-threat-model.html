@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en-GB" data-palette="sage" data-type="newsreader">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reading regulation like a threat model ~ Dr. Ryan Shah</title>
+<meta name="description" content="Auditors read a regulation for clauses to evidence. Researchers read a system for the assumptions that break it.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Hanken+Grotesk:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/styles.css">
+<style>
+    .post-hero { padding-top: clamp(3rem, 7vw, 5.5rem); padding-bottom: clamp(2rem, 5vw, 4rem); border-bottom: 1px solid var(--line); }
+    .post-hero__kicker { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.6rem; }
+    .post-hero__kicker .tick { width: 2.2rem; height: 1px; background: var(--accent); }
+    .post-topic {
+        display: inline-block; font-family: var(--font-mono);
+        font-size: 0.66rem; letter-spacing: 0.1em; text-transform: uppercase;
+        color: var(--accent); border: 1px solid var(--accent-soft);
+        background: var(--accent-soft); padding: 0.25rem 0.5rem;
+        margin-bottom: 1.2rem;
+    }
+    .post-hero h1 {
+        font-family: var(--font-serif);
+        font-weight: 400;
+        font-size: clamp(2.4rem, 6vw, 5rem);
+        line-height: 1.0;
+        letter-spacing: -0.03em;
+        max-width: 22ch;
+        margin-bottom: 1.4rem;
+    }
+    .post-hero h1 em { font-style: italic; color: var(--accent); }
+    .post-byline {
+        display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem;
+        font-family: var(--font-mono); font-size: 0.72rem;
+        letter-spacing: 0.08em; text-transform: uppercase;
+        color: var(--ink-faint);
+    }
+    .post-body {
+        max-width: 85ch;
+        margin-inline: auto;
+        padding-block: clamp(3rem, 7vw, 5rem);
+    }
+    .post-body p {
+        font-family: var(--font-serif);
+        font-size: clamp(1.1rem, 2vw, 1.3rem);
+        line-height: 1.7;
+        color: var(--ink-soft);
+        margin-bottom: 1.6rem;
+    }
+    .post-body p:first-child { color: var(--ink); font-size: clamp(1.2rem, 2.2vw, 1.45rem); }
+    .post-body h2 {
+        font-family: var(--font-serif); font-weight: 500;
+        font-size: clamp(1.4rem, 3vw, 2rem); line-height: 1.2;
+        letter-spacing: -0.02em; margin: 2.4rem 0 1rem;
+    }
+    .post-body h3 {
+        font-family: var(--font-mono); font-size: 0.78rem;
+        letter-spacing: 0.12em; text-transform: uppercase;
+        color: var(--ink-soft); margin: 2rem 0 0.8rem;
+    }
+    .post-body blockquote {
+        border-left: 2px solid var(--accent);
+        padding-left: 1.5rem; margin: 2rem 0;
+        font-family: var(--font-serif); font-style: italic;
+        font-size: clamp(1.15rem, 2vw, 1.35rem);
+        color: var(--ink-soft);
+    }
+    .post-body ul, .post-body ol {
+        padding-left: 1.5rem; margin-bottom: 1.6rem;
+    }
+    .post-body li {
+        font-family: var(--font-serif);
+        font-size: clamp(1.1rem, 2vw, 1.25rem);
+        line-height: 1.65; color: var(--ink-soft);
+        margin-bottom: 0.5rem;
+    }
+    .post-footer {
+        border-top: 1px solid var(--line);
+        padding-block: clamp(2rem, 5vw, 4rem);
+    }
+    .backlink { font-family: var(--font-mono); font-size: 0.74rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-soft); display: inline-flex; align-items: center; gap: 0.5rem; }
+    .backlink:hover { color: var(--accent); }
+    .post-body strong { color: var(--ink); font-weight: 600; }
+    .takeaway {
+        background: var(--paper-deep);
+        border: 1px solid var(--line);
+        border-left: 3px solid var(--accent);
+        padding: 1.25rem 1.6rem;
+        margin: 2.2rem 0;
+    }
+    .takeaway__label {
+        font-family: var(--font-mono);
+        font-size: 0.66rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--accent);
+        display: block;
+        margin-bottom: 0.6rem;
+    }
+    .takeaway__text {
+        font-family: var(--font-serif);
+        font-style: italic;
+        font-size: clamp(1.05rem, 1.9vw, 1.2rem);
+        line-height: 1.55;
+        color: var(--ink);
+        margin: 0;
+    }
+    .post-figure {
+        margin: 2.4rem 0;
+        border: 1px solid var(--line);
+        background: var(--paper-deep);
+        overflow: hidden;
+    }
+    .post-figure figcaption {
+        font-family: var(--font-mono);
+        font-size: 0.68rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--ink-faint);
+        padding: 0.75rem 1.2rem;
+        border-top: 1px solid var(--line);
+    }
+    .comparison-grid { display: grid; grid-template-columns: 1fr 1fr; }
+    .comparison-col { padding: 1.5rem 1.75rem; }
+    .comparison-col:first-child { border-right: 1px solid var(--line); }
+    .comparison-col__head {
+        font-family: var(--font-mono);
+        font-size: 0.68rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--accent);
+        margin-bottom: 1rem;
+        padding-bottom: 0.75rem;
+        border-bottom: 1px solid var(--line);
+    }
+    .comparison-list { list-style: none; padding: 0; margin: 0; }
+    .comparison-list li {
+        font-family: var(--font-serif);
+        font-size: 1rem;
+        line-height: 1.65;
+        color: var(--ink-soft);
+        margin-bottom: 0.65rem;
+        padding-left: 1.25rem;
+        position: relative;
+    }
+    .comparison-list li::before {
+        content: "";
+        position: absolute;
+        left: 0; top: 0.62em;
+        width: 4px; height: 4px;
+        background: var(--accent);
+        transform: rotate(45deg);
+    }
+    @media (max-width: 580px) {
+        .comparison-grid { grid-template-columns: 1fr; }
+        .comparison-col:first-child { border-right: 0; border-bottom: 1px solid var(--line); }
+    }
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<header class="topbar">
+    <div class="wrap topbar__inner">
+        <a class="wordmark" href="../index.html" aria-label="Ryan K. Shah, home">
+            <span class="wordmark__mark">RS</span>
+            <!-- <span class="wordmark__name">Ryan K. Shah <span>/ Dr</span></span> -->
+        </a>
+        <button class="menu-toggle" aria-label="Toggle navigation" onclick="document.getElementById('nav').classList.toggle('open')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+        </button>
+        <nav class="nav" id="nav">
+            <a href="../index.html#practice">Practice</a>
+            <a href="../index.html#trajectory">Trajectory</a>
+            <a href="../index.html#research">Research</a>
+            <a href="../index.html#capability">Capability</a>
+            <a href="../index.html#credentials">Credentials</a>
+            <a href="../writing.html" style="color:var(--ink)">Writing</a>
+            <a class="nav__cta" href="../index.html#contact">
+                Get in touch
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+            </a>
+        </nav>
+    </div>
+</header>
+
+<main>
+
+<!-- POST HERO -->
+<section class="post-hero">
+    <div class="wrap">
+        <a class="backlink" href="../writing.html">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M19 12H5M5 12l7 7M5 12l7-7"/></svg>
+            Field Notes
+        </a>
+        <div class="post-hero__kicker" style="margin-top:1.8rem">
+            <span class="tick"></span>
+            <span class="mono mono--ink">Section 07 · Field Notes</span>
+        </div>
+        <span class="post-topic">GRC</span>
+        <h1>Reading regulation like a threat model</h1>
+        <div class="post-byline">
+            <span>Dr R. K. Shah</span>
+            <span>June 2026</span>
+            <span>~ 8 min read</span>
+        </div>
+    </div>
+</section>
+
+<!-- POST BODY -->
+<article>
+    <div class="wrap">
+        <div class="post-body">
+
+            <p>When you ask a compliance manager and a security researcher to read the same regulation, they produce different documents. The compliance manager returns with a gap list mapped to articles and annexes. The researcher returns with questions about what the regulation takes for granted.</p>
+
+            <h2>The threat modelling habit</h2>
+
+            <p>Threat modelling is often described as a process for identifying attacks. That description undersells what it actually does. Its real function is to make implicit assumptions visible. Before any attack can be mapped, the model must first represent what the system does, what it trusts, and where those trust relationships are assumed rather than enforced.</p>
+
+            <p>The classic questions in threat modelling are less a methodology and more an insistence: the person responsible for a system's security must understand the system as it actually operates, not as it was intended to operate. This habit produces a particular kind of output: not a list of vulnerabilities, but a map of where the system's design assumptions can be broken, and what consequences follow when they are.</p>
+
+            <h2>How regulation gets read instead</h2>
+
+            <p>The conventional approach to a new regulatory obligation is decomposition. The regulation is broken into numbered requirements. Each requirement is mapped against existing policies, procedures, and controls. Where no mapping exists, a gap is recorded. Remediation is scoped. Work is allocated.</p>
+
+            <p>This approach is auditable, repeatable, and produces documentation that looks like thoroughness. It is also systematically incomplete in one specific way: it tests whether a control exists to address a requirement, not whether the control is adequate to the risk the requirement was designed to address.</p>
+
+            <p>A control can satisfy a clause whilst doing almost nothing to reduce the underlying exposure. Consider a requirement for the regular review of access rights to ICT systems. The organisation conducts an annual review in a spreadsheet, signed off by a manager who lacks the context to challenge any entry. The gap analysis column is green. The exposure is unchanged.</p>
+
+            <blockquote>The conventional approach takes the regulation's goals as given and asks whether they are covered. The researcher's approach asks whether those goals are achievable given the organisation's actual state.</blockquote>
+
+            <h2>Applying the researcher's lens</h2>
+
+            <p>Reading a regulation the way a researcher reads a system means starting with a different question: not what does this require, but what does this assume?</p>
+
+            <p>Every material regulatory requirement rests on assumptions about what the regulated organisation can do. GDPR Article 32, which requires appropriate technical and organisational measures to ensure a level of security appropriate to the risk, assumes you have an accurate enough picture of your personal data processing to know what assets are at risk and what threats they face. Without a maintained processing inventory, every Article 32 control is built on a false premise: you are securing things you cannot fully describe. NIS 2 Article 21 assumes that entities have correctly classified themselves as essential or important, accurately scoped which of their network and information systems are in scope, and can proportionate their measures accordingly. A classification error at that threshold means every measure downstream of it is calibrated to the wrong question. DORA's ICT third-party risk management requirements assume a complete inventory of ICT third-party providers, the ability to classify them by criticality, and contractual relationships that provide sufficient visibility to monitor and manage those dependencies. The regulations differ in sector and scope; the pattern is the same. If the foundational assumption fails, the controls that flow from it will not deliver the protection the regulation intends.</p>
+
+            <p>The assumption question produces a different class of finding. Instead of "we lack a policy for X," the finding becomes "the policy for X assumes a capability we do not have, which means the policy will never work as intended." These are structurally different problems: the first can be addressed by writing a document; the second cannot.</p>
+
+            <figure class="post-figure">
+                <div class="comparison-grid">
+                    <div class="comparison-col">
+                        <div class="comparison-col__head">Auditor's lens</div>
+                        <ul class="comparison-list">
+                            <li>Which clauses apply to us?</li>
+                            <li>Map existing controls to articles</li>
+                            <li>Record gaps where coverage is absent</li>
+                            <li>Document remediation actions</li>
+                            <li>Produce evidence for each clause</li>
+                        </ul>
+                    </div>
+                    <div class="comparison-col">
+                        <div class="comparison-col__head">Researcher's lens</div>
+                        <ul class="comparison-list">
+                            <li>What does this regulation assume?</li>
+                            <li>Where do those assumptions break?</li>
+                            <li>Identify load-bearing capabilities</li>
+                            <li>Map the failure surface</li>
+                            <li>Allocate effort by actual exposure</li>
+                        </ul>
+                    </div>
+                </div>
+                <figcaption>Two approaches to the same regulatory text. The first produces a gap list; the second produces a risk map.</figcaption>
+            </figure>
+
+            <h2>Faster gap analysis</h2>
+
+            <p>The practical benefit of this approach is speed. Under analysis, a regulation resolves into a relatively small number of foundational assumptions. If those foundations are sound, the detailed requirements built on them are likely to be deliverable. If they are not, no amount of control design will make them so.</p>
+
+            <p>Incident reporting obligations make this especially visible. NIS 2's requirement for a 24-hour early warning and 72-hour significant incident notification, DORA's four-tier classification and reporting chain, and the UK Cyber Security and Resilience Bill's tightened timeframes for critical infrastructure and managed IT services all rest on the same three load-bearing assumptions: that the entity can detect the incident within the prescribed window; that it can classify it against defined thresholds; and that it can produce structured notification content under time pressure. Test those three foundations once, and you have answered the core gap question for all of them simultaneously. The obligations differ in sector, scope, and timeframe. The underlying assumptions do not.</p>
+
+            <p>The UK Cyber Security and Resilience Bill is particularly instructive here, because it extends near-miss reporting and brings managed service providers and wider ICT supply chain participants into scope for the first time. The near-miss requirement assumes a detection capability sensitive enough to identify events that did not fully materialise, a classification scheme that can distinguish them from ordinary operational noise, and a reporting pipeline that can produce compliant notifications even when no incident actually occurred. For many MSPs newly brought into scope, none of those assumptions currently hold. A clause-by-clause gap analysis would record each sub-requirement as a separate gap. An assumption-based analysis identifies the detection and classification capability as the single foundational problem, and everything else as downstream of it.</p>
+
+            <div class="takeaway">
+                <span class="takeaway__label">The principle</span>
+                <p class="takeaway__text">Test the assumptions first. Everything else is downstream of them.</p>
+            </div>
+
+            <h2>Sharper scoping</h2>
+
+            <p>Threat modelling scopes effort by asking which assets an adversary would target and which attack paths are credible. Regulatory scoping by assumption works similarly: which parts of the organisation's estate are actually subject to the regulation's requirements, and which are in the path of a plausible failure?</p>
+
+            <p>GDPR's jurisdictional reach produced a generation of scoping exercises that mapped data subjects, processors, and international transfers without asking which processing activities presented the highest risk of harm to the people whose data they handled. That is the question Articles 25 and 35 are actually asking. Reading those articles through their assumptions rather than their requirements surfaces a different scope: not every system that touches personal data, but the processing activities where a failure would cause real harm. The difference matters enormously for where DPIA resource gets spent.</p>
+
+            <p>The UK Cyber Security and Resilience Bill creates a similar challenge for managed service providers. The scoping question is not simply "are we in scope?" but "which of our services are relied upon by in-scope entities in ways that create a pass-through obligation?" That question is buried inside the scope provisions, not stated as an explicit requirement. An MSP reading the Bill as a list of clauses might not surface it. An MSP reading the Bill as a system would start by mapping which client relationships could create that dependency, and work outward from there.</p>
+
+            <h2>Controls that map to real exposure</h2>
+
+            <p>The output of reading regulation as a threat model is a different kind of control design. Rather than controls that address articles, you have controls that address the assumptions articles rest on, calibrated to your specific environment.</p>
+
+            <p>"Access to ICT systems shall be controlled" is an article. The assumption it rests on is that the entity knows what ICT systems it has, who should have access to them, and what access currently exists. A control that addresses the article is an access control policy. A control that addresses the assumption is an asset inventory process, a joiners-movers-leavers process tied to that inventory, and an access review scoped by what the inventory reveals.</p>
+
+            <p>Breach notification obligations follow the same pattern. GDPR's 72-hour notification requirement, and the tighter windows now being introduced under the UK Cyber Security and Resilience Bill for certain sectors, are articles. The assumptions they rest on are that the organisation can detect a breach, assess its nature and likely consequences, and produce a regulatorily adequate notification, all within the prescribed window. A policy stating that breaches will be notified within 72 hours addresses the article. A detection process, a severity assessment procedure, a legal escalation path, and a pre-approved notification template address the assumptions. Without the second group, the first is a statement of intent, not a control.</p>
+
+            <p>The gap between those two things is where most compliance programmes live: in the space between satisfying a clause and delivering the protection the clause was designed to provide.</p>
+
+            <h2>Putting it together</h2>
+
+            <p>A practical workflow for reading a new regulation this way involves three passes. The first is a quick read for intent: what risk is the regulation trying to address, and what would failure look like from the regulator's perspective? This is not about articles; it is about understanding the threat model the regulator was responding to when they wrote the requirement.</p>
+
+            <p>The second pass identifies the load-bearing assumptions. For each major section, ask what must be true about the organisation for this requirement to be fulfillable. These assumptions are the critical path. If any of them fail, the section is not achievable regardless of how many controls are documented.</p>
+
+            <p>The third pass is the gap analysis, beginning with the assumptions rather than the clauses. Which assumptions hold in this organisation? Where do they fail? What work is required to establish the foundations, and what control design becomes possible once those foundations exist?</p>
+
+            <p>The output is not structurally different from a conventional gap analysis: it is still a list of things to do. But the items on the list are grounded in the organisation's actual capability constraints and in the real-world exposures the regulation was designed to address, rather than in a mapping exercise between text and documentation.</p>
+
+            <p>A documentation audit can be satisfied by evidence that a process ran. Regulatory supervision under the current wave of cyber and data protection legislation is increasingly testing something different: not whether the process existed, but what it found, what changed as a result, and how quickly the organisation could demonstrate its position under pressure. Whether that scrutiny comes in the form of a DORA supervisory review, an ICO enforcement investigation following a breach notification, or a competent authority inspection under the UK Cyber Security and Resilience Bill, the question is the same. Reading the regulation with that question in mind from the start produces controls that are ready for it.</p>
+
+        </div>
+    </div>
+</article>
+
+<!-- POST FOOTER -->
+<div class="post-footer">
+    <div class="wrap">
+        <a class="backlink" href="../writing.html">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M19 12H5M5 12l7 7M5 12l7-7"/></svg>
+            Back to Field Notes
+        </a>
+    </div>
+</div>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="contact" style="border-top:1px solid var(--line)">
+    <div class="wrap" style="padding-block: clamp(2.5rem,5vw,4rem)">
+        <div class="colophon" style="margin-top:0; border-top:0">
+            <span>© 2026 Dr Ryan K. Shah · ryankshah.com</span>
+            <span><a href="../writing.html">Back to Field Notes ↗</a></span>
+        </div>
+    </div>
+</footer>
+
+<script>
+    try {
+        var keys = Object.keys(localStorage);
+        for (var i = 0; i < keys.length; i++) {
+            if (keys[i].indexOf('tweak') !== -1 || keys[i].indexOf('Tweak') !== -1) {
+                var v = JSON.parse(localStorage.getItem(keys[i]));
+                if (v && v.palette) document.documentElement.setAttribute('data-palette', v.palette);
+                if (v && v.typeface) document.documentElement.setAttribute('data-type', v.typeface);
+            }
+        }
+    } catch (e) {}
+    document.getElementById('nav').addEventListener('click', function (e) {
+        if (e.target.closest('a')) this.classList.remove('open');
+    });
+</script>
+
+</body>
+</html>

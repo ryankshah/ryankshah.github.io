@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en-GB" data-palette="sage" data-type="newsreader">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Understanding the criticality of securing our robots ~ Dr. Ryan Shah</title>
+<meta name="description" content="From Ancient Greek automata to connected surgical robots - why the safety of modern robotic systems has become a critical cybersecurity challenge, and where we need to start.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Hanken+Grotesk:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/styles.css">
+<style>
+    .post-hero { padding-top: clamp(3rem, 7vw, 5.5rem); padding-bottom: clamp(2rem, 5vw, 4rem); border-bottom: 1px solid var(--line); }
+    .post-hero__kicker { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.6rem; }
+    .post-hero__kicker .tick { width: 2.2rem; height: 1px; background: var(--accent); }
+    .post-topic {
+        display: inline-block; font-family: var(--font-mono);
+        font-size: 0.66rem; letter-spacing: 0.1em; text-transform: uppercase;
+        color: var(--accent); border: 1px solid var(--accent-soft);
+        background: var(--accent-soft); padding: 0.25rem 0.5rem;
+        margin-bottom: 1.2rem;
+    }
+    .post-hero h1 {
+        font-family: var(--font-serif);
+        font-weight: 400;
+        font-size: clamp(2.4rem, 6vw, 5rem);
+        line-height: 1.0;
+        letter-spacing: -0.03em;
+        max-width: 22ch;
+        margin-bottom: 1.4rem;
+    }
+    .post-byline {
+        display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem;
+        font-family: var(--font-mono); font-size: 0.72rem;
+        letter-spacing: 0.08em; text-transform: uppercase;
+        color: var(--ink-faint);
+    }
+    .post-body {
+        max-width: 85ch;
+        margin-inline: auto;
+        padding-block: clamp(3rem, 7vw, 5rem);
+    }
+    .post-body p {
+        font-family: var(--font-serif);
+        font-size: clamp(1.1rem, 2vw, 1.3rem);
+        line-height: 1.75;
+        color: var(--ink-soft);
+        margin-bottom: 1.6rem;
+    }
+    .post-body > p:first-of-type {
+        font-size: clamp(1.2rem, 2.2vw, 1.45rem);
+        color: var(--ink);
+    }
+    .post-body h2 {
+        font-family: var(--font-serif); font-weight: 500;
+        font-size: clamp(1.5rem, 3vw, 2.1rem); line-height: 1.2;
+        letter-spacing: -0.02em;
+        margin: 3rem 0 1.1rem;
+        padding-top: 1rem;
+        border-top: 1px solid var(--line);
+        color: var(--ink);
+    }
+    .post-body h3 {
+        font-family: var(--font-mono); font-size: 0.75rem;
+        letter-spacing: 0.14em; text-transform: uppercase;
+        color: var(--ink-soft); margin: 2.2rem 0 0.8rem;
+    }
+    .post-body blockquote {
+        border-left: 2px solid var(--accent);
+        padding: 0.75rem 0 0.75rem 1.75rem;
+        margin: 2rem 0;
+        font-family: var(--font-serif); font-style: italic;
+        font-size: clamp(1.1rem, 2vw, 1.3rem);
+        line-height: 1.6;
+        color: var(--ink-soft);
+    }
+    .post-body blockquote cite {
+        display: block;
+        font-style: normal;
+        font-family: var(--font-mono);
+        font-size: 0.7rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--ink-faint);
+        margin-top: 0.75rem;
+    }
+    .post-body ul {
+        padding-left: 0;
+        margin-bottom: 1.6rem;
+        list-style: none;
+    }
+    .post-body ul li {
+        font-family: var(--font-serif);
+        font-size: clamp(1.05rem, 2vw, 1.2rem);
+        line-height: 1.7; color: var(--ink-soft);
+        margin-bottom: 0.85rem;
+        padding-left: 1.5rem;
+        position: relative;
+    }
+    .post-body ul li::before {
+        content: "";
+        position: absolute;
+        left: 0; top: 0.65em;
+        width: 5px; height: 5px;
+        background: var(--accent);
+        transform: rotate(45deg);
+    }
+    .takeaway {
+        background: var(--paper-deep);
+        border: 1px solid var(--line);
+        border-left: 3px solid var(--accent);
+        padding: 1.25rem 1.6rem;
+        margin: 2.2rem 0;
+    }
+    .takeaway__label {
+        font-family: var(--font-mono);
+        font-size: 0.66rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--accent);
+        display: block;
+        margin-bottom: 0.6rem;
+    }
+    .takeaway__text {
+        font-family: var(--font-serif);
+        font-style: italic;
+        font-size: clamp(1.05rem, 1.9vw, 1.2rem);
+        line-height: 1.55;
+        color: var(--ink);
+        margin: 0;
+    }
+    .post-body strong { color: var(--ink); font-weight: 600; }
+    .medium-origin {
+        display: flex; align-items: center; gap: 0.6rem;
+        font-family: var(--font-mono); font-size: 0.7rem;
+        letter-spacing: 0.08em; text-transform: uppercase;
+        color: var(--ink-faint); margin-bottom: 2.5rem;
+        padding-bottom: 1.5rem; border-bottom: 1px solid var(--line);
+    }
+    .medium-origin a { color: var(--ink-faint); border-bottom: 1px solid var(--line); }
+    .medium-origin a:hover { color: var(--accent); border-color: var(--accent); }
+    .post-footer { border-top: 1px solid var(--line); padding-block: clamp(2rem, 5vw, 4rem); }
+    .backlink { font-family: var(--font-mono); font-size: 0.74rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-soft); display: inline-flex; align-items: center; gap: 0.5rem; }
+    .backlink:hover { color: var(--accent); }
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<header class="topbar">
+    <div class="wrap topbar__inner">
+        <a class="wordmark" href="../index.html" aria-label="Ryan K. Shah, home">
+            <span class="wordmark__mark">RS</span>
+            <!-- <span class="wordmark__name">Ryan K. Shah <span>/ Dr</span></span> -->
+        </a>
+        <button class="menu-toggle" aria-label="Toggle navigation" onclick="document.getElementById('nav').classList.toggle('open')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+        </button>
+        <nav class="nav" id="nav">
+            <a href="../index.html#practice">Practice</a>
+            <a href="../index.html#trajectory">Trajectory</a>
+            <a href="../index.html#research">Research</a>
+            <a href="../index.html#capability">Capability</a>
+            <a href="../index.html#credentials">Credentials</a>
+            <a href="../writing.html" style="color:var(--ink)">Writing</a>
+            <a class="nav__cta" href="../index.html#contact">
+                Get in touch
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+            </a>
+        </nav>
+    </div>
+</header>
+
+<main>
+
+<!-- POST HERO -->
+<section class="post-hero">
+    <div class="wrap">
+        <a class="backlink" href="../writing.html">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M19 12H5M5 12l7 7M5 12l7-7"/></svg>
+            Field Notes
+        </a>
+        <div class="post-hero__kicker" style="margin-top:1.8rem">
+            <span class="tick"></span>
+            <span class="mono mono--ink">Section 07 · Field Notes</span>
+        </div>
+        <span class="post-topic">Research</span>
+        <h1>Understanding the criticality of securing our robots</h1>
+        <div class="post-byline">
+            <span>Dr. Ryan Shah</span>
+            <span>6 Jun 2026</span>
+            <span>~ 9 min read</span>
+        </div>
+    </div>
+</section>
+
+<!-- POST BODY -->
+<article>
+    <div class="wrap">
+        <div class="post-body">
+
+            <!-- <p class="medium-origin">Originally published on <a href="https://medium.com/@ryan.k.shah/understanding-the-criticality-of-securing-our-robots-33ce84c04f81" target="_blank" rel="noopener">Medium</a> &middot; 4 September 2023</p> -->
+
+            <p>The concepts of what can be described as robots dates back as early as the Ancient Greeks, envisioning artificial humanoid automata - 'Golden Maidens' - that were intelligent.</p>
+
+            <blockquote>
+                "There is intelligence in their hearts, and there is speech in them and strength, and from the immortal gods they have learned how to do things."
+                <cite>- Homer, Iliad 18. 416 ff</cite>
+            </blockquote>
+
+            <p>It is suggested that these robots have learned how to behave intelligently from their creators, which is exactly how early modern robots behaved.</p>
+
+            <p>Many visions and depictions of early robotic systems typically showcased humanoid robots, such as Thea von Harbou's Maschinenmensch, the Japanese Gakutensoku, and many more. Regardless of how robots were depicted, however, many were envisioned as an entity that could perform menial tasks that human beings did not necessarily want to do.</p>
+
+            <p>Moving away from humanoid robots, we started to see the rise of industrial robots from as early as the 1930s, consisting of manipulators and joints to perform motions such as pulling, pushing and lifting objects. However, unlike many of today's robots, these were typically teleoperated - through the use of a controller apparatus. It was not until the early 1950s when Unimate was invented - an industrial robot that was digitally operated and programmable to perform an array of tasks - and deployed in the early 1960s.</p>
+
+            <p>With the advances of mechanical and electrical engineering, we started to see more complex robotic systems, making use of sensors such as rangefinders for tasks like navigation and force feedback. One key example includes the KUKA IR 160/60 robots developed in the early 1980s, which played a significant role in automotive production. In the 1990s, we saw the use of robots in assisted surgery - one of the many domains in which robots began interacting directly with, and operating alongside, humans in shared workspaces.</p>
+
+            <p><strong>By the beginning of the early 2000s, we started to see robots moving into more critical environments.</strong></p>
+
+            <h2>Robots in a connected world</h2>
+
+            <p>With the rise of Industry 4.0, coupled with significant advances in computer science and engineering, we have seen the world of robotics take a graceful leap into many different areas, including the automotive industry, medicine and the military, to name a few.</p>
+
+            <p>In 2022, the Global Robotics Market was valued at over $72 billion, forecasted to exceed $140 billion in 2027, with many billions being further invested globally in VC-backed start-up companies. In particular, we are seeing more installations in the automotive industry and commercial warehouses, where robots are deployed to provide higher levels of efficiency, accuracy and flexibility across our supply chains.</p>
+
+            <p>To achieve this, robotic systems are becoming increasingly connected - both to the public Internet and to internal networks (such as within a hospital) - to enable higher levels of automation, including delegating vision computation processes to the cloud. Unfortunately, connectivity now means that the safety of these robots in the real world, and how they operate or behave, has become a concern for cybersecurity.</p>
+
+            <div class="takeaway">
+                <span class="takeaway__label">Takeaway 1</span>
+                <p class="takeaway__text">"Being connected results in safety becoming a cybersecurity challenge"</p>
+            </div>
+
+            <p>Consider a surgical robot deployed in a hospital. As a patient, our assurance that everything will go well is predominantly placed on the hospital, which employs a team of professionals trained and certified to carry out the necessary procedures. We trust that those professionals can perform surgeries in a time-critical manner, as safely as possible, with the highest levels of accuracy to minimise the risk of complications.</p>
+
+            <p>When we consider a robot, however, our assurance is no longer guaranteed in the same way - it now rests on the robot's software and hardware components. With these robots being increasingly connected, they rely on the lowest possible latency in communications, as well as the highest degree of accuracy and precision for the tasks they carry out. If the robot is performing a scalpel incision on a patient, even the slightest drop in accuracy can mean the difference between life and death. If this robot were under attack - for example, through a Denial of Service attack that leaves it unable to communicate in a timely manner - complex decisions can no longer be made in time-critical scenarios, putting those who interact with the robot at significantly higher risk of serious complications.</p>
+
+            <p>Because robots both operate and communicate with various entities across both the digital and physical world, it is important to discuss how security impacts safety in both contexts - particularly for robots deployed in safety-critical environments.</p>
+
+            <h2>The physical domain</h2>
+
+            <p>Many robotic systems can be classed as cyber-physical systems, one of the core trends of Industry 4.0 alongside automation and data exchange. Unlike traditional computing systems, whose hardware is predominantly only interacted with by users (a keyboard or a monitor), robotic systems physically interact with the real world - influenced by the results of processing and communications in the cyber domain.</p>
+
+            <p>Consider a vision system in an autonomous vehicle that feeds data into decision-making processes to inform whether a hazard has been recognised and the vehicle should halt. In manufacturing, robot arms may lift or move heavy materials, or carry out more specific tasks such as deciding how to cut, shape or weld components together.</p>
+
+            <p>With regard to the safety of these robots in the physical domain, the first thing that comes to mind is the use of safety mechanisms. In connected robotic systems, the assurance we place on these systems now relates to their software and hardware components.</p>
+
+            <p>Taking automated manufacturing robots as an example: the requirements for flexibility and adaptability - on top of accuracy and precision - further exacerbate the dynamic nature and complexity of the environment they work in. Many of these robots operate in collaboration with, or in environments near, humans. The typical risks associated with working near machinery, such as collision or compression, still exist. However, given the dynamic nature of how robots operate, taking precautions to mitigate the impact of such hazards is highly unpredictable. Traditional machinery follows a fixed setup phase, carries out a specific range of motion and performs only pre-programmed tasks that never vary. In a connected, autonomous assembly line, environmental factors can influence how a robot behaves - meaning traditional safety mechanisms may no longer be adequate. When mobile robots enter this equation, it is simply impossible to fence off an operating area.</p>
+
+            <p>Fortunately, many connected robotic systems leverage sensing equipment to provide flexible, fenceless safety systems ideal for close-proximity human interaction. However, some sensing equipment is expensive, which may lead manufacturers or installers to rely on off-the-shelf components to reduce costs. While this may address economic concerns, it does not necessarily guarantee reliability, proper calibration or adequate component life - all of which pose a threat to the accuracy of sensing equipment and, ultimately, to the effectiveness of safety mechanisms.</p>
+
+            <p>And of course, this is only talking about physical domain impacts - never mind the threats posed to sensors that are connected.</p>
+
+            <p>It is also important to consider the potential for physical compromise. The availability of robots is a significant property that must be upheld, yet is unfortunately the most easily influenced. It has been shown that if a jamming attack - carried out by interfering with communications and signals - was placed at significant points in a road network, this could induce emergency stops at inopportune times, with potentially catastrophic consequences for passengers and other road users. Even if the attack only succeeded in redirecting a vehicle, the next best path would have to be taken - and if an attacker could effectively map where to place these disruptions, entire road networks could come to a halt.</p>
+
+            <p>Aside from jamming, replacing sensors with faulty or malicious ones can lead to unintended perturbations in sensor data or captured images. Several incidents have been reported of vehicles incorrectly recognising hazards, leading to major accidents. Sensors are only one type of component that makes up an entire robot - so these two challenges, which represent only a small part of the full threat picture, are just a drop in the pond compared to what we need to understand before deploying robots in the real world.</p>
+
+            <div class="takeaway">
+                <span class="takeaway__label">Takeaway 2</span>
+                <p class="takeaway__text">"There are many different components in robots, each of which may have their own security requirements and threats"</p>
+            </div>
+
+            <h2>The cyber domain</h2>
+
+            <p>With robots becoming increasingly connected, many forms of physical compromise can now be carried out from the cyber domain - with significant impacts on the physical domain, and vice versa.</p>
+
+            <div class="takeaway">
+                <span class="takeaway__label">Takeaway 3</span>
+                <p class="takeaway__text">"Attacks in the cyber domain can pose a threat to anything in the physical domain, and vice versa"</p>
+            </div>
+
+            <p>In many modern robots, the component considered most critical when threats are concerned is the electronic control system, which handles input to the robot - commands from a controller or decisions from neural networks - and translates these into actions in the physical domain. Simply put, the majority of all components that make up a robot are, in some way, tied to this master electronic control system.</p>
+
+            <p>While there are many attacks possible in the cyber domain, primarily concerning the networks through which robots communicate, consider just a selection of the threats we need to be aware of before deploying robots in real-world, safety-critical scenarios.</p>
+
+            <p>One way to classify certain types of cyber attacks on robots is through three categories: attacks that impact the intended actions of a robot <em>(intention modification)</em>, attacks that modify messages flowing within networks <em>(intention manipulation)</em>, and attacks that cause the robot to ignore an intended action and do something entirely different <em>(hijacking)</em>. Attackers can modify commands - even those in flight - compromising integrity in real time. If these commands are tampered with, attackers can manipulate how a robot behaves and potentially cause damage to itself, its environment and nearby humans. While existing solutions such as message integrity checking or encrypted communication channels can help prevent an attacker reading messages, this becomes increasingly more challenging when robots are connected to the public Internet where attackers can target them from anywhere, not just internal networks.</p>
+
+            <p>A study in 2018 showed that a large number of robots were exposed to the public Internet - many of which were legitimate robots deployed in the real world, not just in research. Because of this, these robots could be moved to different locations or remotely controlled in other ways, posing potentially significant risks to the robot and its environment. Concerningly, it was not just actuators such as robot arms that could be accessed, but a variety of different sensors including laser rangefinders, cameras and GPS devices. The implications of giving a remote attacker access to a robot's location, or what it sees through its cameras, are significant.</p>
+
+            <div class="takeaway">
+                <span class="takeaway__label">Takeaway 4</span>
+                <p class="takeaway__text">"There are many different attacks in the cyber domain, with direct and secondary impacts"</p>
+            </div>
+
+            <h2>Where do we go from here?</h2>
+
+            <p>This article does not provide in-depth analysis of the various threats posed to the safety of robots in both the cyber and physical world - it was not meant to. The goal is simply to help readers understand why it is important to focus on securing our robots <em>now</em>, rather than waiting too late and rushing to find quick solutions to current dangers. In most cases, it is far more cost-effective to ensure preventative measures are rigorously tested and put in place to mitigate or entirely prevent attacks from happening, rather than solving problems as they occur.</p>
+
+            <p>A narrow summary of the various things we can start to do across these two domains includes the following:</p>
+
+            <ul>
+                <li>Ensure the integrity (no modifications) and authenticity (verify the sender) of commands or messages to and from robots</li>
+                <li>Maintain tamper-resistant logs and trails of evidence, which allows us to audit and locate sources of failures and malicious behaviours</li>
+                <li>Secure communication channels from the likes of tampering, addition of malicious input and hijacking</li>
+                <li>Mitigate the impact of physical domain attacks such as jamming and signal saturation</li>
+                <li>Ensure that only authenticated and authorised components are used in robots to prevent physical tampering - including not just primary components like sensors and robot arms, but even power and ethernet cables</li>
+                <li>Ensure the security of robots at start-up before they begin to operate normally (secure boot)</li>
+            </ul>
+
+            <div class="takeaway">
+                <span class="takeaway__label">Takeaway 5</span>
+                <p class="takeaway__text">"It is important to get ahead of attackers and mitigate future risks to robots"</p>
+            </div>
+
+            <p>More in-depth discussions and additional avenues beyond the physical and cyber domains can be found in my research publications.</p>
+
+        </div>
+    </div>
+</article>
+
+<!-- POST FOOTER -->
+<div class="post-footer">
+    <div class="wrap" style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:1rem">
+        <a class="backlink" href="../writing.html">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M19 12H5M5 12l7 7M5 12l7-7"/></svg>
+            Back to Field Notes
+        </a>
+        <a class="backlink" href="../index.html#research">
+            Read the research
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+    </div>
+</div>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="contact" style="border-top:1px solid var(--line)">
+    <div class="wrap" style="padding-block: clamp(2.5rem,5vw,4rem)">
+        <div class="colophon" style="margin-top:0; border-top:0">
+            <span>© 2026 Dr Ryan K. Shah · ryankshah.com</span>
+            <span><a href="../writing.html">Back to Field Notes ↗</a></span>
+        </div>
+    </div>
+</footer>
+
+<script>
+    try {
+        var keys = Object.keys(localStorage);
+        for (var i = 0; i < keys.length; i++) {
+            if (keys[i].indexOf('tweak') !== -1 || keys[i].indexOf('Tweak') !== -1) {
+                var v = JSON.parse(localStorage.getItem(keys[i]));
+                if (v && v.palette) document.documentElement.setAttribute('data-palette', v.palette);
+                if (v && v.typeface) document.documentElement.setAttribute('data-type', v.typeface);
+            }
+        }
+    } catch (e) {}
+    document.getElementById('nav').addEventListener('click', function (e) {
+        if (e.target.closest('a')) this.classList.remove('open');
+    });
+</script>
+
+</body>
+</html>

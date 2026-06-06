@@ -1,1553 +1,482 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-GB" data-palette="sage" data-type="newsreader">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dr. Ryan Shah | Cybersecurity & GRC Professional</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary: #6366f1;
-            --primary-light: #818cf8;
-            --primary-dark: #4f46e5;
-            --accent: #22d3ee;
-            --accent-green: #34d399;
-            --bg-primary: #0a0a0f;
-            --bg-secondary: #111118;
-            --bg-card: #16161f;
-            --bg-card-hover: #1c1c28;
-            --text-primary: #ffffff;
-            --text-secondary: #a1a1aa;
-            --text-muted: #71717a;
-            --border: rgba(255, 255, 255, 0.08);
-            --border-hover: rgba(255, 255, 255, 0.15);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Inter', -apple-system, sans-serif;
-            background: var(--bg-primary);
-            color: var(--text-primary);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        /* Scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: var(--bg-secondary);
-        }
-        ::-webkit-scrollbar-thumb {
-            background: var(--border-hover);
-            border-radius: 4px;
-        }
-
-        /* Navigation */
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            padding: 1rem 4rem;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            background: rgba(10, 10, 15, 0.8);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--border);
-        }
-
-        .logo {
-            font-weight: 700;
-            font-size: 1.25rem;
-            letter-spacing: -0.02em;
-            background: linear-gradient(135deg, var(--primary-light), var(--accent));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .nav-links {
-            display: flex;
-            align-items: center;
-            gap: 2rem;
-        }
-
-        .nav-links a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 500;
-            transition: color 0.2s;
-        }
-
-        .nav-links a:hover {
-            color: var(--text-primary);
-        }
-
-        .nav-cta {
-            display: flex;
-            gap: 1rem;
-        }
-
-        .btn {
-            padding: 0.7rem 1.4rem;
-            border-radius: 8px;
-            font-size: 0.9rem;
-            font-weight: 500;
-            text-decoration: none;
-            transition: all 0.2s;
-            cursor: pointer;
-            border: none;
-            font-family: inherit;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .btn-ghost {
-            background: transparent;
-            color: var(--text-secondary);
-            border: 1px solid var(--border);
-        }
-
-        .btn-ghost:hover {
-            color: var(--text-primary);
-            border-color: var(--border-hover);
-            background: var(--bg-card);
-        }
-
-        .btn-primary {
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            color: white;
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(99, 102, 241, 0.35);
-        }
-
-        .btn svg {
-            width: 16px;
-            height: 16px;
-        }
-
-        /* Mobile menu toggle */
-        .mobile-menu-toggle {
-            display: none;
-            background: none;
-            border: none;
-            color: var(--text-primary);
-            cursor: pointer;
-            padding: 0.5rem;
-        }
-
-        .mobile-menu-toggle svg {
-            width: 24px;
-            height: 24px;
-        }
-
-        /* Hero Section */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            padding: 8rem 4rem 4rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero-bg {
-            position: absolute;
-            inset: 0;
-            background: 
-                radial-gradient(ellipse 80% 50% at 50% -20%, rgba(99, 102, 241, 0.15) 0%, transparent 50%),
-                radial-gradient(ellipse 50% 50% at 80% 50%, rgba(34, 211, 238, 0.08) 0%, transparent 50%),
-                radial-gradient(ellipse 50% 50% at 20% 80%, rgba(99, 102, 241, 0.08) 0%, transparent 50%);
-            pointer-events: none;
-        }
-
-        .hero-grid {
-            position: absolute;
-            inset: 0;
-            background-image: 
-                linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
-            background-size: 60px 60px;
-            mask-image: radial-gradient(ellipse 80% 50% at 50% 50%, black 0%, transparent 70%);
-            pointer-events: none;
-        }
-
-        .hero-content {
-            max-width: 800px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .hero-container {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 4rem;
-            max-width: 1400px;
-            width: 100%;
-            margin: 0 auto;
-        }
-
-        .hero-headshot {
-            flex-shrink: 0;
-            position: relative;
-            z-index: 1;
-        }
-
-        .hero-headshot img {
-            width: 320px;
-            height: 320px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 4px solid var(--border);
-            box-shadow:
-                0 0 60px rgba(99, 102, 241, 0.3),
-                0 0 100px rgba(34, 211, 238, 0.15);
-            animation: fadeInUp 0.6s ease-out 0.5s both;
-            transition: all 0.3s ease;
-        }
-
-        .hero-headshot img:hover {
-            border-color: var(--primary);
-            transform: scale(1.02);
-            box-shadow:
-                0 0 80px rgba(99, 102, 241, 0.4),
-                0 0 120px rgba(34, 211, 238, 0.2);
-        }
-
-        .hero-headshot::before {
-            content: '';
-            position: absolute;
-            inset: -8px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--primary), var(--accent));
-            opacity: 0.2;
-            z-index: -1;
-            animation: pulse 3s infinite;
-        }
-
-        .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.5rem 1rem;
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 100px;
-            font-size: 0.85rem;
-            color: var(--text-secondary);
-            margin-bottom: 1.5rem;
-            animation: fadeInUp 0.6s ease-out;
-        }
-
-        .badge-icon {
-            width: 8px;
-            height: 8px;
-            background: var(--accent-green);
-            border-radius: 50%;
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(52, 211, 153, 0.4); }
-            50% { opacity: 0.8; box-shadow: 0 0 0 6px rgba(52, 211, 153, 0); }
-        }
-
-        .hero h1 {
-            font-size: clamp(2.5rem, 6vw, 4rem);
-            font-weight: 700;
-            line-height: 1.1;
-            letter-spacing: -0.03em;
-            margin-bottom: 1.5rem;
-            animation: fadeInUp 0.6s ease-out 0.1s both;
-        }
-
-        .hero h1 .gradient {
-            background: linear-gradient(135deg, var(--primary-light), var(--accent));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .hero-subtitle {
-            font-size: 1.15rem;
-            color: var(--text-secondary);
-            max-width: 600px;
-            margin-bottom: 2rem;
-            animation: fadeInUp 0.6s ease-out 0.2s both;
-            line-height: 1.7;
-        }
-
-        .hero-ctas {
-            display: flex;
-            gap: 1rem;
-            margin-bottom: 3rem;
-            animation: fadeInUp 0.6s ease-out 0.3s both;
-            flex-wrap: wrap;
-        }
-
-        .hero-links {
-            display: flex;
-            gap: 1.5rem;
-            animation: fadeInUp 0.6s ease-out 0.4s both;
-            flex-wrap: wrap;
-        }
-
-        .hero-link {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: var(--text-muted);
-            text-decoration: none;
-            font-size: 0.9rem;
-            transition: color 0.2s;
-        }
-
-        .hero-link:hover {
-            color: var(--text-primary);
-        }
-
-        .hero-link svg {
-            width: 18px;
-            height: 18px;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Section Styling */
-        section {
-            padding: 6rem 4rem;
-        }
-
-        .section-header {
-            max-width: 600px;
-            margin-bottom: 3rem;
-        }
-
-        .section-label {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.8rem;
-            color: var(--primary-light);
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
-            margin-bottom: 0.75rem;
-        }
-
-        .section-title {
-            font-size: clamp(1.75rem, 4vw, 2.25rem);
-            font-weight: 700;
-            letter-spacing: -0.02em;
-            margin-bottom: 1rem;
-        }
-
-        .section-subtitle {
-            color: var(--text-secondary);
-            font-size: 1.05rem;
-        }
-
-        /* About Section */
-        .about-section {
-            background: var(--bg-secondary);
-            border-top: 1px solid var(--border);
-            border-bottom: 1px solid var(--border);
-        }
-
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .about-content p {
-            color: var(--text-secondary);
-            margin-bottom: 1.5rem;
-            font-size: 1.05rem;
-            line-height: 1.8;
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1.5rem;
-        }
-
-        .stat-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 1.5rem;
-            text-align: center;
-            transition: all 0.3s;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .stat-card:hover {
-            border-color: var(--primary);
-            transform: translateY(-4px);
-        }
-
-        .stat-number {
-            font-size: 2.5rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, var(--primary-light), var(--accent));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            line-height: 1;
-            margin-bottom: 0.5rem;
-        }
-
-        .stat-label {
-            color: var(--text-secondary);
-            font-size: 0.85rem;
-        }
-
-        /* Experience Section */
-        .experience-section {
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        .timeline {
-            position: relative;
-            padding-left: 2rem;
-        }
-
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background: linear-gradient(180deg, var(--primary), var(--accent), transparent);
-        }
-
-        .timeline-item {
-            position: relative;
-            padding-bottom: 3rem;
-        }
-
-        .timeline-item:last-child {
-            padding-bottom: 0;
-        }
-
-        .timeline-dot {
-            position: absolute;
-            left: -2rem;
-            top: 0.5rem;
-            width: 12px;
-            height: 12px;
-            background: var(--primary);
-            border-radius: 50%;
-            transform: translateX(-50%);
-            box-shadow: 0 0 0 4px var(--bg-primary);
-        }
-
-        .timeline-content {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 1.75rem;
-            transition: all 0.3s;
-        }
-
-        .timeline-content:hover {
-            border-color: var(--border-hover);
-            transform: translateX(4px);
-        }
-
-        .timeline-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 0.75rem;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-        }
-
-        .timeline-title {
-            font-size: 1.15rem;
-            font-weight: 600;
-        }
-
-        .timeline-date {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.8rem;
-            color: var(--primary-light);
-            background: rgba(99, 102, 241, 0.1);
-            padding: 0.25rem 0.75rem;
-            border-radius: 100px;
-        }
-
-        .timeline-company {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-            margin-bottom: 1rem;
-        }
-
-        .timeline-description {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-            line-height: 1.7;
-        }
-
-        /* Publications Section */
-        .publications-section {
-            background: var(--bg-secondary);
-            border-top: 1px solid var(--border);
-            border-bottom: 1px solid var(--border);
-        }
-
-        .publications-wrapper {
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        .publication-list {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .publication-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 1.5rem;
-            transition: all 0.3s;
-            display: flex;
-            gap: 1.25rem;
-            align-items: flex-start;
-        }
-
-        .publication-card:hover {
-            border-color: var(--accent);
-            transform: translateX(4px);
-        }
-
-        .publication-year {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.8rem;
-            color: var(--accent);
-            background: rgba(34, 211, 238, 0.1);
-            padding: 0.35rem 0.75rem;
-            border-radius: 6px;
-            white-space: nowrap;
-            flex-shrink: 0;
-        }
-
-        .publication-info h4 {
-            font-size: 1rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            line-height: 1.4;
-        }
-
-        .publication-authors {
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-            margin-bottom: 0.5rem;
-        }
-
-        .publication-venue {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            font-style: italic;
-        }
-
-        /* Skills Section */
-        .skills-wrapper {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.5rem;
-        }
-
-        .skill-category {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 2rem;
-            transition: all 0.3s;
-        }
-
-        .skill-category:hover {
-            border-color: var(--primary);
-        }
-
-        .skill-category-icon {
-            width: 48px;
-            height: 48px;
-            background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(34, 211, 238, 0.1));
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 1.25rem;
-        }
-
-        .skill-category-icon svg {
-            width: 24px;
-            height: 24px;
-            color: var(--primary-light);
-        }
-
-        .skill-category h3 {
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
-
-        .skill-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-        }
-
-        .skill-tag {
-            font-size: 0.8rem;
-            padding: 0.35rem 0.75rem;
-            background: var(--bg-secondary);
-            border: 1px solid var(--border);
-            border-radius: 6px;
-            color: var(--text-secondary);
-        }
-
-        /* Education Section */
-        .education-section {
-            max-width: 1000px;
-            margin: 0 auto;
-            background: var(--bg-secondary);
-            border-top: 1px solid var(--border);
-            border-bottom: 1px solid var(--border);
-        }
-
-        .education-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1.5rem;
-        }
-
-        .education-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 2rem;
-            transition: all 0.3s;
-        }
-
-        .education-card:hover {
-            border-color: var(--primary);
-            transform: translateY(-4px);
-        }
-
-        .education-degree {
-            font-size: 1.15rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-
-        .education-school {
-            color: var(--primary-light);
-            font-size: 0.95rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .education-years {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            margin-bottom: 1rem;
-        }
-
-        .education-description {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            line-height: 1.7;
-        }
-
-        /* Certifications Section */
-        .certs-wrapper {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .certs-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 1rem;
-        }
-
-        .cert-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 10px;
-            padding: 1.25rem 1.5rem;
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            transition: all 0.3s;
-        }
-
-        .cert-card:hover {
-            border-color: var(--accent);
-            transform: translateX(4px);
-        }
-
-        .cert-icon {
-            width: 40px;
-            height: 40px;
-            background: linear-gradient(135deg, rgba(34, 211, 238, 0.2), rgba(52, 211, 153, 0.1));
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-        }
-
-        .cert-icon svg {
-            width: 20px;
-            height: 20px;
-            color: var(--accent);
-        }
-
-        .cert-info h4 {
-            font-size: 0.95rem;
-            font-weight: 500;
-            margin-bottom: 0.25rem;
-        }
-
-        .cert-info span {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-        }
-
-        /* Contact Section */
-        .contact-section {
-            text-align: center;
-            max-width: 700px;
-            margin: 0 auto;
-        }
-
-        .contact-section .section-header {
-            max-width: 100%;
-        }
-
-        .contact-links {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-top: 2rem;
-            flex-wrap: wrap;
-        }
-
-        .contact-link {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 1rem 1.5rem;
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 10px;
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-size: 0.95rem;
-            transition: all 0.3s;
-        }
-
-        .contact-link:hover {
-            border-color: var(--primary);
-            color: var(--text-primary);
-            transform: translateY(-2px);
-        }
-
-        .contact-link svg {
-            width: 20px;
-            height: 20px;
-        }
-
-        /* Footer */
-        footer {
-            padding: 2rem 4rem;
-            border-top: 1px solid var(--border);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-
-        footer p {
-            color: var(--text-muted);
-            font-size: 0.85rem;
-        }
-
-        .footer-links {
-            display: flex;
-            gap: 1.5rem;
-            flex-wrap: wrap;
-        }
-
-        .footer-links a {
-            color: var(--text-muted);
-            text-decoration: none;
-            font-size: 0.85rem;
-            transition: color 0.2s;
-        }
-
-        .footer-links a:hover {
-            color: var(--text-primary);
-        }
-
-        /* ============== RESPONSIVE STYLES ============== */
-
-        /* Tablet (768px - 1024px) */
-        @media (max-width: 1024px) {
-            nav {
-                padding: 1rem 2rem;
-            }
-
-            section {
-                padding: 4rem 2rem;
-            }
-
-            footer {
-                padding: 2rem;
-            }
-
-            .about-grid {
-                grid-template-columns: 1fr;
-                gap: 3rem;
-            }
-
-            .hero-headshot img {
-                width: 260px;
-                height: 260px;
-            }
-
-            .hero-container {
-                gap: 3rem;
-            }
-
-            .skills-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .education-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .nav-links {
-                gap: 1.5rem;
-            }
-
-            .nav-links a {
-                font-size: 0.85rem;
-            }
-        }
-
-        /* Mobile (max 768px) */
-        @media (max-width: 768px) {
-            nav {
-                padding: 1rem 1.5rem;
-            }
-
-            .nav-links {
-                display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                right: 0;
-                background: var(--bg-primary);
-                border-bottom: 1px solid var(--border);
-                flex-direction: column;
-                padding: 1rem 1.5rem;
-                gap: 1rem;
-            }
-
-            .nav-links.active {
-                display: flex;
-            }
-
-            .mobile-menu-toggle {
-                display: block;
-            }
-
-            .nav-cta {
-                display: none;
-            }
-
-            .hero {
-                padding: 6rem 1.5rem 3rem;
-                min-height: auto;
-            }
-
-            .hero-container {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .hero-headshot {
-                order: -1;
-            }
-
-            .hero-headshot img {
-                width: 180px;
-                height: 180px;
-            }
-
-            .hero-content {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .hero h1 {
-                font-size: 2rem;
-            }
-
-            .hero-subtitle {
-                font-size: 1rem;
-            }
-
-            .hero-ctas {
-                flex-direction: column;
-            }
-
-            .hero-ctas .btn {
-                width: 100%;
-                justify-content: center;
-            }
-
-            .hero-links {
-                justify-content: center;
-            }
-
-            section {
-                padding: 3rem 1.5rem;
-            }
-
-            .section-title {
-                font-size: 1.5rem;
-            }
-
-            .stats-grid {
-                grid-template-columns: 1fr 1fr;
-                gap: 1rem;
-            }
-
-            .stat-card {
-                padding: 1.25rem 1rem;
-            }
-
-            .stat-number {
-                font-size: 1.75rem;
-            }
-
-            .timeline {
-                padding-left: 1.5rem;
-            }
-
-            .timeline-dot {
-                left: -1.5rem;
-            }
-
-            .timeline-content {
-                padding: 1.25rem;
-            }
-
-            .timeline-header {
-                flex-direction: column;
-            }
-
-            .publication-card {
-                flex-direction: column;
-                gap: 0.75rem;
-            }
-
-            .skills-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .skill-category {
-                padding: 1.5rem;
-            }
-
-            .education-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .education-card {
-                padding: 1.5rem;
-            }
-
-            .certs-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .contact-links {
-                flex-direction: column;
-                align-items: stretch;
-            }
-
-            .contact-link {
-                justify-content: center;
-            }
-
-            footer {
-                flex-direction: column;
-                text-align: center;
-                padding: 1.5rem;
-            }
-
-            .footer-links {
-                justify-content: center;
-            }
-        }
-
-        /* Small mobile (max 480px) */
-        @media (max-width: 480px) {
-            .hero h1 {
-                font-size: 1.75rem;
-            }
-
-            .hero-badge {
-                font-size: 0.75rem;
-                padding: 0.4rem 0.75rem;
-            }
-
-            .stats-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .hero-links {
-                flex-direction: column;
-                align-items: center;
-                gap: 1rem;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dr. Ryan Shah ~ Cyber Security, GRC & Data Protection</title>
+<meta name="description" content="Dr Ryan K. Shah. Data Protection Officer and Senior Security Consultant. Published researcher in side-channel security, and a practitioner across ISO 27001, DORA, NIS 2 and the NCSC CAF.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Hanken+Grotesk:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/styles.css">
 </head>
 <body>
-<!-- Navigation -->
-<nav>
-    <div class="logo">RS</div>
-    <button class="mobile-menu-toggle" onclick="document.querySelector('.nav-links').classList.toggle('active')">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
-    </button>
-    <div class="nav-links">
-        <a href="#about">About</a>
-        <a href="#experience">Experience</a>
-        <a href="#publications">Publications</a>
-        <a href="#skills">Skills</a>
-        <a href="#education">Education</a>
-        <a href="#contact">Contact</a>
-    </div>
-    <div class="nav-cta">
-        <a href="https://www.sapphire.net/contact-us/" target="_blank" class="btn btn-primary">
-            Get in Touch
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+
+<!-- ========================== TOP BAR ========================== -->
+<header class="topbar">
+    <div class="wrap topbar__inner">
+        <a class="wordmark" href="#top" aria-label="Ryan K. Shah, home">
+            <span class="wordmark__mark">RS</span>
+            <!-- <span class="wordmark__name">Ryan Shah <span>/ Dr.</span></span> -->
         </a>
+        <button class="menu-toggle" aria-label="Toggle navigation" onclick="document.getElementById('nav').classList.toggle('open')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+        </button>
+        <nav class="nav" id="nav">
+            <a href="#practice">Practice</a>
+            <a href="#trajectory">Trajectory</a>
+            <a href="#research">Research</a>
+            <a href="#capability">Capability</a>
+            <a href="#credentials">Credentials</a>
+            <a href="writing.html">Writing</a>
+            <a class="nav__cta" href="#contact">
+                Get in touch
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+            </a>
+        </nav>
     </div>
-</nav>
+</header>
 
-<!-- Hero Section -->
+<main id="top">
+
+<!-- ========================== HERO ========================== -->
 <section class="hero">
-    <div class="hero-bg"></div>
-    <div class="hero-grid"></div>
-    <div class="hero-container">
-        <div class="hero-content">
-            <div class="hero-badge">
-                <span class="badge-icon"></span>
-                Get in touch with Sapphire for consultancy with me!
+    <div class="wrap relative">
+        <div class="hero__grid">
+            <div>
+                <div class="hero__kicker">
+                    <span class="tick"></span>
+                    <span class="mono mono--ink">Governance · Risk · Compliance · Data Protection</span>
+                </div>
+                <h1><em>Dr.</em> Ryan&nbsp;<br>Shah</h1>
+                <p class="hero__lead">A <b>researcher turned practitioner</b> who reads regulation like a threat model, and builds assurance that holds up under scrutiny.</p>
+                <div class="hero__actions">
+                    <a class="btn btn--solid" href="#contact">
+                        Start a conversation
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+                    </a>
+                    <a class="btn btn--ghost" href="#research">Read the research</a>
+                </div>
             </div>
-            <h1>Dr. Ryan Shah<br><span class="gradient">Cybersecurity & GRC</span></h1>
-            <p class="hero-subtitle">Data Protection Officer & Senior Security Consultant with expertise spanning academic research, regulatory compliance, and industry consultancy. Specialising in ISO 27001, DORA, NIS 2, and NCSC CAF frameworks.</p>
-            <div class="hero-ctas">
-                <a href="https://www.sapphire.net/contact-us/" target="_blank" class="btn btn-primary">
-                    Get in Touch
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
-                </a>
-                <a href="#experience" class="btn btn-ghost">View Experience</a>
-            </div>
-            <div class="hero-links">
-                <a href="https://github.com/ryankshah" class="hero-link" target="_blank">
-                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-                    GitHub
-                </a>
-                <a href="https://linkedin.com/in/ryankshah" class="hero-link" target="_blank">
-                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-                    LinkedIn
-                </a>
-                <a href="https://scholar.google.com/citations?user=ctJ21fwAAAAJ" class="hero-link" target="_blank">
-                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M5.242 13.769L0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269zM12 10a7 7 0 1 0 0 14 7 7 0 0 0 0-14z"/></svg>
-                    Scholar
-                </a>
-            </div>
-        </div>
-        <div class="hero-headshot">
-            <!-- Replace 'your-headshot.jpg' with your actual image path -->
-            <img src="headshot.png" alt="Dr. Ryan Shah">
+
+            <figure class="hero__portrait">
+                <img id="portrait" src="headshot2.png" alt="Dr Ryan Shah" />
+                <figcaption class="hero__fig">
+                    <span class="mono mono--accent">FIG.01</span>
+                    <span class="mono">A happy security practitioner</span>
+                </figcaption>
+            </figure>
         </div>
     </div>
 </section>
 
-<!-- About Section -->
-<section class="about-section" id="about">
-    <div class="about-grid">
-        <div class="about-content">
-            <div class="section-header">
-                <div class="section-label">// About</div>
-                <h2 class="section-title">Bridging Research & Practice</h2>
-            </div>
-            <p>I am a cybersecurity and governance, risk and compliance (GRC) professional with experience spanning academic research, regulatory compliance, and industry consultancy.</p>
-            <p>I have a proven ability to operate effectively in time-critical environments, combining strong analytical skills with practical delivery across security, privacy, and resilience programmes.</p>
-            <p>My background includes peer-reviewed cybersecurity research, regulatory and standards-based assurance, and leading client engagements, supported by experience in teaching and communicating complex technical and regulatory concepts to diverse audiences.</p>
-        </div>
-        <div class="stats-grid">
-            <div class="stat-card">
-                <div class="stat-number">PhD</div>
-                <div class="stat-label">Cybersecurity Research</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number">10+</div>
-                <div class="stat-label">Years in Security</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number">DPO</div>
-                <div class="stat-label">Data Protection Officer</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number">MCIIS</div>
-                <div class="stat-label">Chartered Member</div>
+<!-- ========================== 01 PRACTICE ========================== -->
+<section class="section" id="practice">
+    <div class="wrap">
+        <div class="section__head reveal">
+            <div class="section__index">
+                <span class="section__no">01</span>
+                <h2 class="section__title">Practice</h2>
+                <span class="section__aside">Who I am<br>and how I work</span>
             </div>
         </div>
-    </div>
-</section>
 
-<!-- Experience Section -->
-<section id="experience">
-    <div class="experience-section">
-        <div class="section-header">
-            <div class="section-label">// Experience</div>
-            <h2 class="section-title">Career Journey</h2>
-            <p class="section-subtitle">From academic research to industry leadership in cybersecurity and GRC.</p>
-        </div>
-        <div class="timeline">
-            <div class="timeline-item">
-                <div class="timeline-dot"></div>
-                <div class="timeline-content">
-                    <div class="timeline-header">
-                        <h3 class="timeline-title">Data Protection Officer</h3>
-                        <span class="timeline-date">2025 – Present</span>
+        <div class="practice">
+            <p class="practice__lead reveal">I sit where <em>academic rigour</em> meets the unglamorous reality of getting an organisation certified, compliant and genuinely more resilient.</p>
+            <div class="practice__body reveal">
+                <p>I am a cyber security and governance, risk and compliance professional with experience spanning peer-reviewed research, regulatory compliance and industry consultancy. I hold a PhD in information and network security & privacy, and work as both a Lead GRC Consultant and Data Protection Officer.</p>
+                <p>I work well in time-critical environments, combining analytical depth with practical delivery across security, privacy and resilience programmes. My background includes leading client engagements, building standards-based assurance, and communicating complex technical and regulatory ideas to very different audiences.</p>
+                <div class="duo">
+                    <div class="duo__cell">
+                        <h4>The researcher</h4>
+                        <p>Ten peer-reviewed papers on side-channels, IoT safety and traffic analysis. I treat evidence as the product.</p>
                     </div>
-                    <p class="timeline-company">Sapphire | United Kingdom</p>
-                    <p class="timeline-description">Appointed DPO providing independent oversight and strategic advice on data protection compliance. Responsible for ensuring adherence to UK and EU data protection legislation including GDPR. Lead privacy governance design, implementation, and monitoring including policies, training, audits, and records of processing. Own breach management and incident response, and lead delivery of DPIAs and DSARs.</p>
-                </div>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-dot"></div>
-                <div class="timeline-content">
-                    <div class="timeline-header">
-                        <h3 class="timeline-title">Senior Security Consultant</h3>
-                        <span class="timeline-date">2024 – Present</span>
+                    <div class="duo__cell">
+                        <h4>The practitioner</h4>
+                        <p>vCISO, vISM and DPO engagements across health, finance and industry. I turn frameworks into outcomes.</p>
                     </div>
-                    <p class="timeline-company">Sapphire | United Kingdom</p>
-                    <p class="timeline-description">Senior consultant within the GRC practice, leading complex client engagements across regulatory compliance, security assurance, and risk management. Product owner for Third-Party Risk Management services. Provide vCISO and vISM services across healthcare, finance, and industrial sectors. Lead successful tender responses across ISO 27001, ISO 27701, ISO 22301, ISO 22237, ISO 42001, and regulatory frameworks including GDPR, DORA, NIS 2, NCSC CAF, and NIST CSF.</p>
-                </div>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-dot"></div>
-                <div class="timeline-content">
-                    <div class="timeline-header">
-                        <h3 class="timeline-title">Security Consultant</h3>
-                        <span class="timeline-date">2023 – 2024</span>
-                    </div>
-                    <p class="timeline-company">Sapphire | United Kingdom</p>
-                    <p class="timeline-description">Delivered GRC consultancy as SME in DORA and NIS2 Directive. Led engagements covering ISO 27001, ISO 22301, and ISO 27701 across gap analysis, implementation, internal audit, and certification support. Delivered security awareness training, business continuity planning, and regulatory readiness across transport, logistics, education, healthcare, manufacturing, and finance sectors.</p>
-                </div>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-dot"></div>
-                <div class="timeline-content">
-                    <div class="timeline-header">
-                        <h3 class="timeline-title">Postdoctoral Researcher</h3>
-                        <span class="timeline-date">2022 – 2023</span>
-                    </div>
-                    <p class="timeline-company">Heriot-Watt University | Edinburgh</p>
-                    <p class="timeline-description">Research role on the SECRIOUS project investigating how new-code and non-traditional entrants engage with cybersecurity concepts in software engineering. Focused on enabling individuals to understand attacks, defences, and vulnerabilities. Contributed to innovative, human-centred approaches to cybersecurity education working across cybersecurity, games research, and HCI disciplines.</p>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- Publications Section -->
-<section class="publications-section" id="publications">
-    <div class="publications-wrapper">
-        <div class="section-header">
-            <div class="section-label">// Publications</div>
-            <h2 class="section-title">Research & Publications</h2>
-            <p class="section-subtitle">Peer-reviewed work in robotics security, side-channel attacks, and IoT privacy.</p>
+<!-- ========================== 02 TRAJECTORY ========================== -->
+<section class="section section--deep" id="trajectory">
+    <div class="wrap">
+        <div class="section__head reveal">
+            <div class="section__index">
+                <span class="section__no">02</span>
+                <h2 class="section__title">Trajectory</h2>
+                <span class="section__aside">From the lab<br>to the boardroom</span>
+            </div>
         </div>
-        <div class="publication-list">
-            <div class="publication-card">
-                <span class="publication-year">2025</span>
-                <div class="publication-info">
-                    <h4>WaveVerif: Acoustic Side-Channel based Verification of Robotic Workflows</h4>
-                    <p class="publication-authors">Z.Y. Erdogan, S. Nagaraja, C.M. Ahmed, R. Shah</p>
-                    <p class="publication-venue">arXiv preprint</p>
+
+        <div class="ledger">
+            <article class="ledger__row reveal">
+                <div class="ledger__when"><b>2025</b>Present</div>
+                <div>
+                    <div class="ledger__role"><h3>Data Protection Officer</h3><span class="ledger__org">Sapphire · UK</span></div>
+                    <p class="ledger__desc">Appointed DPO providing independent oversight and strategic advice on data protection compliance, ensuring adherence to UK and EU legislation including the GDPR. I lead privacy governance design, implementation and monitoring, covering policies, training, audits and records of processing. I own breach management and incident response, and lead the delivery of DPIAs and DSARs.</p>
+                    <div class="ledger__tags"><span class="tag">UK GDPR</span><span class="tag">DPIA</span><span class="tag">DSAR</span><span class="tag">Breach response</span><span class="tag">Privacy governance</span></div>
                 </div>
-            </div>
-            <div class="publication-card">
-                <span class="publication-year">2023</span>
-                <div class="publication-info">
-                    <h4>Sensor Identification via Acoustic Physically Unclonable Function (PUF)</h4>
-                    <p class="publication-authors">G. Vaidya, T.V. Prabhakar, N. Gnani, R. Shah, S. Nagaraja</p>
-                    <p class="publication-venue">Digital Threats: Research and Practice (DTRAP)</p>
+            </article>
+
+            <article class="ledger__row reveal">
+                <div class="ledger__when"><b>2024</b>Present</div>
+                <div>
+                    <div class="ledger__role"><h3>Senior Security Consultant</h3><span class="ledger__org">Sapphire · UK</span></div>
+                    <p class="ledger__desc">Senior consultant within the GRC practice, leading complex client engagements across regulatory compliance, security assurance and risk management. Product owner for Third-Party Risk Management services, providing vCISO and vISM support across healthcare, finance and industrial sectors. I lead successful tender responses across ISO 27001, 27701, 22301, 22237 and 42001, and regulatory frameworks including the GDPR, DORA, NIS 2, the NCSC CAF and NIST CSF.</p>
+                    <div class="ledger__tags"><span class="tag">vCISO</span><span class="tag">vISM</span><span class="tag">TPRM</span><span class="tag">DORA</span><span class="tag">NIS 2</span></div>
                 </div>
-            </div>
-            <div class="publication-card">
-                <span class="publication-year">2022</span>
-                <div class="publication-info">
-                    <h4>Can You Still See Me?: Reconstructing Robot Operations Over End-to-End Encrypted Channels</h4>
-                    <p class="publication-authors">R. Shah, C.M. Ahmed, S. Nagaraja</p>
-                    <p class="publication-venue">ACM WiSec 2022</p>
+            </article>
+
+            <article class="ledger__row reveal">
+                <div class="ledger__when"><b>2023</b>2024</div>
+                <div>
+                    <div class="ledger__role"><h3>Security Consultant</h3><span class="ledger__org">Sapphire · UK</span></div>
+                    <p class="ledger__desc">Delivered GRC consultancy as subject-matter expert on DORA and the NIS 2 Directive. I led engagements covering ISO 27001, 22301 and 27701 across gap analysis, implementation, internal audit and certification support, plus security awareness training, business continuity planning and regulatory readiness across transport, logistics, education, healthcare, manufacturing and finance.</p>
+                    <div class="ledger__tags"><span class="tag">ISO 27001</span><span class="tag">ISO 22301</span><span class="tag">Internal audit</span><span class="tag">BCM</span></div>
                 </div>
-            </div>
-            <div class="publication-card">
-                <span class="publication-year">2022</span>
-                <div class="publication-info">
-                    <h4>Fingerprinting Robot Movements via Acoustic Side Channel</h4>
-                    <p class="publication-authors">R. Shah, M. Ahmed, S. Nagaraja</p>
-                    <p class="publication-venue">arXiv preprint</p>
+            </article>
+
+            <article class="ledger__row reveal">
+                <div class="ledger__when"><b>2022</b>2023</div>
+                <div>
+                    <div class="ledger__role"><h3>Postdoctoral Researcher</h3><span class="ledger__org">Heriot-Watt University · Edinburgh</span></div>
+                    <p class="ledger__desc">Research on the SECRIOUS project, investigating how new-code and non-traditional entrants engage with cyber security concepts in software engineering. I focused on helping people understand attacks, defences and vulnerabilities, contributing human-centred approaches to security education across cyber security, games research and HCI.</p>
+                    <div class="ledger__tags"><span class="tag">Secure SDLC</span><span class="tag">HCI</span><span class="tag">Education</span></div>
                 </div>
-            </div>
-            <div class="publication-card">
-                <span class="publication-year">2022</span>
-                <div class="publication-info">
-                    <h4>Reconstructing Robot Operations via Radio-Frequency Side-Channel</h4>
-                    <p class="publication-authors">R. Shah, M. Ahmed, S. Nagaraja</p>
-                    <p class="publication-venue">arXiv preprint</p>
-                </div>
-            </div>
-            <div class="publication-card">
-                <span class="publication-year">2021</span>
-                <div class="publication-info">
-                    <h4>VoIPLoc: Passive VoIP Call Provenance via Acoustic Side-Channels</h4>
-                    <p class="publication-authors">S. Nagaraja, R. Shah</p>
-                    <p class="publication-venue">ACM WiSec 2021 — Abu Dhabi, UAE</p>
-                </div>
-            </div>
-            <div class="publication-card">
-                <span class="publication-year">2020</span>
-                <div class="publication-info">
-                    <h4>A Unified Access Control Model for Calibration Traceability in Safety-Critical IoT</h4>
-                    <p class="publication-authors">R. Shah, S. Nagaraja</p>
-                    <p class="publication-venue">ICISS 2020 — 16th International Conference on Information Systems Security</p>
-                </div>
-            </div>
-            <div class="publication-card">
-                <span class="publication-year">2019</span>
-                <div class="publication-info">
-                    <h4>Clicktok: Click Fraud Detection using Traffic Analysis</h4>
-                    <p class="publication-authors">S. Nagaraja, R. Shah</p>
-                    <p class="publication-venue">ACM WiSec 2019</p>
-                </div>
-            </div>
-            <div class="publication-card">
-                <span class="publication-year">2019</span>
-                <div class="publication-info">
-                    <h4>Secure Calibration for High-Assurance IoT: Traceability for Safety Resilience</h4>
-                    <p class="publication-authors">R. Shah, M. McIntee, S. Nagaraja, S. Bhandary, P. Arote, J. Kuri</p>
-                    <p class="publication-venue">arXiv preprint</p>
-                </div>
-            </div>
-            <div class="publication-card">
-                <span class="publication-year">2019</span>
-                <div class="publication-info">
-                    <h4>Do we have the time for IRM?: Service Denial Attacks and SDN-based Defences</h4>
-                    <p class="publication-authors">R. Shah, S. Nagaraja</p>
-                    <p class="publication-venue">ICDCN 2019 — International Conference on Distributed Computing and Networking</p>
-                </div>
-            </div>
+            </article>
         </div>
     </div>
 </section>
 
-<!-- Skills Section -->
-<section id="skills">
-    <div class="skills-wrapper">
-        <div class="section-header">
-            <div class="section-label">// Skills</div>
-            <h2 class="section-title">Technical Expertise</h2>
-            <p class="section-subtitle">Comprehensive skills across compliance, security, and technology.</p>
+<!-- ========================== 03 RESEARCH ========================== -->
+<section class="section" id="research">
+    <div class="wrap">
+        <div class="section__head reveal">
+            <div class="section__index">
+                <span class="section__no">03</span>
+                <h2 class="section__title">Research</h2>
+                <span class="section__aside">Peer-reviewed<br>and indexed</span>
+            </div>
         </div>
-        <div class="skills-grid">
-            <div class="skill-category">
-                <div class="skill-category-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+
+        <!-- Signature signal: a nod to the acoustic / RF side-channel work below -->
+        <div class="wave-strip reveal">
+            <canvas id="wave" aria-hidden="true"></canvas>
+            <span class="wave-strip__label mono">SIG · A fun side-channel trace</span>
+        </div>
+
+        <div class="research__bar reveal">
+            <div class="filters" id="filters" role="group" aria-label="Filter publications by theme">
+                <button class="filter" data-filter="all" aria-pressed="true">All</button>
+                <button class="filter" data-filter="side-channel" aria-pressed="false">Side-channel</button>
+                <button class="filter" data-filter="iot" aria-pressed="false">IoT &amp; safety</button>
+                <button class="filter" data-filter="network" aria-pressed="false">Network &amp; traffic</button>
+            </div>
+            <span class="research__count" id="pubCount"></span>
+        </div>
+
+        <div class="pubs" id="pubs">
+            <article class="pub" data-theme="side-channel">
+                <div class="pub__year">2025</div>
+                <div>
+                    <h3 class="pub__title">WaveVerif: Acoustic Side-Channel based Verification of Robotic Workflows</h3>
+                    <p class="pub__meta">Z. Y. Erdogan, S. Nagaraja, C. M. Ahmed, R. Shah · <span class="venue">arXiv preprint</span></p>
                 </div>
-                <h3>Regulatory Compliance</h3>
-                <div class="skill-tags">
-                    <span class="skill-tag">NIS / NIS 2</span>
-                    <span class="skill-tag">GDPR</span>
-                    <span class="skill-tag">DORA</span>
-                    <span class="skill-tag">CCPA</span>
-                    <span class="skill-tag">EU AI Act</span>
-                    <span class="skill-tag">EU CRA</span>
+                <span class="pub__venue-mark">Preprint</span>
+            </article>
+
+            <article class="pub" data-theme="side-channel iot">
+                <div class="pub__year">2023</div>
+                <div>
+                    <h3 class="pub__title">Sensor Identification via Acoustic Physically Unclonable Function</h3>
+                    <p class="pub__meta">G. Vaidya, T. V. Prabhakar, N. Gnani, R. Shah, S. Nagaraja · <span class="venue">Digital Threats: Research and Practice</span></p>
+                </div>
+                <span class="pub__venue-mark">Journal</span>
+            </article>
+
+            <article class="pub" data-theme="side-channel">
+                <div class="pub__year">2022</div>
+                <div>
+                    <h3 class="pub__title">Can You Still See Me? Reconstructing Robot Operations Over End-to-End Encrypted Channels</h3>
+                    <p class="pub__meta">R. Shah, C. M. Ahmed, S. Nagaraja · <span class="venue">ACM WiSec 2022</span></p>
+                </div>
+                <span class="pub__venue-mark">ACM</span>
+            </article>
+
+            <article class="pub" data-theme="side-channel">
+                <div class="pub__year">2022</div>
+                <div>
+                    <h3 class="pub__title">Fingerprinting Robot Movements via Acoustic Side-Channel</h3>
+                    <p class="pub__meta">R. Shah, M. Ahmed, S. Nagaraja · <span class="venue">arXiv preprint</span></p>
+                </div>
+                <span class="pub__venue-mark">Preprint</span>
+            </article>
+
+            <article class="pub" data-theme="side-channel">
+                <div class="pub__year">2022</div>
+                <div>
+                    <h3 class="pub__title">Reconstructing Robot Operations via Radio-Frequency Side-Channel</h3>
+                    <p class="pub__meta">R. Shah, M. Ahmed, S. Nagaraja · <span class="venue">arXiv preprint</span></p>
+                </div>
+                <span class="pub__venue-mark">Preprint</span>
+            </article>
+
+            <article class="pub" data-theme="network side-channel">
+                <div class="pub__year">2021</div>
+                <div>
+                    <h3 class="pub__title">VoIPLoc: Passive VoIP Call Provenance via Acoustic Side-Channels</h3>
+                    <p class="pub__meta">S. Nagaraja, R. Shah · <span class="venue">ACM WiSec 2021, Abu Dhabi</span></p>
+                </div>
+                <span class="pub__venue-mark">ACM</span>
+            </article>
+
+            <article class="pub" data-theme="iot">
+                <div class="pub__year">2020</div>
+                <div>
+                    <h3 class="pub__title">A Unified Access Control Model for Calibration Traceability in Safety-Critical IoT</h3>
+                    <p class="pub__meta">R. Shah, S. Nagaraja · <span class="venue">ICISS 2020, 16th Intl. Conference on Information Systems Security</span></p>
+                </div>
+                <span class="pub__venue-mark">ICISS</span>
+            </article>
+
+            <article class="pub" data-theme="network">
+                <div class="pub__year">2019</div>
+                <div>
+                    <h3 class="pub__title">Clicktok: Click Fraud Detection using Traffic Analysis</h3>
+                    <p class="pub__meta">S. Nagaraja, R. Shah · <span class="venue">ACM WiSec 2019</span></p>
+                </div>
+                <span class="pub__venue-mark">ACM</span>
+            </article>
+
+            <article class="pub" data-theme="iot">
+                <div class="pub__year">2019</div>
+                <div>
+                    <h3 class="pub__title">Secure Calibration for High-Assurance IoT: Traceability for Safety Resilience</h3>
+                    <p class="pub__meta">R. Shah, M. McIntee, S. Nagaraja, S. Bhandary, P. Arote, J. Kuri · <span class="venue">arXiv preprint</span></p>
+                </div>
+                <span class="pub__venue-mark">Preprint</span>
+            </article>
+
+            <article class="pub" data-theme="network">
+                <div class="pub__year">2019</div>
+                <div>
+                    <h3 class="pub__title">Do We Have the Time for IRM? Service Denial Attacks and SDN-based Defences</h3>
+                    <p class="pub__meta">R. Shah, S. Nagaraja · <span class="venue">ICDCN 2019, Intl. Conference on Distributed Computing and Networking</span></p>
+                </div>
+                <span class="pub__venue-mark">ICDCN</span>
+            </article>
+        </div>
+    </div>
+</section>
+
+<!-- ========================== 04 CAPABILITY ========================== -->
+<section class="section section--deep" id="capability">
+    <div class="wrap">
+        <div class="section__head reveal">
+            <div class="section__index">
+                <span class="section__no">04</span>
+                <h2 class="section__title">Capability</h2>
+                <span class="section__aside">What I bring<br>to an engagement</span>
+            </div>
+        </div>
+
+        <div class="cap-grid reveal">
+            <div class="cap">
+                <div class="cap__no">C/01</div>
+                <h3>Regulatory compliance</h3>
+                <div class="cap__tags">
+                    <span class="tag">NIS / NIS 2</span><span class="tag">UK &amp; EU GDPR</span><span class="tag">DORA</span><span class="tag">CCPA</span><span class="tag">EU AI Act</span><span class="tag">EU CRA</span>
                 </div>
             </div>
-            <div class="skill-category">
-                <div class="skill-category-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
-                </div>
-                <h3>Standards & Frameworks</h3>
-                <div class="skill-tags">
-                    <span class="skill-tag">ISO 27001</span>
-                    <span class="skill-tag">ISO 27701</span>
-                    <span class="skill-tag">ISO 22301</span>
-                    <span class="skill-tag">ISO 22237</span>
-                    <span class="skill-tag">ISO 42001</span>
-                    <span class="skill-tag">NCSC CAF</span>
-                    <span class="skill-tag">NIST CSF</span>
+            <div class="cap">
+                <div class="cap__no">C/02</div>
+                <h3>Standards &amp; frameworks</h3>
+                <div class="cap__tags">
+                    <span class="tag">ISO 27001</span><span class="tag">ISO 27701</span><span class="tag">ISO 22301</span><span class="tag">ISO 22237</span><span class="tag">ISO 42001</span><span class="tag">NCSC CAF</span><span class="tag">NIST CSF</span><span class="tag">NIST SP 800-53</span>
                 </div>
             </div>
-            <div class="skill-category">
-                <div class="skill-category-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
-                </div>
-                <h3>Security Leadership</h3>
-                <div class="skill-tags">
-                    <span class="skill-tag">vCISO</span>
-                    <span class="skill-tag">vISM</span>
-                    <span class="skill-tag">Internal Audit</span>
-                    <span class="skill-tag">TPRM</span>
-                    <span class="skill-tag">Threat Modelling</span>
+            <div class="cap">
+                <div class="cap__no">C/03</div>
+                <h3>Security leadership</h3>
+                <div class="cap__tags">
+                    <span class="tag">vCISO</span><span class="tag">vISM</span><span class="tag">Internal audit</span><span class="tag">TPRM</span><span class="tag">Threat modelling</span>
                 </div>
             </div>
-            <div class="skill-category">
-                <div class="skill-category-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
-                </div>
-                <h3>Data Protection</h3>
-                <div class="skill-tags">
-                    <span class="skill-tag">DPO Services</span>
-                    <span class="skill-tag">DPIA</span>
-                    <span class="skill-tag">DSARs</span>
-                    <span class="skill-tag">Breach Response</span>
-                    <span class="skill-tag">Privacy Governance</span>
+            <div class="cap">
+                <div class="cap__no">C/04</div>
+                <h3>Data protection</h3>
+                <div class="cap__tags">
+                    <span class="tag">DPO</span><span class="tag">vDPO</span><span class="tag">DPIA</span><span class="tag">DSAR</span><span class="tag">Breach response</span><span class="tag">Privacy governance</span>
                 </div>
             </div>
-            <div class="skill-category">
-                <div class="skill-category-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
-                </div>
+            <div class="cap">
+                <div class="cap__no">C/05</div>
                 <h3>Resilience</h3>
-                <div class="skill-tags">
-                    <span class="skill-tag">BCM</span>
-                    <span class="skill-tag">Incident Response</span>
-                    <span class="skill-tag">Disaster Recovery</span>
-                    <span class="skill-tag">BCP Testing</span>
+                <div class="cap__tags">
+                    <span class="tag">BCM</span><span class="tag">Incident response</span><span class="tag">Disaster recovery</span><span class="tag">BCP testing</span>
                 </div>
             </div>
-            <div class="skill-category">
-                <div class="skill-category-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-                </div>
-                <h3>Technical Skills</h3>
-                <div class="skill-tags">
-                    <span class="skill-tag">Python</span>
-                    <span class="skill-tag">Java</span>
-                    <span class="skill-tag">React</span>
-                    <span class="skill-tag">Node.js</span>
-                    <span class="skill-tag">ML/Analytics</span>
-                    <span class="skill-tag">SSDLC</span>
+            <div class="cap">
+                <div class="cap__no">C/06</div>
+                <h3>Technical foundation</h3>
+                <div class="cap__tags">
+                    <span class="tag">Python</span><span class="tag">Java</span><span class="tag">React</span><span class="tag">Node.js</span><span class="tag">ML / analytics</span><span class="tag">CI/CD</span><span class="tag">SSDLC</span>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- Education Section -->
-<section class="education-section" id="education">
-    <div style="max-width: 1000px; margin: 0 auto;">
-        <div class="section-header">
-            <div class="section-label">// Education</div>
-            <h2 class="section-title">Academic Background</h2>
+<!-- ========================== 05 BACKGROUND ========================== -->
+<section class="section" id="background">
+    <div class="wrap">
+        <div class="section__head reveal">
+            <div class="section__index">
+                <span class="section__no">05</span>
+                <h2 class="section__title">Background</h2>
+                <span class="section__aside">Where it<br>started</span>
+            </div>
         </div>
-        <div class="education-grid">
-            <div class="education-card">
-                <h3 class="education-degree">PhD, Cybersecurity</h3>
-                <p class="education-school">University of Strathclyde</p>
-                <p class="education-years">2018 – 2022</p>
-                <p class="education-description">Thesis: "Security of Robotic Workflows" — Research focused on security of robotic, cyber-physical, and safety-critical systems, with emphasis on calibration security and operational privacy. Explored passive side-channel threats, access control, and blockchain-based approaches using machine learning and signal processing techniques.</p>
-            </div>
-            <div class="education-card">
-                <h3 class="education-degree">BSc Computer Science (1st Class)</h3>
-                <p class="education-school">Heriot-Watt University</p>
-                <p class="education-years">2014 – 2018</p>
-                <p class="education-description">Strong focus on software development, networking, and cybersecurity. Final-year project designed and implemented a tool to identify and remediate IoT devices vulnerable to Mirai malware in real time. Advanced coursework in network security, AI, machine learning, and distributed systems.</p>
-            </div>
+
+        <div class="ledger">
+            <article class="ledger__row reveal">
+                <div class="ledger__when"><b>2018</b>2022</div>
+                <div>
+                    <div class="ledger__role"><h3>PhD, Cyber Security</h3><span class="ledger__org">University of Strathclyde</span></div>
+                    <p class="ledger__desc">Thesis: <i>Security of Robotic Workflows</i>. Research into the security of robotic, cyber-physical and safety-critical systems, with an emphasis on calibration security and operational privacy. I explored passive side-channel threats, access control and blockchain-based approaches, using machine learning and signal processing.</p>
+                    <div class="ledger__tags"><span class="tag">Side-channels</span><span class="tag">Cyber-physical</span><span class="tag">Signal processing</span></div>
+                </div>
+            </article>
+
+            <article class="ledger__row reveal">
+                <div class="ledger__when"><b>2014</b>2018</div>
+                <div>
+                    <div class="ledger__role"><h3>BSc Computer Science, First Class</h3><span class="ledger__org">Heriot-Watt University</span></div>
+                    <p class="ledger__desc">A strong focus on software development, networking and cyber security. My final-year project designed and built a tool to identify and remediate IoT devices vulnerable to the Mirai malware in real time, with advanced coursework in network security, AI, machine learning and distributed systems.</p>
+                    <div class="ledger__tags"><span class="tag">Networking</span><span class="tag">IoT security</span><span class="tag">Distributed systems</span></div>
+                </div>
+            </article>
         </div>
     </div>
 </section>
 
-<!-- Certifications Section -->
-<section id="certifications">
-    <div class="certs-wrapper">
-        <div class="section-header">
-            <div class="section-label">// Certifications & Memberships</div>
-            <h2 class="section-title">Professional Credentials</h2>
+<!-- ========================== 06 CREDENTIALS ========================== -->
+<section class="section section--deep" id="credentials">
+    <div class="wrap">
+        <div class="section__head reveal">
+            <div class="section__index">
+                <span class="section__no">06</span>
+                <h2 class="section__title">Credentials</h2>
+                <span class="section__aside">Certifications<br>&amp; memberships</span>
+            </div>
         </div>
-        <div class="certs-grid">
-            <div class="cert-card">
-                <div class="cert-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
-                </div>
-                <div class="cert-info">
-                    <h4>ISO 27001 Lead Auditor</h4>
-                    <span>IT Governance • 2026</span>
-                </div>
-            </div>
-            <div class="cert-card">
-                <div class="cert-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
-                </div>
-                <div class="cert-info">
-                    <h4>Tech Risk & Compliance Professional</h4>
-                    <span>OneTrust • 2025</span>
-                </div>
-            </div>
-            <div class="cert-card">
-                <div class="cert-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
-                </div>
-                <div class="cert-info">
-                    <h4>PIA & DPIA Automation Expert</h4>
-                    <span>OneTrust • 2025</span>
-                </div>
-            </div>
-            <div class="cert-card">
-                <div class="cert-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/></svg>
-                </div>
-                <div class="cert-info">
-                    <h4>Cybersecurity Professional Certificate</h4>
-                    <span>Google • 2024</span>
-                </div>
-            </div>
-            <div class="cert-card">
-                <div class="cert-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
-                </div>
-                <div class="cert-info">
-                    <h4>TPRM Professional</h4>
-                    <span>OneTrust • 2024</span>
-                </div>
-            </div>
-            <div class="cert-card">
-                <div class="cert-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 2 6 3 6 3s6-1 6-3v-5"/></svg>
-                </div>
-                <div class="cert-info">
-                    <h4>Full Member (MCIIS)</h4>
-                    <span>CIISec • 2025</span>
-                </div>
-            </div>
-            <div class="cert-card">
-                <div class="cert-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 2 6 3 6 3s6-1 6-3v-5"/></svg>
-                </div>
-                <div class="cert-info">
-                    <h4>Associate Fellow (AFHEA)</h4>
-                    <span>Higher Education Academy • 2023</span>
-                </div>
-            </div>
+
+        <div class="creds reveal">
+            <div class="cred"><span class="cred__no">M/01</span><div class="cred__body"><h4>Full Member, MCIIS</h4><span>CIISec · 2025</span></div></div>
+            <div class="cred"><span class="cred__no">M/02</span><div class="cred__body"><h4>Associate Fellow, AFHEA</h4><span>Higher Education Academy · 2023</span></div></div>
+            <div class="cred"><span class="cred__no">C/01</span><div class="cred__body"><h4>ISO 27001 Lead Auditor</h4><span>IT Governance · 2026</span></div></div>
+            <div class="cred"><span class="cred__no">C/02</span><div class="cred__body"><h4>Tech Risk &amp; Compliance Professional</h4><span>OneTrust · 2025</span></div></div>
+            <div class="cred"><span class="cred__no">C/03</span><div class="cred__body"><h4>PIA &amp; DPIA Automation Expert</h4><span>OneTrust · 2025</span></div></div>
+            <div class="cred"><span class="cred__no">C/04</span><div class="cred__body"><h4>TPRM Professional</h4><span>OneTrust · 2024</span></div></div>
+            <div class="cred"><span class="cred__no">C/05</span><div class="cred__body"><h4>Cyber Security Professional Certificate</h4><span>Google · 2024</span></div></div>
+            <div class="cred"><span class="cred__no">C/06</span><div class="cred__body"><h4>PGCert in Researcher Professional Development</h4><span>University of Strathclyde · 2022</span></div></div>
         </div>
     </div>
 </section>
 
-<!-- Contact Section -->
-<section id="contact">
-    <div class="contact-section">
-        <div class="section-header">
-            <div class="section-label">// Contact</div>
-            <h2 class="section-title">Let's Connect</h2>
-            <p class="section-subtitle">Interested in discussing cybersecurity, GRC, or potential collaborations? Reach out through Sapphire or connect on social media.</p>
+<!-- ========================== 07 WRITING ========================== -->
+<section class="section" id="writing">
+    <div class="wrap">
+        <div class="section__head reveal">
+            <div class="section__index">
+                <span class="section__no">07</span>
+                <h2 class="section__title">Field Notes</h2>
+                <span class="section__aside">Writing on GRC,<br>privacy &amp; research</span>
+            </div>
         </div>
-        <div class="contact-links">
-            <a href="https://www.sapphire.net/contact-us/" class="contact-link" target="_blank">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                Contact via Sapphire
-            </a>
-            <a href="https://linkedin.com/in/ryankshah" class="contact-link" target="_blank">
-                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-                LinkedIn
-            </a>
-            <a href="https://github.com/ryankshah" class="contact-link" target="_blank">
-                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-                GitHub
+
+        <div class="writing__list reveal" id="homePostList"></div>
+        <div style="margin-top:2rem" class="reveal">
+            <a class="btn btn--ghost" href="writing.html">All field notes
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
             </a>
         </div>
     </div>
 </section>
 
-<!-- Footer -->
-<footer>
-    <p>© 2025 Dr. Ryan Shah. Built with passion for security.</p>
-    <div class="footer-links">
-        <a href="https://ryankshah.com">ryankshah.com</a>
-        <a href="https://www.sapphire.net" target="_blank">Sapphire</a>
-        <a href="https://scholar.google.com/citations?user=ctJ21fwAAAAJ" target="_blank">Google Scholar</a>
+</main>
+
+<!-- ========================== CONTACT / FOOTER ========================== -->
+<footer class="section contact" id="contact">
+    <div class="wrap">
+        <div class="section__head">
+            <div class="section__index">
+                <span class="section__no">08</span>
+                <h2 class="section__title">Get in touch</h2>
+                <span class="section__aside">Advisory · research<br>· speaking</span>
+            </div>
+        </div>
+
+        <div class="contact__grid">
+            <p class="contact__lead">Working on something where governance, privacy or resilience really matters? <a href="https://www.sapphire.net/contact-us/" target="_blank" rel="noopener">Let us talk</a>.</p>
+            <div class="contact__links">
+                <a class="contact__link" href="https://www.sapphire.net/contact-us/" target="_blank" rel="noopener"><span>Consult via Sapphire</span><span class="where">sapphire.net ↗</span></a>
+                <a class="contact__link" href="https://linkedin.com/in/ryankshah" target="_blank" rel="noopener"><span>LinkedIn</span><span class="where">in/ryankshah ↗</span></a>
+                <a class="contact__link" href="https://github.com/ryankshah" target="_blank" rel="noopener"><span>GitHub</span><span class="where">@ryankshah ↗</span></a>
+                <a class="contact__link" href="https://scholar.google.com/citations?user=ctJ21fwAAAAJ" target="_blank" rel="noopener"><span>Google Scholar</span><span class="where">Publications ↗</span></a>
+            </div>
+        </div>
+
+        <div class="colophon">
+            <span>© 2026 Dr. Ryan Shah · ryankshah.com</span>
+            <span>Built as a dossier · Set in Newsreader &amp; JetBrains Mono</span>
+        </div>
     </div>
 </footer>
 
+<script src="assets/image-slot.js"></script>
+<script src="assets/app.js"></script>
+
 <script>
-    // Close mobile menu when clicking a link
-    document.querySelectorAll('.nav-links a').forEach(link => {
-        link.addEventListener('click', () => {
-            document.querySelector('.nav-links').classList.remove('active');
-        });
-    });
+    (function () {
+        function esc(str) {
+            return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+        }
+
+        fetch('posts/posts.json')
+            .then(function (res) { return res.json(); })
+            .then(function (posts) {
+                var list = document.getElementById('homePostList');
+                if (!list) return;
+                var preview = posts.slice(0, 3);
+                list.innerHTML = preview.map(function (post) {
+                    var href = post.status === 'draft' ? 'writing.html' : 'posts/' + esc(post.slug) + '.html';
+                    var label = post.status === 'draft' ? 'Draft' : 'Published';
+                    return '<a class="note" href="' + href + '">' +
+                        '<div class="note__when">' + label + ' &middot; ' + esc(String(post.date)) + '</div>' +
+                        '<div>' +
+                            '<span class="note__topic">' + esc(post.topic) + '</span>' +
+                            '<div class="note__title">' + esc(post.title) + '</div>' +
+                            '<p class="note__dek">' + esc(post.dek) + '</p>' +
+                        '</div>' +
+                        '<span class="note__arrow">↗</span>' +
+                    '</a>';
+                }).join('');
+            })
+            .catch(function () {});
+    })();
 </script>
+
+<!-- Tweaks (palette + type) -->
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="assets/tweaks-panel.jsx"></script>
+<script type="text/babel" src="assets/tweaks.jsx"></script>
+
 </body>
 </html>
