@@ -1,226 +1,239 @@
 /* =========================================================================
    ryankshah.com — interaction layer
+   Everything here is progressive: without it the page is complete and readable.
    ========================================================================= */
 (function () {
-  'use strict';
-  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    'use strict';
+    window.__siteReady = true;
 
-  /* ---------- 1. Frameworks ticker -------------------------------------- */
-  function buildTicker() {
-    var track = document.getElementById('ticker');
-    if (!track) return;
-    var items = [
-      'ISO 27001', 'ISO 27701', 'ISO 22301', 'ISO 22237', 'ISO 42001',
-      'UK GDPR', 'EU GDPR', 'DORA', 'NIS 2', 'NCSC CAF', 'NIST CSF',
-      'EU AI Act', 'EU CRA', 'CCPA', 'TPRM', 'vCISO', 'vISM', 'BCM'
-    ];
-    // duplicate the set so the -50% translate loop is seamless
-    var html = '';
-    var doubled = items.concat(items);
-    for (var i = 0; i < doubled.length; i++) {
-      html += '<span class="ticker__item">' + doubled[i] + '</span>';
-    }
-    track.innerHTML = html;
-  }
+    var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /* ---------- 2. Publication filter ------------------------------------- */
-  function buildFilter() {
-    var filters = document.getElementById('filters');
-    var pubs = Array.prototype.slice.call(document.querySelectorAll('#pubs .pub'));
-    var countEl = document.getElementById('pubCount');
-    if (!filters || !pubs.length) return;
-
-    function setCount(n) {
-      if (countEl) countEl.textContent = String(n).padStart(2, '0') + ' / ' + pubs.length + ' papers';
+    function esc(str) {
+        return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
     }
 
-    function apply(theme) {
-      var shown = 0;
-      pubs.forEach(function (p) {
-        var themes = (p.getAttribute('data-theme') || '').split(/\s+/);
-        var match = theme === 'all' || themes.indexOf(theme) !== -1;
-        if (match) { p.classList.remove('is-hidden'); shown++; }
-        else { p.classList.add('is-hidden'); }
-      });
-      setCount(shown);
-    }
+    /* ---------- Menu sheet (phone) ---------------------------------------- */
+    function buildMenu() {
+        var btn = document.getElementById('menu');
+        var sheet = document.getElementById('sheet');
+        if (!btn || !sheet) return;
 
-    filters.addEventListener('click', function (e) {
-      var btn = e.target.closest('.filter');
-      if (!btn) return;
-      filters.querySelectorAll('.filter').forEach(function (b) {
-        b.setAttribute('aria-pressed', b === btn ? 'true' : 'false');
-      });
-      apply(btn.getAttribute('data-filter'));
-    });
-
-    setCount(pubs.length);
-  }
-
-  /* ---------- 3. Scroll reveal ------------------------------------------ */
-  function buildReveal() {
-    var els = Array.prototype.slice.call(document.querySelectorAll('.reveal'));
-    if (!els.length) return;
-    if (reduceMotion || !('IntersectionObserver' in window)) {
-      els.forEach(function (el) { el.classList.add('in'); });
-      return;
-    }
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('in');
-          io.unobserve(entry.target);
+        function set(open) {
+            sheet.hidden = !open;
+            btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+            btn.textContent = open ? 'Close' : 'Menu';
+            document.body.style.overflow = open ? 'hidden' : '';
         }
-      });
-    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
-    els.forEach(function (el) { io.observe(el); });
-  }
-
-  /* ---------- 4. Signature waveform ------------------------------------- */
-  /* A procedural oscilloscope trace: a sum of sines + jitter, a nod to the
-     acoustic / RF side-channel research. Renders in ink with occasional
-     accent ticks. Static single frame under reduced-motion. */
-  function buildWave() {
-    var canvas = document.getElementById('wave');
-    if (!canvas) return;
-    var ctx = canvas.getContext('2d');
-    var dpr = Math.min(window.devicePixelRatio || 1, 2);
-    var W = 0, H = 0;
-    var phase = 0;
-
-    function readColours() {
-      var cs = getComputedStyle(document.documentElement);
-      return {
-        ink: (cs.getPropertyValue('--ink') || '#1c1b16').trim(),
-        accent: (cs.getPropertyValue('--accent') || '#be3a20').trim(),
-        faint: (cs.getPropertyValue('--ink-faint') || '#8a8473').trim()
-      };
-    }
-    var col = readColours();
-
-    function resize() {
-      var rect = canvas.getBoundingClientRect();
-      W = rect.width; H = rect.height;
-      canvas.width = Math.round(W * dpr);
-      canvas.height = Math.round(H * dpr);
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      col = readColours();
+        btn.addEventListener('click', function () { set(sheet.hidden); });
+        sheet.addEventListener('click', function (e) { if (e.target.closest('a')) set(false); });
+        document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !sheet.hidden) { set(false); btn.focus(); } });
+        window.matchMedia('(min-width: 1001px)').addEventListener('change', function (e) { if (e.matches) set(false); });
     }
 
-    // deterministic pseudo-noise so the trace looks like a captured signal
-    function noise(x) {
-      return Math.sin(x * 12.9898) * 43758.5453 % 1;
+    /* ---------- Bar: leaves on the way down, returns on the first way up ---- */
+    function buildBar() {
+        var bar = document.getElementById('bar');
+        if (!bar) return;
+        var last = window.scrollY;
+        var ticking = false;
+        window.addEventListener('scroll', function () {
+            if (ticking) return;
+            ticking = true;
+            window.requestAnimationFrame(function () {
+                var y = window.scrollY;
+                var sheet = document.getElementById('sheet');
+                var menuOpen = sheet && !sheet.hidden;
+                if (menuOpen || y < 120 || y < last - 2) bar.classList.remove('is-hidden');
+                else if (y > last + 2) bar.classList.add('is-hidden');
+                last = y;
+                ticking = false;
+            });
+        }, { passive: true });
+        bar.addEventListener('focusin', function () { bar.classList.remove('is-hidden'); });
     }
 
-    function trace(t) {
-      var mid = H / 2;
-      var amp = H * 0.22;
-      ctx.clearRect(0, 0, W, H);
-
-      // baseline
-      ctx.strokeStyle = col.faint;
-      ctx.globalAlpha = 0.25;
-      ctx.lineWidth = 1;
-      ctx.beginPath();
-      ctx.moveTo(0, mid);
-      ctx.lineTo(W, mid);
-      ctx.stroke();
-      ctx.globalAlpha = 1;
-
-      // the trace
-      ctx.beginPath();
-      var step = 2;
-      for (var x = 0; x <= W; x += step) {
-        var u = x / W;
-        var y = mid
-          + Math.sin(u * 14 + t) * amp * 0.45
-          + Math.sin(u * 41 - t * 1.7) * amp * 0.22
-          + Math.sin(u * 7 + t * 0.6) * amp * 0.30
-          + (noise(x + Math.floor(t * 4)) - 0.5) * amp * 0.20
-          // a localised "burst" that sweeps across, like a detected event
-          + Math.exp(-Math.pow((u - ((t * 0.06) % 1.4 - 0.2)) * 9, 2)) * amp * 0.55;
-        if (x === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
-      }
-      ctx.strokeStyle = col.ink;
-      ctx.globalAlpha = 0.8;
-      ctx.lineWidth = 1.4;
-      ctx.stroke();
-      ctx.globalAlpha = 1;
-
-      // accent marker riding the burst peak
-      var bx = ((t * 0.06) % 1.4 - 0.2) * W;
-      if (bx > 0 && bx < W) {
-        ctx.fillStyle = col.accent;
-        ctx.fillRect(bx - 1, 0, 2, H);
-        ctx.beginPath();
-        ctx.arc(bx, mid, 3, 0, Math.PI * 2);
-        ctx.fill();
-      }
+    /* ---------- Current section in the nav ---------------------------------- */
+    function buildSpy() {
+        var links = Array.prototype.slice.call(document.querySelectorAll('.bar__links a[href^="#"]'));
+        if (!links.length || !('IntersectionObserver' in window)) return;
+        var map = {};
+        links.forEach(function (a) { map[a.getAttribute('href').slice(1)] = a; });
+        var spy = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                if (!entry.isIntersecting) return;
+                links.forEach(function (a) { a.removeAttribute('aria-current'); });
+                var a = map[entry.target.id];
+                if (a) a.setAttribute('aria-current', 'true');
+            });
+        }, { rootMargin: '-45% 0px -50% 0px' });
+        Object.keys(map).forEach(function (id) {
+            var el = document.getElementById(id);
+            if (el) spy.observe(el);
+        });
     }
 
-    resize();
-    window.addEventListener('resize', resize);
-
-    if (reduceMotion) {
-      trace(2.2);
-      return;
-    }
-
-    function loop() {
-      phase += 0.02;
-      trace(phase);
-      requestAnimationFrame(loop);
-    }
-    requestAnimationFrame(loop);
-
-    // expose a colour refresh so the Tweaks panel can re-read variables
-    window.__waveRefresh = function () { col = readColours(); };
-  }
-
-  /* ---------- 5. Active-section nav highlight ---------------------------- */
-  function buildNavSpy() {
-    var links = Array.prototype.slice.call(document.querySelectorAll('.nav a[href^="#"]'));
-    var map = {};
-    links.forEach(function (l) {
-      var id = l.getAttribute('href').slice(1);
-      var sec = document.getElementById(id);
-      if (sec) map[id] = l;
-    });
-    var ids = Object.keys(map);
-    if (!ids.length || !('IntersectionObserver' in window)) return;
-    var spy = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          links.forEach(function (l) { l.style.color = ''; });
-          var active = map[entry.target.id];
-          if (active) active.style.color = 'var(--ink)';
+    /* ---------- Entrances: parts arrive in reading order, once ------------- */
+    var revealIO = null;
+    function watch(el) {
+        if (reduceMotion || !('IntersectionObserver' in window)) { el.classList.add('is-in'); return; }
+        if (!revealIO) {
+            revealIO = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                    if (!entry.isIntersecting) return;
+                    entry.target.classList.add('is-in');
+                    revealIO.unobserve(entry.target);
+                });
+            }, { rootMargin: '0px 0px -10% 0px', threshold: 0.08 });
         }
-      });
-    }, { rootMargin: '-45% 0px -50% 0px' });
-    ids.forEach(function (id) { spy.observe(document.getElementById(id)); });
-  }
+        revealIO.observe(el);
+    }
 
-  /* ---------- 6. Close mobile menu on nav click ------------------------- */
-  function buildMenuClose() {
-    var nav = document.getElementById('nav');
-    if (!nav) return;
-    nav.addEventListener('click', function (e) {
-      if (e.target.closest('a')) nav.classList.remove('open');
-    });
-  }
+    function buildReveal() {
+        Array.prototype.forEach.call(document.querySelectorAll('[data-reveal]'), watch);
+    }
 
-  function init() {
-    buildTicker();
-    buildFilter();
-    buildReveal();
-    buildWave();
-    buildNavSpy();
-    buildMenuClose();
-  }
+    /* ---------- Publications: filter by theme -------------------------------- */
+    function buildFilter() {
+        var tool = document.getElementById('pubTool');
+        var filters = document.getElementById('filters');
+        var rows = Array.prototype.slice.call(document.querySelectorAll('#pubs tbody tr'));
+        var countEl = document.getElementById('pubCount');
+        if (!tool || !filters || !rows.length) return;
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init);
-  } else {
-    init();
-  }
+        function setCount(n) {
+            if (countEl) countEl.textContent = n + (n === 1 ? ' paper' : ' papers');
+        }
+
+        function apply(theme) {
+            var shown = 0;
+            rows.forEach(function (row) {
+                var themes = (row.getAttribute('data-theme') || '').split(/\s+/);
+                var match = theme === 'all' || themes.indexOf(theme) !== -1;
+                row.classList.toggle('is-hidden', !match);
+                if (match) shown++;
+            });
+            setCount(shown);
+        }
+
+        filters.addEventListener('click', function (e) {
+            var btn = e.target.closest('.filter');
+            if (!btn) return;
+            filters.querySelectorAll('.filter').forEach(function (b) {
+                b.setAttribute('aria-pressed', b === btn ? 'true' : 'false');
+            });
+            apply(btn.getAttribute('data-filter'));
+        });
+
+        setCount(rows.length);
+        tool.hidden = false;
+    }
+
+    /* ---------- Field notes: rows from posts/posts.json ---------------------- */
+    function postHref(post, prefix) {
+        return post.status === 'draft' ? '#' : prefix + 'posts/' + esc(post.slug) + '.html';
+    }
+
+    function postRow(post) {
+        var date = post.status === 'draft' ? 'Forthcoming' : esc(String(post.date));
+        return '<tr data-topic="' + esc(post.topic) + '">' +
+            '<td class="lineup__when">' + date + '</td>' +
+            '<td class="lineup__title"><a href="' + postHref(post, '') + '"><span class="lineup__name">' + esc(post.title) + '</span>' +
+            '<span class="lineup__by">' + esc(post.topic) + ' · ' + esc(post.readTime) + ' read</span></a></td>' +
+            '<td class="lineup__dek">' + esc(post.dek) + '</td></tr>';
+    }
+
+    function buildHomePosts() {
+        var list = document.getElementById('homePosts');
+        if (!list) return;
+        fetch('posts/posts.json')
+            .then(function (res) { return res.json(); })
+            .then(function (posts) {
+                list.innerHTML = posts.slice(0, 3).map(function (p) {
+                    var date = p.status === 'draft' ? 'Forthcoming' : esc(String(p.date));
+                    return '<li><p class="ledger__when">' + date + '</p>' +
+                        '<div class="ledger__role"><h3><a href="' + postHref(p, '') + '">' + esc(p.title) + '</a></h3>' +
+                        '<p>' + esc(p.topic) + ' · ' + esc(p.readTime) + ' read</p></div>' +
+                        '<p class="ledger__desc">' + esc(p.dek) + '</p></li>';
+                }).join('');
+                Array.prototype.forEach.call(list.children, function (li, i) {
+                    li.setAttribute('data-reveal', '');
+                    li.style.setProperty('--i', i);
+                    watch(li);
+                });
+            })
+            .catch(function () {});
+    }
+
+    function buildWritingPage() {
+        var body = document.getElementById('postList');
+        if (!body) return;
+        var filtersEl = document.getElementById('postFilters');
+        var countEl = document.getElementById('noteCount');
+        var tool = document.getElementById('postTool');
+
+        fetch('posts/posts.json')
+            .then(function (res) { return res.json(); })
+            .then(function (posts) {
+                var sorted = posts.slice().sort(function (a, b) { return (b.featured ? 1 : 0) - (a.featured ? 1 : 0); });
+                body.innerHTML = sorted.map(function (p) { return postRow(p); }).join('');
+                Array.prototype.forEach.call(body.querySelectorAll('tr'), function (row, i) {
+                    row.setAttribute('data-reveal', '');
+                    row.style.setProperty('--i', i);
+                    watch(row);
+                });
+
+                var topics = [];
+                posts.forEach(function (p) { if (topics.indexOf(p.topic) === -1) topics.push(p.topic); });
+                filtersEl.innerHTML = '<button class="filter" type="button" data-filter="all" aria-pressed="true">All</button>' +
+                    topics.map(function (t) {
+                        return '<button class="filter" type="button" data-filter="' + esc(t) + '" aria-pressed="false">' + esc(t) + '</button>';
+                    }).join('');
+
+                function setCount(n) { countEl.textContent = n + (n === 1 ? ' note' : ' notes'); }
+                setCount(posts.length);
+                tool.hidden = false;
+
+                filtersEl.addEventListener('click', function (e) {
+                    var btn = e.target.closest('.filter');
+                    if (!btn) return;
+                    filtersEl.querySelectorAll('.filter').forEach(function (b) {
+                        b.setAttribute('aria-pressed', b === btn ? 'true' : 'false');
+                    });
+                    var f = btn.getAttribute('data-filter');
+                    var shown = 0;
+                    body.querySelectorAll('tr').forEach(function (row) {
+                        var match = f === 'all' || row.getAttribute('data-topic') === f;
+                        row.classList.toggle('is-hidden', !match);
+                        if (match) shown++;
+                    });
+                    setCount(shown);
+                });
+            })
+            .catch(function () {
+                body.innerHTML = '<tr><td colspan="3">The notes could not be loaded. Please try again shortly.</td></tr>';
+            });
+    }
+
+    /* ---------- Image credits dialog ----------------------------------------- */
+    function buildCredits() {
+        var open = document.getElementById('creditsOpen');
+        var dlg = document.getElementById('credits');
+        if (!open || !dlg || typeof dlg.showModal !== 'function') return;
+        open.addEventListener('click', function () { dlg.showModal(); });
+        dlg.addEventListener('click', function (e) { if (e.target === dlg) dlg.close(); });
+    }
+
+    function init() {
+        buildCredits();
+        buildMenu();
+        buildBar();
+        buildSpy();
+        buildReveal();
+        buildFilter();
+        buildHomePosts();
+        buildWritingPage();
+    }
+
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+    else init();
 })();
