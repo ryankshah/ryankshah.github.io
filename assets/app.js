@@ -214,17 +214,7 @@
             });
     }
 
-    /* ---------- Image credits dialog ----------------------------------------- */
-    function buildCredits() {
-        var open = document.getElementById('creditsOpen');
-        var dlg = document.getElementById('credits');
-        if (!open || !dlg || typeof dlg.showModal !== 'function') return;
-        open.addEventListener('click', function () { dlg.showModal(); });
-        dlg.addEventListener('click', function (e) { if (e.target === dlg) dlg.close(); });
-    }
-
     function init() {
-        buildCredits();
         buildMenu();
         buildBar();
         buildSpy();
