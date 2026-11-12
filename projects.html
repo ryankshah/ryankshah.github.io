@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Projects ~ Dr. Ryan Shah</title>
+<meta name="description" content="Software built by Dr Ryan K. Shah: PrivacyGraph, a static-analysis map of personal data flows, and Aether Bar, a floating taskbar replacement for Windows 11.">
+<meta name="theme-color" content="#14171a">
+<script>
+    document.documentElement.classList.add('js', 'anim');
+    setTimeout(function () { if (!window.__motionReady) document.documentElement.classList.add('no-wait'); }, 2500);
+</script>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%276%27 fill=%27%2314171a%27/%3E%3Cpath d=%27M9 24V8h8a5 5 0 0 1 0 10h-8m8 0 6 6%27 fill=%27none%27 stroke=%27%23f7b733%27 stroke-width=%273%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27/%3E%3C/svg%3E">
+<link rel="preload" href="assets/fonts/host-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/atkinson-mono-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="bar" id="bar">
+    <nav class="bar__in" aria-label="Main">
+        <a class="bar__name" href="index.html" aria-label="Ryan Shah, home">Ryan Shah</a>
+        <ul class="bar__links">
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="index.html#career">Career</a></li>
+            <li><a href="index.html#research">Research</a></li>
+            <li><a href="index.html#capability">Capability</a></li>
+            <li><a href="projects.html" aria-current="page">Projects</a></li>
+            <li><a href="writing.html">Writing</a></li>
+        </ul>
+        <a class="btn btn--primary bar__action" href="index.html#contact">Get in touch</a>
+        <button class="btn bar__menu" id="menu" type="button" aria-expanded="false" aria-controls="sheet">Menu</button>
+        <span class="bar__progress" id="progress" aria-hidden="true"></span>
+    </nav>
+    <div class="sheet" id="sheet" hidden>
+        <a href="index.html#about">About</a>
+        <a href="index.html#career">Career</a>
+        <a href="index.html#research">Research</a>
+        <a href="index.html#capability">Capability</a>
+        <a href="projects.html">Projects</a>
+        <a href="writing.html">Writing</a>
+        <a class="btn btn--primary" href="index.html#contact">Get in touch</a>
+    </div>
+</header>
+
+<main id="main">
+<div class="container">
+    <div class="page-head">
+        <h1 data-rise>Projects</h1>
+        <p data-rise>Software I have built. Both are made to run on your own machine and send no telemetry.</p>
+    </div>
+
+    <article class="case" id="privacygraph" aria-labelledby="pg-h">
+        <div class="case__main" data-reveal>
+            <h2 id="pg-h">PrivacyGraph</h2>
+            <p class="case__lede">Evidence-backed map of how personal data may move through your code. Static analysis, local by default.</p>
+            <div class="tags"><span class="tag">Go</span><span class="tag">Apache 2.0</span><span class="tag">Static analysis</span></div>
+            <ul class="case__facts">
+                <li>Links each finding to a file and line, names the detection method, assigns a confidence level and lists what remains unproven.</li>
+                <li>Reads Python, TypeScript, JavaScript and Go, plus Terraform, Docker Compose, Kubernetes and <span class="measured">.env.example</span> files.</li>
+                <li>Makes no network requests, sends no telemetry and calls no LLM while scanning.</li>
+            </ul>
+            <div class="case__acts">
+                <a class="btn btn--primary" href="https://github.com/ryankshah/privacygraph" target="_blank" rel="noopener">View on GitHub</a>
+            </div>
+        </div>
+        <div class="case__fig panels" data-reveal>
+            <div class="fig__head"><span>Where personal data goes</span><span>From the README</span></div>
+            <ol class="flow" id="flow" aria-label="The path personal data may take through code">
+                <li><span class="flow__step">Enters</span><div>Where data comes into the code</div></li>
+                <li><span class="flow__step">Handled</span><div>The functions that handle it</div></li>
+                <li><span class="flow__step">Reaches</span><div>Databases, logs, queues, third-party APIs and AI providers</div></li>
+            </ol>
+            <div class="fig__body cmd">
+                <code><span>$</span> privacygraph scan .</code>
+                <code>scan, flows, trace, report, review, explain, diff</code>
+            </div>
+        </div>
+    </article>
+
+    <article class="case" id="aetherbar" aria-labelledby="ab-h">
+        <div class="case__main" data-reveal>
+            <h2 id="ab-h">Aether Bar</h2>
+            <p class="case__lede">Replaces the Windows 11 taskbar with a floating bar you can put on any screen edge.</p>
+            <div class="tags"><span class="tag">Windows 11</span><span class="tag">No account</span><span class="tag">No telemetry</span></div>
+            <div class="case__acts">
+                <a class="btn btn--primary" href="https://1601070460953.gumroad.com/l/aetherbar" target="_blank" rel="noopener">Get Aether Bar</a>
+            </div>
+        </div>
+        <div class="case__side" data-reveal>
+            <ul class="case__facts">
+                <li>Five modes (Vibe, Util, Productive, Zen and Windows), plus modes you customise yourself.</li>
+                <li>Hover a running app to preview its windows, and drag an <span class="measured">.exe</span> onto the bar to pin it.</li>
+                <li>Floats or runs full width, and can hide until your cursor reaches the screen edge.</li>
+                <li>Follows your Windows theme and accent colour, and goes online only when you ask.</li>
+            </ul>
+        </div>
+        <figure class="case__fig case__fig--wide panels" data-reveal>
+            <div class="fig__head"><span>Vibe mode</span><span>Screenshot from the app</span></div>
+            <a class="shot" href="assets/aether-bar-vibe-2400.webp" target="_blank" rel="noopener" aria-label="Open the full-size Aether Bar screenshot">
+                <img src="assets/aether-bar-vibe-1600.webp" srcset="assets/aether-bar-vibe-800.webp 800w, assets/aether-bar-vibe-1600.webp 1600w, assets/aether-bar-vibe-2400.webp 2400w" sizes="(max-width: 60rem) 95vw, 1312px" width="1600" height="900" loading="lazy" decoding="async" alt="Aether Bar in Vibe mode: a floating bar along the bottom of a Windows 11 desktop, with an AI assistant button, usage meters, pinned apps, media controls, world clocks, a calendar date, system icons and battery level">
+            </a>
+        </figure>
+    </article>
+
+    <div class="more-tools" data-reveal>
+        <p>More of my code is on GitHub.</p>
+        <p class="more"><a class="link" href="https://github.com/ryankshah" target="_blank" rel="noopener">github.com/ryankshah</a></p>
+    </div>
+</div>
+</main>
+
+<footer class="foot">
+    <div class="container">
+        <div class="foot__cols">
+            <div class="foot__who">
+                <p class="foot__name">Ryan Shah</p>
+                <p>Security assurance, audit and GRC.</p>
+            </div>
+            <nav class="foot__col" aria-label="The site">
+                <h2>The site</h2>
+                <ul>
+                    <li><a href="index.html#about">About</a></li>
+                    <li><a href="index.html#career">Career</a></li>
+                    <li><a href="index.html#research">Research</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="index.html#capability">Capability</a></li>
+                    <li><a href="index.html#credentials">Credentials</a></li>
+                </ul>
+            </nav>
+            <nav class="foot__col foot__col--wide" aria-label="Field notes">
+                <h2>Field notes</h2>
+                <ul>
+                    <li><a href="writing.html">All field notes</a></li>
+                    <li><a href="posts/adaptive-by-design-ai-worms-and-offensive-capability.html">Adaptive by design</a></li>
+                    <li><a href="posts/reading-regulation-like-a-threat-model.html">Reading regulation like a threat model</a></li>
+                    <li><a href="posts/understanding-the-criticality-of-securing-our-robots.html">Understanding the criticality of securing our robots</a></li>
+                    <li><a href="posts/what-side-channels-taught-me-about-assurance.html">What side-channels taught me about assurance</a></li>
+                    <li><a href="posts/supply-chain-due-diligence-without-the-theatre.html">Supply chain due diligence without the theatre</a></li>
+                </ul>
+            </nav>
+            <nav class="foot__col" aria-label="Elsewhere">
+                <h2>Elsewhere</h2>
+                <ul>
+                    <li><a href="https://linkedin.com/in/ryankshah" target="_blank" rel="noopener">LinkedIn</a></li>
+                    <li><a href="https://github.com/ryankshah" target="_blank" rel="noopener">GitHub</a></li>
+                    <li><a href="https://scholar.google.com/citations?user=ctJ21fwAAAAJ" target="_blank" rel="noopener">Google Scholar</a></li>
+                </ul>
+            </nav>
+        </div>
+        <p class="foot__legal"><span>© 2026 Dr Ryan K. Shah</span><span>ryankshah.com</span></p>
+    </div>
+</footer>
+
+<script src="assets/vendor/gsap.min.js" defer></script>
+<script src="assets/vendor/ScrollTrigger.min.js" defer></script>
+<script src="assets/vendor/SplitText.min.js" defer></script>
+<script src="assets/app.js" defer></script>
+<script src="assets/motion.js" defer></script>
+</body>
+</html>

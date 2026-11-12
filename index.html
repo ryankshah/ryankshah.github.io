@@ -5,68 +5,73 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Dr. Ryan Shah ~ Security Assurance & Audit</title>
 <meta name="description" content="Dr Ryan K. Shah. Staff Engineer, Security Assurance &amp; Audit at Nscale. Published researcher in side-channel security, and a practitioner across ISO 27001, DORA, NIS 2 and the NCSC CAF.">
-<meta name="theme-color" content="#111513">
+<meta name="theme-color" content="#14171a">
 <script>
-    document.documentElement.classList.add('js');
-    setTimeout(function () { if (!window.__siteReady) document.documentElement.classList.add('no-wait'); }, 3500);
+    document.documentElement.classList.add('js', 'anim');
+    setTimeout(function () { if (!window.__motionReady) document.documentElement.classList.add('no-wait'); }, 2500);
 </script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preconnect" href="https://api.fontshare.com">
-<link href="https://fonts.googleapis.com/css2?family=Anybody:wdth,wght@50..150,500&display=swap" rel="stylesheet">
-<link href="https://api.fontshare.com/v2/css?f[]=author@400,401,600&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%276%27 fill=%27%2314171a%27/%3E%3Cpath d=%27M9 24V8h8a5 5 0 0 1 0 10h-8m8 0 6 6%27 fill=%27none%27 stroke=%27%23f7b733%27 stroke-width=%273%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27/%3E%3C/svg%3E">
+<link rel="preload" href="assets/fonts/host-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/atkinson-mono-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/styles.css">
 </head>
 <body>
 <a class="skip" href="#about">Skip to content</a>
 
 <header class="bar" id="bar">
-    <nav class="bar__in wrap" aria-label="Main">
+    <nav class="bar__in" aria-label="Main">
+        <a class="bar__name" href="#top" aria-label="Ryan Shah, home">Ryan Shah</a>
         <ul class="bar__links">
             <li><a href="#about">About</a></li>
             <li><a href="#career">Career</a></li>
             <li><a href="#research">Research</a></li>
+            <li><a href="#capability">Capability</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="writing.html">Writing</a></li>
         </ul>
-        <a class="bar__name" href="#top" aria-label="Ryan Shah, back to the top">Ryan Shah</a>
-        <div class="bar__right">
-            <ul class="bar__links">
-                <li><a href="#capability">Capability</a></li>
-                <li><a href="writing.html">Writing</a></li>
-            </ul>
-            <a class="bar__action" href="#contact">Get in touch</a>
-        </div>
-        <button class="bar__menu" id="menu" type="button" aria-expanded="false" aria-controls="sheet">Menu</button>
+        <a class="btn btn--primary bar__action" href="#contact">Get in touch</a>
+        <button class="btn bar__menu" id="menu" type="button" aria-expanded="false" aria-controls="sheet">Menu</button>
+        <span class="bar__progress" id="progress" aria-hidden="true"></span>
     </nav>
     <div class="sheet" id="sheet" hidden>
         <a href="#about">About</a>
         <a href="#career">Career</a>
         <a href="#research">Research</a>
         <a href="#capability">Capability</a>
-        <a href="#credentials">Credentials</a>
+        <a href="projects.html">Projects</a>
         <a href="writing.html">Writing</a>
-        <a class="btn" href="#contact">Get in touch</a>
+        <a class="btn btn--primary" href="#contact">Get in touch</a>
     </div>
 </header>
 
-<main>
+<main id="main">
 
 <section class="hero" id="top">
-    <h1 class="hero__name">Dr Ryan Shah</h1>
-    <p class="hero__line">Reads regulation like a threat model.</p>
-    <div class="hero__role">
-        <p>Staff Engineer, Security Assurance &amp; Audit at Nscale</p>
-        <a class="btn" href="#contact">Start a conversation</a>
+    <div class="container">
+        <div class="hero__grid">
+            <div class="hero__copy">
+                <h1>Reads regulation like a threat model.</h1>
+                <p class="hero__lede" data-rise>Dr Ryan Shah, Staff Engineer, Security Assurance &amp; Audit at Nscale.</p>
+                <div class="hero__acts" data-rise>
+                    <a class="btn btn--primary" href="#contact">Start a conversation</a>
+                    <a class="btn" href="writing.html">Read the field notes</a>
+                </div>
+            </div>
+            <figure class="hero__portrait" id="portrait">
+                <img src="assets/headshot-1000.webp" srcset="assets/headshot-600.webp 600w, assets/headshot-1000.webp 1000w" sizes="(max-width: 60rem) 90vw, 524px" width="1000" height="1000" alt="Illustrated portrait of Ryan Shah, smiling, with curly brown hair, round glasses, a beard and a yellow shirt" fetchpriority="high" decoding="async">
+            </figure>
+        </div>
     </div>
 </section>
 
-<section class="section section--surface section--about" id="about" aria-labelledby="about-h">
-    <div class="wrap">
-        <div class="section__head" data-reveal>
-            <h2 class="head" id="about-h">Researcher turned practitioner</h2>
+<section class="section section--deep" id="about" aria-labelledby="about-h">
+    <div class="container">
+        <div class="section__head about__head" data-reveal>
+            <h2 id="about-h">Researcher turned practitioner</h2>
         </div>
         <div class="about">
-            <p class="about__statement" data-reveal>I sit where academic rigour meets the unglamorous reality of getting an organisation certified, compliant and genuinely more resilient.</p>
-            <div class="about__body" data-reveal style="--i:1">
+            <p class="about__statement" id="statement">I sit where academic rigour meets the unglamorous reality of getting an organisation certified, compliant and genuinely more resilient.</p>
+            <div class="about__body" data-reveal>
                 <p>I hold a <strong>PhD in information and network security and privacy</strong>, and now work as Staff Engineer, Security Assurance &amp; Audit at Nscale, after several years consulting in GRC and data protection.</p>
                 <p>My research, ten peer-reviewed papers on side-channels, IoT safety and traffic analysis, taught me to <strong>treat evidence as the product</strong>. In practice I turn frameworks into outcomes: vCISO, vISM and DPO engagements across health, finance and industry, and standards-based assurance explained to very different audiences, often under time pressure.</p>
             </div>
@@ -75,64 +80,68 @@
 </section>
 
 <section class="section" id="career" aria-labelledby="career-h">
-    <div class="wrap">
+    <div class="container">
         <div class="section__head" data-reveal>
-            <h2 class="head" id="career-h">Career and education</h2>
+            <h2 id="career-h">Career and education</h2>
         </div>
-        <ol class="ledger">
-            <li data-reveal>
-                <p class="ledger__when">2026 – now</p>
-                <div class="ledger__role"><h3>Staff Engineer, Security Assurance &amp; Audit</h3><p>Nscale</p></div>
-                <p class="ledger__desc">Hands-on lead for assurance and audit: SOC 2 Type II, ISO and customer commitments. I own audit readiness for new sites, one control framework across SOC 2, ISO and NIST, evidence standards, and the relationship with external auditors, working with GRC engineering on evidence automation.</p>
-            </li>
-            <li data-reveal>
-                <p class="ledger__when">2025 – 2026</p>
-                <div class="ledger__role"><h3>Data Protection Officer</h3><p>Sapphire, UK</p></div>
-                <p class="ledger__desc">Independent oversight and advice on UK and EU data protection law, including the GDPR. I led privacy governance (policies, training, audits, records of processing), breach management and incident response, DPIAs and DSARs.</p>
-            </li>
-            <li data-reveal>
-                <p class="ledger__when">2024 – 2026</p>
-                <div class="ledger__role"><h3>Senior Security Consultant</h3><p>Sapphire, UK</p></div>
-                <p class="ledger__desc">Led complex GRC engagements across compliance, assurance and risk. Product owner for Third-Party Risk Management, with vCISO and vISM support in healthcare, finance and industry. I led tenders across ISO 27001, 27701, 22301, 22237 and 42001, the GDPR, DORA, NIS 2, the NCSC CAF and NIST CSF.</p>
-            </li>
-            <li data-reveal>
-                <p class="ledger__when">2023 – 2024</p>
-                <div class="ledger__role"><h3>Security Consultant</h3><p>Sapphire, UK</p></div>
-                <p class="ledger__desc">Subject-matter expert on DORA and NIS 2. I led ISO 27001, 22301 and 27701 engagements from gap analysis to internal audit and certification, plus awareness training and business continuity, across transport, logistics, education, healthcare, manufacturing and finance.</p>
-            </li>
-            <li data-reveal>
-                <p class="ledger__when">2022 – 2023</p>
-                <div class="ledger__role"><h3>Postdoctoral Researcher</h3><p>Heriot-Watt University, Edinburgh</p></div>
-                <p class="ledger__desc">SECRIOUS project: how new-code and non-traditional entrants engage with cyber security in software engineering, with human-centred approaches to security education across cyber security, games research and HCI.</p>
-            </li>
-            <li data-reveal>
-                <p class="ledger__when">2018 – 2022</p>
-                <div class="ledger__role"><h3>PhD, Cyber Security</h3><p>University of Strathclyde</p></div>
-                <p class="ledger__desc">Thesis: <em>Security of Robotic Workflows</em>. Calibration security and operational privacy in robotic, cyber-physical and safety-critical systems: passive side-channel threats, access control and blockchain-based approaches, using machine learning and signal processing.</p>
-            </li>
-            <li data-reveal>
-                <p class="ledger__when">2014 – 2018</p>
-                <div class="ledger__role"><h3>BSc Computer Science, First Class</h3><p>Heriot-Watt University</p></div>
-                <p class="ledger__desc">Software development, networking and cyber security. My final-year project built a tool to identify and remediate IoT devices vulnerable to the Mirai malware in real time. Advanced coursework in network security, AI, machine learning and distributed systems.</p>
-            </li>
-        </ol>
+        <div class="trail__tools" data-reveal>
+            <button class="chip" type="button" id="trailToggle" data-state="closed">Open all roles</button>
+        </div>
+        <div class="trail" id="trail">
+            <span class="trail__spine" aria-hidden="true"></span>
+            <ol class="trail__list">
+                <li><details class="trail__item" open>
+                    <summary><span class="trail__when measured">2026 to now</span><span class="trail__role"><h3>Staff Engineer, Security Assurance &amp; Audit</h3><p>Nscale</p></span><span class="trail__toggle" aria-hidden="true"></span></summary>
+                    <div class="trail__desc">Hands-on lead for assurance and audit: SOC 2 Type II, ISO and customer commitments. I own audit readiness for new sites, one control framework across SOC 2, ISO and NIST, evidence standards, and the relationship with external auditors, working with GRC engineering on evidence automation.</div>
+                </details></li>
+                <li><details class="trail__item">
+                    <summary><span class="trail__when measured">2025 to 2026</span><span class="trail__role"><h3>Data Protection Officer</h3><p>Sapphire, UK</p></span><span class="trail__toggle" aria-hidden="true"></span></summary>
+                    <div class="trail__desc">Independent oversight and advice on UK and EU data protection law, including the GDPR. I led privacy governance (policies, training, audits, records of processing), breach management and incident response, DPIAs and DSARs.</div>
+                </details></li>
+                <li><details class="trail__item">
+                    <summary><span class="trail__when measured">2024 to 2026</span><span class="trail__role"><h3>Senior Security Consultant</h3><p>Sapphire, UK</p></span><span class="trail__toggle" aria-hidden="true"></span></summary>
+                    <div class="trail__desc">Led complex GRC engagements across compliance, assurance and risk. Product owner for Third-Party Risk Management, with vCISO and vISM support in healthcare, finance and industry. I led tenders across ISO 27001, 27701, 22301, 22237 and 42001, the GDPR, DORA, NIS 2, the NCSC CAF and NIST CSF.</div>
+                </details></li>
+                <li><details class="trail__item">
+                    <summary><span class="trail__when measured">2023 to 2024</span><span class="trail__role"><h3>Security Consultant</h3><p>Sapphire, UK</p></span><span class="trail__toggle" aria-hidden="true"></span></summary>
+                    <div class="trail__desc">Subject-matter expert on DORA and NIS 2. I led ISO 27001, 22301 and 27701 engagements from gap analysis to internal audit and certification, plus awareness training and business continuity, across transport, logistics, education, healthcare, manufacturing and finance.</div>
+                </details></li>
+                <li><details class="trail__item">
+                    <summary><span class="trail__when measured">2022 to 2023</span><span class="trail__role"><h3>Postdoctoral Researcher</h3><p>Heriot-Watt University, Edinburgh</p></span><span class="trail__toggle" aria-hidden="true"></span></summary>
+                    <div class="trail__desc">SECRIOUS project: how new-code and non-traditional entrants engage with cyber security in software engineering, with human-centred approaches to security education across cyber security, games research and HCI.</div>
+                </details></li>
+                <li><details class="trail__item">
+                    <summary><span class="trail__when measured">2018 to 2022</span><span class="trail__role"><h3>PhD, Cyber Security</h3><p>University of Strathclyde</p></span><span class="trail__toggle" aria-hidden="true"></span></summary>
+                    <div class="trail__desc">Thesis: <em>Security of Robotic Workflows</em>. Calibration security and operational privacy in robotic, cyber-physical and safety-critical systems: passive side-channel threats, access control and blockchain-based approaches, using machine learning and signal processing.</div>
+                </details></li>
+                <li><details class="trail__item">
+                    <summary><span class="trail__when measured">2014 to 2018</span><span class="trail__role"><h3>BSc Computer Science, First Class</h3><p>Heriot-Watt University</p></span><span class="trail__toggle" aria-hidden="true"></span></summary>
+                    <div class="trail__desc">Software development, networking and cyber security. My final-year project built a tool to identify and remediate IoT devices vulnerable to the Mirai malware in real time. Advanced coursework in network security, AI, machine learning and distributed systems.</div>
+                </details></li>
+            </ol>
+        </div>
     </div>
 </section>
 
-<section class="section section--surface" id="research" aria-labelledby="research-h">
-    <div class="wrap">
-        <div class="section__head" data-reveal>
-            <h2 class="head" id="research-h">Research</h2>
-            <p>Side-channels, IoT safety and traffic analysis, 2019 to 2025.</p>
+<section class="section section--deep" id="research" aria-labelledby="research-h">
+    <div class="container">
+        <div class="split">
+            <div class="section__head" data-reveal>
+                <h2 id="research-h">Research</h2>
+                <p>Side-channels, IoT safety and traffic analysis, 2019 to 2025.</p>
+            </div>
+            <div class="reading" data-reveal>
+                <span class="reading__value" id="pubReading" aria-hidden="true">10</span>
+                <p class="reading__note"><span class="sr-only">10 </span>papers listed below</p>
+            </div>
         </div>
-
 
         <div class="tool" id="pubTool" hidden data-reveal>
             <div class="filters" id="filters" role="group" aria-label="Filter publications by theme">
-                <button class="filter" type="button" data-filter="all" aria-pressed="true">All</button>
-                <button class="filter" type="button" data-filter="side-channel" aria-pressed="false">Side-channel</button>
-                <button class="filter" type="button" data-filter="iot" aria-pressed="false">IoT and safety</button>
-                <button class="filter" type="button" data-filter="network" aria-pressed="false">Network and traffic</button>
+                <button class="chip" type="button" data-filter="all" aria-pressed="true">All</button>
+                <button class="chip" type="button" data-filter="side-channel" aria-pressed="false">Side-channel</button>
+                <button class="chip" type="button" data-filter="iot" aria-pressed="false">IoT and safety</button>
+                <button class="chip" type="button" data-filter="network" aria-pressed="false">Network and traffic</button>
             </div>
             <p class="tool__count" id="pubCount" aria-live="polite"></p>
         </div>
@@ -153,55 +162,50 @@
                 <tr data-theme="network"><td class="lineup__when">2019</td><td class="lineup__title"><span class="lineup__name">Do We Have the Time for IRM? Service Denial Attacks and SDN-based Defences</span><span class="lineup__by">R. Shah, S. Nagaraja</span></td><td class="lineup__venue">ICDCN 2019, Intl. Conference on Distributed Computing and Networking</td></tr>
             </tbody>
         </table>
-        <p class="more" data-reveal><a class="link-plain" href="https://scholar.google.com/citations?user=ctJ21fwAAAAJ" target="_blank" rel="noopener">All publications on Google Scholar</a></p>
+        <p class="more" data-reveal><a class="link" href="https://scholar.google.com/citations?user=ctJ21fwAAAAJ" target="_blank" rel="noopener">All publications on Google Scholar</a></p>
     </div>
 </section>
 
-<section class="section section--field" id="capability" aria-labelledby="capability-h">
-    <div class="wrap">
+<section class="section" id="projects" aria-labelledby="projects-h">
+    <div class="container">
         <div class="section__head" data-reveal>
-            <h2 class="head" id="capability-h">Capability</h2>
+            <h2 id="projects-h">Projects</h2>
+            <p>Software I have built.</p>
         </div>
-        <div class="caps">
-            <div class="caps__col" data-reveal>
-                <div class="cap">
-                    <h3>Regulatory compliance</h3>
-                    <ul><li>NIS and NIS 2</li><li>UK and EU GDPR</li><li>DORA</li><li>CCPA</li><li>EU AI Act</li><li>EU CRA</li></ul>
-                </div>
-                <div class="cap">
-                    <h3>Data protection</h3>
-                    <ul><li>DPIA</li><li>DSAR</li><li>Breach response</li><li>Privacy governance</li></ul>
-                </div>
-            </div>
-            <div class="caps__col" data-reveal style="--i:1">
-                <div class="cap">
-                    <h3>Standards and frameworks</h3>
-                    <ul><li>SOC 2</li><li>ISO 27001</li><li>ISO 27701</li><li>ISO 22301</li><li>ISO 22237</li><li>ISO 42001</li><li>NCSC CAF</li><li>NIST CSF</li><li>NIST SP 800-53</li></ul>
-                </div>
-                <div class="cap">
-                    <h3>Resilience</h3>
-                    <ul><li>Business continuity</li><li>Incident response</li><li>Disaster recovery</li><li>BCP testing</li></ul>
-                </div>
-            </div>
-            <div class="caps__col" data-reveal style="--i:2">
-                <div class="cap">
-                    <h3>Security leadership</h3>
-                    <ul><li>vCISO and vISM</li><li>Internal audit</li><li>Third-party risk management</li><li>Threat modelling</li></ul>
-                </div>
-                <div class="cap">
-                    <h3>Technical foundation</h3>
-                    <ul><li>Python</li><li>Java</li><li>React and Node.js</li><li>ML and analytics</li><li>CI/CD</li><li>Secure development lifecycle</li></ul>
-                </div>
-            </div>
+        <div class="panels projects" data-reveal>
+            <a class="proj" href="projects.html#privacygraph">
+                <h3>PrivacyGraph</h3>
+                <p>Evidence-backed map of how personal data may move through your code. Static analysis, local by default.</p>
+                <div class="tags"><span class="tag">Go</span><span class="tag">Apache 2.0</span><span class="tag">Static analysis</span></div>
+                <span class="proj__go">See the project</span>
+            </a>
+            <a class="proj" href="projects.html#aetherbar">
+                <h3>Aether Bar</h3>
+                <p>Replaces the Windows 11 taskbar with a floating bar you can put on any screen edge.</p>
+                <div class="tags"><span class="tag">Windows 11</span><span class="tag">No account</span><span class="tag">No telemetry</span></div>
+                <span class="proj__go">See the project</span>
+            </a>
         </div>
     </div>
 </section>
 
-<section class="section" id="credentials" aria-labelledby="credentials-h">
-    <div class="wrap">
-        <div class="creds">
+<section class="section section--deep" id="capability" aria-labelledby="capability-h">
+    <div class="container">
+        <div class="section__head" data-reveal>
+            <h2 id="capability-h">Capability</h2>
+        </div>
+        <div class="panels caps" data-reveal>
+            <div class="cap"><h3>Regulatory compliance</h3><ul><li>NIS and NIS 2</li><li>UK and EU GDPR</li><li>DORA</li><li>CCPA</li><li>EU AI Act</li><li>EU CRA</li></ul></div>
+            <div class="cap"><h3>Standards and frameworks</h3><ul><li>SOC 2</li><li>ISO 27001</li><li>ISO 27701</li><li>ISO 22301</li><li>ISO 22237</li><li>ISO 42001</li><li>NCSC CAF</li><li>NIST CSF</li><li>NIST SP 800-53</li></ul></div>
+            <div class="cap"><h3>Security leadership</h3><ul><li>vCISO and vISM</li><li>Internal audit</li><li>Third-party risk management</li><li>Threat modelling</li></ul></div>
+            <div class="cap"><h3>Data protection</h3><ul><li>DPIA</li><li>DSAR</li><li>Breach response</li><li>Privacy governance</li></ul></div>
+            <div class="cap"><h3>Resilience</h3><ul><li>Business continuity</li><li>Incident response</li><li>Disaster recovery</li><li>BCP testing</li></ul></div>
+            <div class="cap"><h3>Technical foundation</h3><ul><li>Python</li><li>Java</li><li>React and Node.js</li><li>ML and analytics</li><li>CI/CD</li><li>Secure development lifecycle</li></ul></div>
+        </div>
+
+        <div class="creds" id="credentials">
             <div class="creds__head" data-reveal>
-                <h2 class="head" id="credentials-h">Credentials</h2>
+                <h2 id="credentials-h">Credentials</h2>
             </div>
             <ul class="creds__list" data-reveal>
                 <li><span>Full Member, MCIIS</span><span>CIISec, 2025</span></li>
@@ -217,27 +221,28 @@
     </div>
 </section>
 
-<section class="section section--surface" id="writing" aria-labelledby="writing-h">
-    <div class="wrap">
+<section class="section" id="writing" aria-labelledby="writing-h">
+    <div class="container">
         <div class="section__head" data-reveal>
-            <h2 class="head" id="writing-h">Field notes</h2>
+            <h2 id="writing-h">Field notes</h2>
             <p>Writing on GRC, privacy and research.</p>
         </div>
-        <ol class="ledger ledger--notes" id="homePosts" aria-label="Latest field notes"></ol>
-        <p class="more" data-reveal><a class="link-plain" href="writing.html">All field notes</a></p>
+        <ol class="notes" id="homePosts" aria-label="Latest field notes"></ol>
+        <noscript><p class="more"><a class="link" href="posts/reading-regulation-like-a-threat-model.html">Start with “Reading regulation like a threat model”</a></p></noscript>
+        <p class="more" data-reveal><a class="link" href="writing.html">All field notes</a></p>
     </div>
 </section>
 
-<section class="section" id="contact" aria-labelledby="contact-h">
-    <div class="wrap">
+<section class="section section--deep" id="contact" aria-labelledby="contact-h">
+    <div class="container">
         <div class="section__head" data-reveal>
-            <h2 class="head" id="contact-h">Get in touch</h2>
+            <h2 id="contact-h">Get in touch</h2>
             <p>Working on something where governance, privacy or resilience really matters? Let us talk.</p>
         </div>
         <div class="contact__rows" data-reveal>
-            <a class="contact__row" href="https://linkedin.com/in/ryankshah" target="_blank" rel="noopener"><span>LinkedIn</span><span>in/ryankshah</span></a>
-            <a class="contact__row" href="https://github.com/ryankshah" target="_blank" rel="noopener"><span>GitHub</span><span>@ryankshah</span></a>
-            <a class="contact__row" href="https://scholar.google.com/citations?user=ctJ21fwAAAAJ" target="_blank" rel="noopener"><span>Google Scholar</span><span>Publications</span></a>
+            <a class="contact__row" href="https://linkedin.com/in/ryankshah" target="_blank" rel="noopener"><span class="contact__name">LinkedIn</span><span class="contact__val measured">in/ryankshah</span></a>
+            <a class="contact__row" href="https://github.com/ryankshah" target="_blank" rel="noopener"><span class="contact__name">GitHub</span><span class="contact__val measured">@ryankshah</span></a>
+            <a class="contact__row" href="https://scholar.google.com/citations?user=ctJ21fwAAAAJ" target="_blank" rel="noopener"><span class="contact__name">Google Scholar</span><span class="contact__val measured">Publications</span></a>
         </div>
     </div>
 </section>
@@ -245,18 +250,19 @@
 </main>
 
 <footer class="foot">
-    <div class="wrap">
+    <div class="container">
         <div class="foot__cols">
             <div class="foot__who">
                 <p class="foot__name">Ryan Shah</p>
                 <p>Security assurance, audit and GRC.</p>
             </div>
-            <nav class="foot__col" aria-label="This page">
-                <h2>This page</h2>
+            <nav class="foot__col" aria-label="The site">
+                <h2>The site</h2>
                 <ul>
                     <li><a href="#about">About</a></li>
                     <li><a href="#career">Career</a></li>
                     <li><a href="#research">Research</a></li>
+                    <li><a href="projects.html">Projects</a></li>
                     <li><a href="#capability">Capability</a></li>
                     <li><a href="#credentials">Credentials</a></li>
                 </ul>
@@ -265,11 +271,11 @@
                 <h2>Field notes</h2>
                 <ul>
                     <li><a href="writing.html">All field notes</a></li>
-                    <li><a href="posts/reading-regulation-like-a-threat-model.html">Reading regulation like a threat model</a></li>
                     <li><a href="posts/adaptive-by-design-ai-worms-and-offensive-capability.html">Adaptive by design</a></li>
+                    <li><a href="posts/reading-regulation-like-a-threat-model.html">Reading regulation like a threat model</a></li>
+                    <li><a href="posts/understanding-the-criticality-of-securing-our-robots.html">Understanding the criticality of securing our robots</a></li>
                     <li><a href="posts/what-side-channels-taught-me-about-assurance.html">What side-channels taught me about assurance</a></li>
                     <li><a href="posts/supply-chain-due-diligence-without-the-theatre.html">Supply chain due diligence without the theatre</a></li>
-                    <li><a href="posts/understanding-the-criticality-of-securing-our-robots.html">Understanding the criticality of securing our robots</a></li>
                 </ul>
             </nav>
             <nav class="foot__col" aria-label="Elsewhere">
@@ -281,11 +287,14 @@
                 </ul>
             </nav>
         </div>
-        <p class="foot__legal">© 2026 Dr Ryan K. Shah · ryankshah.com</p>
+        <p class="foot__legal"><span>© 2026 Dr Ryan K. Shah</span><span>ryankshah.com</span></p>
     </div>
 </footer>
 
-
-<script src="assets/app.js"></script>
+<script src="assets/vendor/gsap.min.js" defer></script>
+<script src="assets/vendor/ScrollTrigger.min.js" defer></script>
+<script src="assets/vendor/SplitText.min.js" defer></script>
+<script src="assets/app.js" defer></script>
+<script src="assets/motion.js" defer></script>
 </body>
 </html>

@@ -5,55 +5,51 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Field Notes ~ Dr. Ryan Shah</title>
 <meta name="description" content="Field Notes: writing on GRC, data protection, regulation and security research by Dr Ryan K. Shah.">
-<meta name="theme-color" content="#111513">
+<meta name="theme-color" content="#14171a">
 <script>
-    document.documentElement.classList.add('js');
-    setTimeout(function () { if (!window.__siteReady) document.documentElement.classList.add('no-wait'); }, 3500);
+    document.documentElement.classList.add('js', 'anim');
+    setTimeout(function () { if (!window.__motionReady) document.documentElement.classList.add('no-wait'); }, 2500);
 </script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preconnect" href="https://api.fontshare.com">
-<link href="https://fonts.googleapis.com/css2?family=Anybody:wdth,wght@50..150,500&display=swap" rel="stylesheet">
-<link href="https://api.fontshare.com/v2/css?f[]=author@400,401,600&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%276%27 fill=%27%2314171a%27/%3E%3Cpath d=%27M9 24V8h8a5 5 0 0 1 0 10h-8m8 0 6 6%27 fill=%27none%27 stroke=%27%23f7b733%27 stroke-width=%273%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27/%3E%3C/svg%3E">
+<link rel="preload" href="assets/fonts/host-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/atkinson-mono-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/styles.css">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
 
 <header class="bar" id="bar">
-    <nav class="bar__in wrap" aria-label="Main">
+    <nav class="bar__in" aria-label="Main">
+        <a class="bar__name" href="index.html" aria-label="Ryan Shah, home">Ryan Shah</a>
         <ul class="bar__links">
             <li><a href="index.html#about">About</a></li>
             <li><a href="index.html#career">Career</a></li>
             <li><a href="index.html#research">Research</a></li>
+            <li><a href="index.html#capability">Capability</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="writing.html" aria-current="page">Writing</a></li>
         </ul>
-        <a class="bar__name" href="index.html" aria-label="Ryan Shah, home">Ryan Shah</a>
-        <div class="bar__right">
-            <ul class="bar__links">
-                <li><a href="index.html#capability">Capability</a></li>
-                <li><a href="writing.html" aria-current="true">Writing</a></li>
-            </ul>
-            <a class="bar__action" href="index.html#contact">Get in touch</a>
-        </div>
-        <button class="bar__menu" id="menu" type="button" aria-expanded="false" aria-controls="sheet">Menu</button>
+        <a class="btn btn--primary bar__action" href="index.html#contact">Get in touch</a>
+        <button class="btn bar__menu" id="menu" type="button" aria-expanded="false" aria-controls="sheet">Menu</button>
+        <span class="bar__progress" id="progress" aria-hidden="true"></span>
     </nav>
     <div class="sheet" id="sheet" hidden>
         <a href="index.html#about">About</a>
         <a href="index.html#career">Career</a>
         <a href="index.html#research">Research</a>
         <a href="index.html#capability">Capability</a>
-        <a href="index.html#credentials">Credentials</a>
+        <a href="projects.html">Projects</a>
         <a href="writing.html">Writing</a>
-        <a class="btn" href="index.html#contact">Get in touch</a>
+        <a class="btn btn--primary" href="index.html#contact">Get in touch</a>
     </div>
 </header>
 
 <main id="main">
-<section class="section">
-    <div class="wrap">
+<div class="writing">
+    <div class="container">
         <div class="page-head">
-            <h1 class="display">Field notes</h1>
-            <p>Short essays on where governance, data protection and security research actually meet. Written in the open, revised often.</p>
+            <h1 data-rise>Field notes</h1>
+            <p data-rise>Short essays on where governance, data protection and security research actually meet. Written in the open, revised often.</p>
         </div>
 
         <div class="tool" id="postTool" hidden>
@@ -65,15 +61,15 @@
             <caption class="sr-only">Field notes, newest first</caption>
             <tbody id="postList"></tbody>
         </table>
-        <noscript><p>The list of notes needs JavaScript. <a class="link-plain" href="posts/reading-regulation-like-a-threat-model.html">Start with “Reading regulation like a threat model”</a>.</p></noscript>
+        <noscript><p>The list of notes needs JavaScript. <a class="link" href="posts/reading-regulation-like-a-threat-model.html">Start with “Reading regulation like a threat model”</a>.</p></noscript>
 
-        <p class="more"><a class="link-plain" href="https://linkedin.com/in/ryankshah" target="_blank" rel="noopener">New notes are announced on LinkedIn</a></p>
+        <p class="more"><a class="link" href="https://linkedin.com/in/ryankshah" target="_blank" rel="noopener">New notes are announced on LinkedIn</a></p>
     </div>
-</section>
+</div>
 </main>
 
 <footer class="foot">
-    <div class="wrap">
+    <div class="container">
         <div class="foot__cols">
             <div class="foot__who">
                 <p class="foot__name">Ryan Shah</p>
@@ -85,6 +81,7 @@
                     <li><a href="index.html#about">About</a></li>
                     <li><a href="index.html#career">Career</a></li>
                     <li><a href="index.html#research">Research</a></li>
+                    <li><a href="projects.html">Projects</a></li>
                     <li><a href="index.html#capability">Capability</a></li>
                     <li><a href="index.html#credentials">Credentials</a></li>
                 </ul>
@@ -109,10 +106,14 @@
                 </ul>
             </nav>
         </div>
-        <p class="foot__legal">© 2026 Dr Ryan K. Shah · ryankshah.com</p>
+        <p class="foot__legal"><span>© 2026 Dr Ryan K. Shah</span><span>ryankshah.com</span></p>
     </div>
 </footer>
 
-<script src="assets/app.js"></script>
+<script src="assets/vendor/gsap.min.js" defer></script>
+<script src="assets/vendor/ScrollTrigger.min.js" defer></script>
+<script src="assets/vendor/SplitText.min.js" defer></script>
+<script src="assets/app.js" defer></script>
+<script src="assets/motion.js" defer></script>
 </body>
 </html>
