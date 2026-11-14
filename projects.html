@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Projects ~ Dr. Ryan Shah</title>
-<meta name="description" content="Software built by Dr Ryan K. Shah: PrivacyGraph, a static-analysis map of personal data flows, and Aether Bar, a floating taskbar replacement for Windows 11.">
+<meta name="description" content="Software built by Dr Ryan K. Shah: PrivacyGraph, a static-analysis map of personal data flows, jackproof, a scanner for LLM access theft risk, and Aether Bar, a floating taskbar replacement for Windows 11.">
 <meta name="theme-color" content="#14171a">
 <script>
     document.documentElement.classList.add('js', 'anim');
@@ -48,7 +48,7 @@
 <div class="container">
     <div class="page-head">
         <h1 data-rise>Projects</h1>
-        <p data-rise>Software I have built. Both are made to run on your own machine and send no telemetry.</p>
+        <p data-rise>Software I have built. All of it is made to run on your own machine and sends no telemetry.</p>
     </div>
 
     <article class="case" id="privacygraph" aria-labelledby="pg-h">
@@ -75,6 +75,36 @@
             <div class="fig__body cmd">
                 <code><span>$</span> privacygraph scan .</code>
                 <code>scan, flows, trace, report, review, explain, diff</code>
+            </div>
+        </div>
+    </article>
+
+    <article class="case" id="jackproof" aria-labelledby="jp-h">
+        <div class="case__main" data-reveal>
+            <h2 id="jp-h">jackproof</h2>
+            <p class="case__lede">Finds and detects LLMjacking risk: the theft and resale of LLM access through stolen keys and cloud permissions.</p>
+            <div class="tags"><span class="tag">Go</span><span class="tag">Apache 2.0</span><span class="tag">Offline by default</span></div>
+            <ul class="case__facts">
+                <li>Finds LLM provider keys in code, environment files, Compose, Kubernetes, CI workflows and Terraform, and shows which workloads can read each one.</li>
+                <li>Reads Terraform for AWS, GCP and Azure to flag identities that can enable or abuse model services.</li>
+                <li>Reads exported cloud audit logs for abuse patterns, and plans the order of key rotation after a leak.</li>
+            </ul>
+            <div class="case__acts">
+                <a class="btn btn--primary" href="https://github.com/ryankshah/jackproof" target="_blank" rel="noopener">View on GitHub</a>
+                <a class="btn" href="https://ryankshah.com/jackproof/" target="_blank" rel="noopener">Read the docs</a>
+            </div>
+        </div>
+        <div class="case__fig panels" data-reveal>
+            <div class="fig__head"><span>Four modules</span><span>From the README</span></div>
+            <ol class="flow" aria-label="The four jackproof modules">
+                <li><span class="flow__step">scan</span><div>Where the LLM credentials are, and which workloads can read them</div></li>
+                <li><span class="flow__step">posture</span><div>Whether an attacker can turn on and abuse model services</div></li>
+                <li><span class="flow__step">hunt</span><div>Whether it is happening now, from exported logs</div></li>
+                <li><span class="flow__step">exposure</span><div>What to rotate after a leak, and in what order</div></li>
+            </ol>
+            <div class="fig__body cmd">
+                <code><span>$</span> jackproof scan .</code>
+                <code>scan, posture, hunt, exposure, report, diff, explain</code>
             </div>
         </div>
     </article>

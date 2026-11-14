@@ -137,6 +137,7 @@ abbr[title] { text-decoration: none; }
 .more { margin-top: var(--space-lg); }
 
 .projects { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.projects .proj:last-child:nth-child(odd) { grid-column: 1 / -1; }
 .proj { display: flex; flex-direction: column; gap: var(--space-md); padding: var(--space-xl); text-decoration: none; transition: background-color var(--dur-short) var(--ease-out); min-height: 20rem; }
 .proj h3 { font-size: var(--text-3xl); max-width: none; }
 .proj p { color: var(--color-ink-2); max-width: 48ch; }
